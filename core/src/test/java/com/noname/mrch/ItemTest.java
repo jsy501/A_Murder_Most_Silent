@@ -13,7 +13,7 @@ public class ItemTest {
     Item item;
     @Before
     public void setUp() throws Exception {
-        item = new Item()
+        item = new Item();
     }
 
     @After

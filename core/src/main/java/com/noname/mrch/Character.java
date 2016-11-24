@@ -8,7 +8,7 @@ public class Character extends HasObject{
 	private String name;
 
 	
-	private Character(int id, String name, int personality, int role, boolean falseAccused){
+	public Character(int id, String name, int personality, int role, boolean falseAccused){
 		this.personality = personality;
 		this.id = id;
 		this.role = role;
@@ -20,7 +20,7 @@ public class Character extends HasObject{
 		return personality;
 	}
 
-	public Boolean getFalseAccused() {
+	public Boolean isFalseAccused() {
 		return isFalseAccused;
 	}
 
