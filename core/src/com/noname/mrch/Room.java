@@ -3,16 +3,15 @@ package com.noname.mrch;
 public class Room extends HasObject {
 
 
-	private int ID;
+	private int id;
 	private Boolean isLocked;
 	private String name;
 
 	
-	public Room(int UID,  boolean islocked, String aName){
-		
-		ID = UID;
-		isLocked = islocked;
-		name = aName;
+	public Room(int id, String name, boolean locked){
+		this.id = id;
+		this.name = name;
+		this.isLocked = locked;
 	}
 }
 	
