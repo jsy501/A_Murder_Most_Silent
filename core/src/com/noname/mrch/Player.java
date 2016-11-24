@@ -6,7 +6,7 @@ package com.noname.mrch;
 public class Player {
     private String name;
     private int personality;
-    private int location = 0;
+    private Room location;
 
     public Player(String playerName, int playerPersonality){
         // Constructor for initialising player
@@ -14,10 +14,10 @@ public class Player {
         personality = playerPersonality;
     }
 
-    void setLocation(int newLocation){
+    void setLocation(Room room){
         // Will be called everytime the player moves to a new
         // location such as changing rooms
-        location = newLocation;
+        location = room;
     }
 
     String getName(){
@@ -28,7 +28,7 @@ public class Player {
         return personality;
     }
 
-    int getLocation(){
+    Room getLocation(){
         return location;
     }
 }
