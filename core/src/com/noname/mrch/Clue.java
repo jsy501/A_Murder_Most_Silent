@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Array;
 public class Clue {
     private int id;
     private String description;
-    private Array<Character> relateTo;
+    private Array<Character> relateTo = new Array<Character>();
 
     public void setId(int id) {
         this.id = id;
