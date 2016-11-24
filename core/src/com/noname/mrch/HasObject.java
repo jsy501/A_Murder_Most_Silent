@@ -2,7 +2,7 @@ package com.noname.mrch;
 
 import java.util.ArrayList;
 
-private class HasObject {
+public class HasObject {
 	
 	
 	private ArrayList<Item> itemList = new ArrayList<Item>() ;
