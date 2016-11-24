@@ -6,7 +6,7 @@ package com.noname.mrch;
 public class Player {
     private String name;
     private int personality;
-    private Room location = 0;
+    private Room location;
 
     public Player(String playerName, int playerPersonality){
         // Constructor for initialising player
