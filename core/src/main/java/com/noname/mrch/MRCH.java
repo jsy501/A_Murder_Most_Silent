@@ -2,6 +2,7 @@ package com.noname.mrch;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,11 +16,6 @@ public class MRCH extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-
-		Json json = new Json(JsonWriter.OutputType.json);
-		Character test = new Character(11, "test", 3, 3, false);
-
-		json.toJson(test, Character.class, Gdx.files.internal("charTest.json"));
 	}
 
 	@Override

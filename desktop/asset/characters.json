@@ -1,0 +1,16 @@
+[
+  {
+    "id": 301,
+    "name": "char1",
+    "personality": 3,
+    "role": 3,
+    "isFalseAccused": false
+  },
+  {
+    "id": 302,
+    "name": "char2",
+    "personality": 2,
+    "role": 1,
+    "isFalseAccused": true
+  }
+]

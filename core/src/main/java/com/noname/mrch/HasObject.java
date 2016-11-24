@@ -1,18 +1,24 @@
 package com.noname.mrch;
 
-import java.util.ArrayList;
+import com.badlogic.gdx.utils.Array;
 
 public class HasObject {
-	
-	
-	private ArrayList<Item> itemList = new ArrayList<Item>() ;
-	private ArrayList<Clue> clueList = new ArrayList<Clue>() ;
-	
+	private Array<Item> itemList = new Array<Item>() ;
+	private Array<Clue> clueList = new Array<Clue>() ;
+
+	public Array<Item> getItemList() {
+		return itemList;
+	}
+
+	public Array<Clue> getClueList() {
+		return clueList;
+	}
+
 	public void removeClue(Clue clue){
-		this.clueList.remove(clue);
+		clueList.removeValue(clue, false);
 	}
 	
 	public void removeItem(Item item){
-		this.itemList.remove(item);
+		itemList.removeValue(item, false);
 	}
 }

@@ -2,19 +2,10 @@ package com.noname.mrch;
 
 public class Character extends HasObject{
 
-
-	private int personality, id, role;
-	private Boolean isFalseAccused;
+	private int id;
 	private String name;
-
-	
-	public Character(int id, String name, int personality, int role, boolean falseAccused){
-		this.personality = personality;
-		this.id = id;
-		this.role = role;
-		this.isFalseAccused = falseAccused;
-		this.name = name;
-	}
+	private int personality, role;
+	private Boolean isFalseAccused;
 
 	public int getPersonality() {
 		return personality;
