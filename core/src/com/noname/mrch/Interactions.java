@@ -1,7 +1,8 @@
 package com.noname.mrch;
 
 /**
- * Created by User on 24/11/2016.
+ * Interactions class handles methods for interacting between
+ * the player and the characters.
  */
 public class Interactions {
     String question(int questionStyle,Character target){
