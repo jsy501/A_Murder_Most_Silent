@@ -6,18 +6,33 @@ package com.noname.mrch;
  */
 public class Interactions {
     String question(int questionStyle,Character target){
-        // does some stuff and the player gets a clue
+        if (target.getFalseAccused() == true){
+            return "Go Away";
+        }
+        else {
+            int diff = Math.abs(questionStyle - target.getPersonality());
+            // todo once characters and dialogue finalized get do some math
+        }
     }
 
     String give(Item item, Character target){
-        // does some stuff and you get some stuff
+        if (target.getFalseAccused() == true){
+            return "Go Away!";
+        } else {
+            //todo change some stuff make it work
+        }
     }
 
     String accuse(Character target){
-        //does some stuff
+        if (target.getFalseAccused() == true){
+            return "Go Away!";
+        } else{
+            //todo add the accuse conditions
+        }
+
     }
 
-    void Ignore(){
-        //exits interaction loop
+    String ignore(){
+        return "Good bye" // characters goodbye code
     }
 }

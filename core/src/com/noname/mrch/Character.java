@@ -15,4 +15,20 @@ public class Character extends HasObject{
 		this.isFalseAccused = falseAccused;
 		this.name = name;
 	}
+
+	public int getPersonality() {
+		return personality;
+	}
+
+	public Boolean getFalseAccused() {
+		return isFalseAccused;
+	}
+
+	public void setFalseAccused(Boolean falseAccused) {
+		isFalseAccused = falseAccused;
+	}
+
+	public String getName() {
+		return name;
+	}
 }

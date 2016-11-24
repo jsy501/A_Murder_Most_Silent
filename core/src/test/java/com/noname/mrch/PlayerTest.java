@@ -10,14 +10,16 @@ import static org.junit.Assert.*;
  * Player Tests
  */
 public class PlayerTest {
-    Player player = new Player("test", 0);
+    Player player;
 
     @Before
     public void setUp() throws Exception {
+        player = new Player("test name", 0);
     }
 
     @After
     public void tearDown() throws Exception {
+        player = null;
     }
 
     @Test
