@@ -23,42 +23,40 @@ public class NoteBook {
         itemList.add(item);
     }
 
-    public static Clue getClue(int id) throws Exception {
+    public static Clue getClue(int id) {
         for (int i =0; i < clueList.size; i++){
             if (clueList.get(i).getId() == id){
                 return clueList.get(i);
             }
         }
-        throw new Exception("Clue not in notebook");
+        throw new RuntimeException("Clue not in notebook");
     }
 
-    public static Clue getClue(Clue clue) throws Exception {
+    public static Clue getClue(Clue clue) {
         int index = clueList.indexOf(clue, false);  //-1 when not found
         if (index >= 0){
             return clueList.get(index);
         }
         else{
-            throw new Exception("Clue not in notebook");
+            throw new RuntimeException("Clue not in notebook");
         }
     }
 
-    public static Item getItem(int id) throws Exception {
+    public static Item getItem(int id){
         for (int i =0; i < itemList.size; i++){
             if (itemList.get(i).getId() == id){
                 return itemList.get(i);
             }
         }
-        throw new Exception("Item not in notebook");
+        throw new RuntimeException("Item not in notebook");
     }
 
-    public static Item getItem(Item item) throws Exception {
+    public static Item getItem(Item item) {
         int index = itemList.indexOf(item, false);  //-1 when not found
-        if (index >= 0){
+        if (index >= 0) {
             return itemList.get(index);
         }
-        else{
-            throw new Exception("Item not in notebook");
-        }
+        throw new RuntimeException("Item not in notebook");
     }
 
     public static Array<Clue> getClueList() {
