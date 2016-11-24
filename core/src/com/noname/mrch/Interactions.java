@@ -24,10 +24,7 @@ public class Interactions {
     }
 
     String accuse(Character target){
-        if (target.getFalseAccused() == true){
-            return "Go Away!";
-        } else{
-            //todo add the accuse conditions
+        //todo add the accuse conditions
         }
 
     }
