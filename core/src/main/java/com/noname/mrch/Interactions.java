@@ -1,6 +1,7 @@
 package com.noname.mrch;
 
 import com.noname.mrch.gameObject.Character;
+import com.noname.mrch.gameObject.Item;
 
 /**
  * Interactions class handles methods for interacting between

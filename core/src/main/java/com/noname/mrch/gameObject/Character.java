@@ -1,6 +1,5 @@
 package com.noname.mrch.gameObject;
 
-import com.noname.mrch.HasObject;
 import com.noname.mrch.unused.Dialogue;
 
 /**

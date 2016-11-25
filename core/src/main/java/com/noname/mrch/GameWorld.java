@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameObject.Character;
 import com.noname.mrch.gameObject.Clue;
+import com.noname.mrch.gameObject.Item;
 
 /**
  * Holds all the game objects

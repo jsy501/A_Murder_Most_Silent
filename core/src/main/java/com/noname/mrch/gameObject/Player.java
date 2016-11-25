@@ -1,4 +1,6 @@
-package com.noname.mrch;
+package com.noname.mrch.gameObject;
+
+import com.noname.mrch.gameObject.Room;
 
 /**
  * This class holds data about the player

@@ -2,13 +2,14 @@ package com.noname.mrch;
 
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameObject.Clue;
+import com.noname.mrch.gameObject.Item;
 
 /**
  * Holds items and clues found by the player
  */
 
 public class NoteBook {
-    private static NoteBook noteBook = new NoteBook();
+    private static NoteBook INSTANCE = new NoteBook();
 
     private static Array<Clue> clueList = new Array<Clue>();
     private static Array<Item> itemList = new Array<Item>();
@@ -17,7 +18,7 @@ public class NoteBook {
     }
 
     public static NoteBook getInstance(){
-        return noteBook;
+        return INSTANCE;
     }
 
     public static void addClue(Clue clue){

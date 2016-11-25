@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package com.noname.mrch.gameObject;
 
 public class Room extends HasObject {
 

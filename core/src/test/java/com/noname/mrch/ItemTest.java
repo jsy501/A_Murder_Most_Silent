@@ -1,10 +1,10 @@
 package com.noname.mrch;
 
+import com.noname.mrch.gameObject.Item;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by User on 24/11/2016.
