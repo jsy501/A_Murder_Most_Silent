@@ -1,6 +1,11 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gameObject.Clue;
+
+/**
+ * Objects that give out clues and items
+ */
 
 public class HasObject {
 	private Array<Item> itemList = new Array<Item>() ;

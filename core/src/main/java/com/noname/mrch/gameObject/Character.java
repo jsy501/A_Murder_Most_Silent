@@ -1,6 +1,13 @@
-package com.noname.mrch;
+package com.noname.mrch.gameObject;
 
-public class Character extends HasObject{
+import com.noname.mrch.HasObject;
+import com.noname.mrch.unused.Dialogue;
+
+/**
+ * Represents a character object
+ */
+
+public class Character extends HasObject {
 
 	private int id;
 	private String name;

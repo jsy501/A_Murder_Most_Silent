@@ -3,6 +3,12 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
+import com.noname.mrch.gameObject.Character;
+import com.noname.mrch.gameObject.Clue;
+
+/**
+ * Holds all the game objects
+ */
 
 public class GameWorld {
     private Array<Item> totalItemList;

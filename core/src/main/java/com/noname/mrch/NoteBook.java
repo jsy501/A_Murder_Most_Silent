@@ -1,6 +1,11 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gameObject.Clue;
+
+/**
+ * Holds items and clues found by the player
+ */
 
 public class NoteBook {
     private static NoteBook noteBook = new NoteBook();
