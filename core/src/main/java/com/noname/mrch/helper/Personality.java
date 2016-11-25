@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package com.noname.mrch.helper;
 
 public final class Personality {
     public static final int FRIENDLY = 0;

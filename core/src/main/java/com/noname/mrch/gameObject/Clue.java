@@ -1,6 +1,10 @@
-package com.noname.mrch;
+package com.noname.mrch.gameObject;
 
 import com.badlogic.gdx.utils.Array;
+
+/**
+ *  Represents a clue object
+ */
 
 public class Clue {
     private int id;

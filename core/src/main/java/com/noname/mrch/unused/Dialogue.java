@@ -1,6 +1,11 @@
-package com.noname.mrch;
+package com.noname.mrch.unused;
 
 
+
+import com.noname.mrch.gameObject.Character;
+import com.noname.mrch.Item;
+import com.noname.mrch.NoteBook;
+import com.noname.mrch.Player;
 
 import java.util.*;
 
