@@ -7,6 +7,7 @@ public class Clue {
     private String name;
     private String description;
     private Array<Integer> relatedCharId = new Array<Integer>();
+    private String response;
 
     public Clue(){
 

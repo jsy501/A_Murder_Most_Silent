@@ -4,7 +4,7 @@ public class Character extends HasObject{
 
 	private int id;
 	private String name;
-	private int personality
+	private int personality;
 	private int role;
 	private boolean isFalseAccused;
 	private Dialogue dialogue;
