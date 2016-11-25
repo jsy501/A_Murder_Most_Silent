@@ -7,7 +7,8 @@ package com.noname.mrch.gameObject;
 public class Item {
     private int id;
     private String description;
-    private int targetClueId;   //ID of a clue that it unlocks
+    private Person linkedPerson;
+    private Item returnItem;
 
     public int getId() {
         return id;
@@ -17,8 +18,19 @@ public class Item {
         return description;
     }
 
-    public int getTargetClueId() {
-        return targetClueId;
+    public Person getLinkedPerson() {
+        return linkedPerson;
     }
 
+    public void setLinkedPerson(Person linkedPerson) {
+        this.linkedPerson = linkedPerson;
+    }
+
+    public Item getReturnItem() {
+        return returnItem;
+    }
+
+    public void setReturnItem(Item returnItem) {
+        this.returnItem = returnItem;
+    }
 }
