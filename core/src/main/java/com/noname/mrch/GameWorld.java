@@ -27,5 +27,7 @@ public class GameWorld {
         totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("characters.json"));
 
         key = new Item(500, "It's a key", true);
+
+
     }
 }

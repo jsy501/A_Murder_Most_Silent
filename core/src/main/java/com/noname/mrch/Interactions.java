@@ -10,7 +10,9 @@ import com.noname.mrch.gameObject.Item;
 public class Interactions {
     private static Interactions INSTANCE = new Interactions();
 
-
+    public static Interactions getInstance(){
+        return INSTANCE;
+    }
 
     public static String question(int questionStyle, Person target) {
         if (target.isFalseAccused() == true) {
