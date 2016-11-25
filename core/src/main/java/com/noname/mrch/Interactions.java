@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package main.java.com.noname.mrch;
 
 /**
  * Interactions class handles methods for interacting between

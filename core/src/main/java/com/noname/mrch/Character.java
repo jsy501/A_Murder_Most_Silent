@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package main.java.com.noname.mrch;
 
 public class Character extends HasObject{
 

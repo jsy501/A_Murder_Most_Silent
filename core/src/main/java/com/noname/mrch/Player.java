@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package main.java.com.noname.mrch;
 
 /**
  * This class holds data about the player

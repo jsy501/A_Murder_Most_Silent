@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package main.java.com.noname.mrch;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;

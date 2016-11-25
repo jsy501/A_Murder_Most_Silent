@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package main.java.com.noname.mrch;
 
 import java.io.File;
 import java.io.IOException;
