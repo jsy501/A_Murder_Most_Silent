@@ -3,10 +3,10 @@ package com.noname.mrch.gameObject;
 import com.noname.mrch.unused.Dialogue;
 
 /**
- * Represents a character object
+ * Represents a person object
  */
 
-public class Character extends HasObject {
+public class Person extends HasObject {
 
 	private int id;
 	private String name;

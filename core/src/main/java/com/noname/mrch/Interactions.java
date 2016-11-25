@@ -1,6 +1,6 @@
 package com.noname.mrch;
 
-import com.noname.mrch.gameObject.Character;
+import com.noname.mrch.gameObject.Person;
 import com.noname.mrch.gameObject.Item;
 
 /**
@@ -8,7 +8,7 @@ import com.noname.mrch.gameObject.Item;
  * the player and the characters.
  */
 public class Interactions {
-    String question(int questionStyle, Character target) {
+    String question(int questionStyle, Person target) {
         if (target.isFalseAccused() == true) {
             return "Go Away";
         } else {
@@ -18,7 +18,7 @@ public class Interactions {
         return null;
     }
 
-    String give(Item item, Character target){
+    String give(Item item, Person target){
         if (target.isFalseAccused() == true){
             return "Go Away!";
         } else {
@@ -27,7 +27,7 @@ public class Interactions {
         return null;
     }
 
-    String accuse(Character target){
+    String accuse(Person target){
         //todo add the accuse conditions
         return null;
     }

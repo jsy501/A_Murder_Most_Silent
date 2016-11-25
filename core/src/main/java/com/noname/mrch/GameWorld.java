@@ -3,7 +3,7 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.noname.mrch.gameObject.Character;
+import com.noname.mrch.gameObject.Person;
 import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
 
@@ -14,7 +14,7 @@ import com.noname.mrch.gameObject.Item;
 public class GameWorld {
     private Array<Item> totalItemList;
     private Array<Clue> totalClueList;
-    private Array<Character> totalCharacterList;
+    private Array<Person> totalCharacterList;
 
     public GameWorld(){
         Json json = new Json();
@@ -22,6 +22,6 @@ public class GameWorld {
 
         totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
 
-        totalCharacterList = json.fromJson(Array.class, Character.class, Gdx.files.local("characters.json"));
+        totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("characters.json"));
     }
 }
