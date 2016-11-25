@@ -7,8 +7,22 @@ package com.noname.mrch.gameObject;
 public class Item {
     private int id;
     private String description;
-    private Person linkedPerson;
+    private int linkedPersonId;
     private Item returnItem;
+
+    private boolean isKey;
+
+//    private String returnResponse = "Thanks";
+
+    public Item(){
+
+    }
+
+    public Item(int id, String description, boolean isKey){
+        this.id = id;
+        this.description = description;
+        this.isKey = isKey;
+    }
 
     public int getId() {
         return id;
@@ -18,12 +32,12 @@ public class Item {
         return description;
     }
 
-    public Person getLinkedPerson() {
-        return linkedPerson;
+    public int getLinkedPerson() {
+        return linkedPersonId;
     }
 
-    public void setLinkedPerson(Person linkedPerson) {
-        this.linkedPerson = linkedPerson;
+    public void setLinkedPerson(int linkedPersonId) {
+        this.linkedPersonId = linkedPersonId;
     }
 
     public Item getReturnItem() {
@@ -33,4 +47,12 @@ public class Item {
     public void setReturnItem(Item returnItem) {
         this.returnItem = returnItem;
     }
+
+    public boolean isKey() {
+        return isKey;
+    }
+
+//    public String getReturnResponse() {
+//        return returnResponse;
+//    }
 }

@@ -8,7 +8,11 @@ import com.noname.mrch.gameObject.Item;
  * the player and the characters.
  */
 public class Interactions {
-    String question(int questionStyle, Person target) {
+    private static Interactions INSTANCE = new Interactions();
+
+
+
+    public static String question(int questionStyle, Person target) {
         if (target.isFalseAccused() == true) {
             return "Go Away";
         } else {
@@ -18,7 +22,7 @@ public class Interactions {
         return null;
     }
 
-    String give(Item item, Person target){
+    public static String give(Item item, Person target){
         if (target.isFalseAccused() == true){
             return "Go Away!";
         } else {
@@ -27,12 +31,12 @@ public class Interactions {
         return null;
     }
 
-    String accuse(Person target){
+    public static String accuse(Person target){
         //todo add the accuse conditions
         return null;
     }
 
-    String ignore(){
+    public static String ignore(){
         return "Good bye"; // characters goodbye code
     }
 }

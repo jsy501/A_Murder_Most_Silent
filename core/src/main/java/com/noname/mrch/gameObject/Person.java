@@ -13,7 +13,6 @@ public class Person extends HasObject {
 	private int personality;
 	private int role;
 	private boolean isFalseAccused;
-	private Dialogue dialogue;
 
 	public int getPersonality() {
 		return personality;

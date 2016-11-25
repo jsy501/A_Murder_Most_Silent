@@ -1,15 +1,22 @@
 [
   {
-    "id": 301,
+    "id": 300,
     "name": "char1",
     "personality": 3,
     "role": 3,
     "isFalseAccused": false
   },
   {
-    "id": 302,
+    "id": 301,
     "name": "char2",
     "personality": 2,
+    "role": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 302,
+    "name": "char3",
+    "personality": 1,
     "role": 1,
     "isFalseAccused": true
   }

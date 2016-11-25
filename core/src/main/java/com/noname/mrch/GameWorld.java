@@ -16,6 +16,8 @@ public class GameWorld {
     private Array<Clue> totalClueList;
     private Array<Person> totalCharacterList;
 
+    private Item key;
+
     public GameWorld(){
         Json json = new Json();
         totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
@@ -23,5 +25,7 @@ public class GameWorld {
         totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
 
         totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("characters.json"));
+
+        key = new Item(500, "It's a key", true);
     }
 }

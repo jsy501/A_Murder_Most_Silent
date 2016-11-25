@@ -3,12 +3,28 @@
     "id": 200,
     "name": "item1",
     "description": "description1",
-    "targetId": 300
+    "linkedPersonId": 300,
+    "isKey": false
   },
   {
     "id": 201,
     "name": "item2",
     "description": "description2",
-    "targetId": 301
-  }
+    "linkedPersonId": 301,
+    "isKey": false
+  },
+  {
+    "id": 202,
+    "name": "item3",
+    "description": "description3",
+    "linkedPersonId": 303,
+    "isKey": false
+  },
+//  {
+//    "id": 250,
+//    "name": "item4",
+//    "description": "description4",
+//    "linkedPersonId": null,
+//    "isKey": true
+//  }
 ]
