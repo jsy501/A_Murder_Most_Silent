@@ -6,6 +6,7 @@ public class Character extends HasObject{
 	private String name;
 	private int personality, role;
 	private Boolean isFalseAccused;
+	private Dialogue dialogue;
 
 	public int getPersonality() {
 		return personality;
