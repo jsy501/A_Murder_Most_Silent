@@ -4,19 +4,20 @@ public class Character extends HasObject{
 
 	private int id;
 	private String name;
-	private int personality, role;
-	private Boolean isFalseAccused;
+	private int personality
+	private int role;
+	private boolean isFalseAccused;
 	private Dialogue dialogue;
 
 	public int getPersonality() {
 		return personality;
 	}
 
-	public Boolean isFalseAccused() {
+	public boolean isFalseAccused() {
 		return isFalseAccused;
 	}
 
-	public void setFalseAccused(Boolean falseAccused) {
+	public void setFalseAccused(boolean falseAccused) {
 		isFalseAccused = falseAccused;
 	}
 

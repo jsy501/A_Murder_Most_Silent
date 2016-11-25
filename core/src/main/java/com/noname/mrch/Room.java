@@ -4,7 +4,7 @@ public class Room extends HasObject {
 
 
 	private int id;
-	private Boolean isLocked;
+	private boolean isLocked;
 	private String name;
 
 	
