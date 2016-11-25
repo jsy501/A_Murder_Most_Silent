@@ -13,6 +13,19 @@ public class Person extends HasObject {
 	private int personality;
 	private int role;
 	private boolean isFalseAccused;
+	private String greeting;
+
+	public String getGreeting() {
+		return greeting;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	private String response;
+
+
 
 	public int getPersonality() {
 		return personality;
