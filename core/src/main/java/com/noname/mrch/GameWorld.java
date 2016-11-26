@@ -36,6 +36,7 @@ public class GameWorld {
     }
 
     private void initItemList() {
+        Randomiser randomiser = new Randomiser();
         Json json = new Json();
         Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
 
@@ -43,6 +44,9 @@ public class GameWorld {
             int index = personList.get(i).getId() - 300;
             itemList.add(totalItemList.get(index));
         }
+
+        itemList = randomiser.generateItemLinks(itemList);
+
 
         key = new Item(500, "It's a key", true);
     }

@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.JsonWriter;
 
 public class MRCH extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
 	
 	@Override
 	public void create () {
@@ -28,6 +27,5 @@ public class MRCH extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }

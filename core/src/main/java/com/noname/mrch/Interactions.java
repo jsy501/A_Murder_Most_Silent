@@ -15,7 +15,7 @@ public class Interactions {
     }
 
     public static String question(int questionStyle, Person target) {
-        if (target.isFalseAccused() == true) {
+        if (target.isAccused() == true) {
             return "Go Away";
         } else {
             int diff = Math.abs(questionStyle - target.getPersonality());
@@ -25,7 +25,7 @@ public class Interactions {
     }
 
     public static String give(Item item, Person target){
-        if (target.isFalseAccused() == true){
+        if (target.isAccused() == true){
             return "Go Away!";
         } else {
             //todo change some stuff make it work

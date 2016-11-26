@@ -44,15 +44,6 @@ public class NoteBook {
         throw new RuntimeException("Clue not in notebook");
     }
 
-    public static Clue getClue(Clue clue) {
-        int index = clueList.indexOf(clue, false);  //-1 when not found
-        if (index >= 0){
-            return clueList.get(index);
-        }
-        else{
-            throw new RuntimeException("Clue not in notebook");
-        }
-    }
 
     public static Item getItem(int id){
         for (int i =0; i < itemList.size; i++){
@@ -63,12 +54,12 @@ public class NoteBook {
         throw new RuntimeException("Item not in notebook");
     }
 
-    public static Item getItem(Item item) {
-        int index = itemList.indexOf(item, false);  //-1 when not found
-        if (index >= 0) {
-            return itemList.get(index);
-        }
-        throw new RuntimeException("Item not in notebook");
+    public static boolean contains(Item item) {
+        return (itemList.contains(item, false));
+    }
+
+    public static boolean contains(Clue clue) {
+        return (clueList.contains(clue, false));
     }
 
     public static Array<Clue> getClueList() {

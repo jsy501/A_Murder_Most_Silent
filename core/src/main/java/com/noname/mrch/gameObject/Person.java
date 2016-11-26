@@ -11,7 +11,7 @@ public class Person extends HasObject {
 	private int personality;
 	private boolean isMurderer = false;
 	private boolean isVictim = false;
-	private boolean isFalseAccused;
+	private boolean isAccused = false;
 	private String greeting;
 	private String response;
 
@@ -47,12 +47,12 @@ public class Person extends HasObject {
 		isVictim = victim;
 	}
 
-	public boolean isFalseAccused() {
-		return isFalseAccused;
+	public boolean isAccused() {
+		return isAccused;
 	}
 
-	public void setFalseAccused(boolean falseAccused) {
-		isFalseAccused = falseAccused;
+	public void setAccused(boolean accused) {
+		isAccused = accused;
 	}
 
 	public String getName() {
