@@ -1,28 +1,28 @@
 [
   {
     "id": 100,
-    "name": "clue1",
+    "name": "motive1",
     "description": "description1",
     "relatedCharId": [300],
     "clueType": "Motive"
   },
   {
     "id": 101,
-    "name": "clue2",
+    "name": "motive2",
     "description": "description2",
     "relatedCharId": [301],
     "clueType": "Motive"
   },
   {
     "id": 102,
-    "name": "clue3",
+    "name": "motive3",
     "description": "description3",
     "relatedCharId": [302],
     "clueType": "Motive"
   },
   {
     "id": 103,
-    "name": "clue4",
+    "name": "motive4",
     "description": "description4",
     "relatedCharId": [303],
     "clueType": "Motive"
@@ -30,42 +30,42 @@
   },
   {
     "id": 104,
-    "name": "clue5",
+    "name": "motive5",
     "description": "description5",
     "relatedCharId": [304],
     "clueType": "Motive"
   },
   {
     "id": 105,
-    "name": "clue6",
+    "name": "motive6",
     "description": "description6",
     "relatedCharId": [305],
     "clueType": "Motive"
   },
   {
     "id": 106,
-    "name": "clue7",
+    "name": "motive7",
     "description": "description7",
     "relatedCharId": [306],
     "clueType": "Motive"
   },
   {
     "id": 107,
-    "name": "clue8",
+    "name": "motive8",
     "description": "description8",
     "relatedCharId": [307],
     "clueType": "Motive"
   },
   {
     "id": 108,
-    "name": "clue9",
+    "name": "motive9",
     "description": "description9",
     "relatedCharId": [308],
     "clueType": "Motive"
   },
   {
     "id": 109,
-    "name": "clue10",
+    "name": "motive10",
     "description": "description10",
     "relatedCharId": [309],
     "clueType": "Motive"

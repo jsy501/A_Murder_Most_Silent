@@ -7,6 +7,8 @@ import com.noname.mrch.helper.Personality;
  */
 
 public class Person extends HasObject {
+	public static final int ID_OFFSET = 300;
+	public static final int ROSTER_NUMBER = 10;
 
 	private int id;
 	private String name;

@@ -5,13 +5,15 @@ package com.noname.mrch.gameObject;
  */
 
 public class Item {
+    public static final int ID_OFFSET = 200;
+
     private int id;
     private String name;
     private String description;
     private int linkedPersonId;
     private Item returnItem;
 
-    private boolean isKey;
+    private boolean isKey = false;
 
 //    private String returnResponse = "Thanks";
 

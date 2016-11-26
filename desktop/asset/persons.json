@@ -2,61 +2,51 @@
   {
     "id": 300,
     "name": "char1",
-    "personality": "Aggressive",
-    "isAccused": false
+    "personality": "Aggressive"
   },
   {
     "id": 301,
     "name": "char2",
-    "personality": "Neutral",
-    "isAccused": true
+    "personality": "Neutral"
   },
   {
     "id": 302,
     "name": "char3",
-    "personality": "Friendly",
-    "isAccused": true
+    "personality": "Friendly"
   },
   {
     "id": 303,
     "name": "char4",
-    "personality": "Aggressive",
-    "isAccused": true
+    "personality": "Aggressive"
   },
   {
     "id": 304,
     "name": "char5",
-    "personality": "Neutral",
-    "isAccused": true
+    "personality": "Neutral"
   },
   {
     "id": 305,
     "name": "char6",
-    "personality": "Neutral",
-    "isAccused": true
+    "personality": "Neutral"
   },
   {
     "id": 306,
     "name": "char7",
-    "personality": "Aggressive",
-    "isAccused": true
+    "personality": "Aggressive"
   },
   {
     "id": 307,
     "name": "char8",
-    "personality": "Friendly",
-    "isAccused": true
+    "personality": "Friendly"
   },
   {
     "id": 308,
     "name": "char9",
-    "personality": "Aggressive",
-    "isAccused": true
+    "personality": "Aggressive"
   },
   {
     "id": 309,
     "name": "char10",
-    "personality": "Neutral",
-    "isAccused": true
+    "personality": "Neutral"
   }
 ]

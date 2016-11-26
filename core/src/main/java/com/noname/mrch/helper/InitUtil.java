@@ -2,7 +2,6 @@ package com.noname.mrch.helper;
 
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameObject.Clue;
-import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.gameObject.Person;
 
 public final class InitUtil {
@@ -28,28 +27,30 @@ public final class InitUtil {
 
     /**
      * Filter out clues that has no related character in the given array of characters
+     * and include only one motive clue
      *
      * @param clueArray Array of clues to be filtered
      * @param personArray Array of characters used to filter
      * @return Array of clues with at least one related character from the personArray
      */
 
-    public static Array<Clue> filterClues(Array<Clue> clueArray, Array<Person> personArray){
-        for (int i = 0; i < clueArray.size; i++){
-            boolean idMatch = false;
+    public static Array<Clue> filterClues(Array<Clue> inputClueArray, Array<Person> inputPersonArray){
+        /*
+         the first n clues loaded from json are character unique motive clues
+         where n is the total number of character roster
+          */
 
-            for (int j = 0; j < personArray.size; j++){
-                if (clueArray.get(i).getRelatedCharId().contains(personArray.get(j).getId(), false)){
-                    idMatch = true;
+        Array<Clue> outputClueArray = new Array<>();
+
+        for (int i = Person.ROSTER_NUMBER-1; i < inputClueArray.size; i++){
+            for (int j = 0; j < inputPersonArray.size; j++){
+                if (inputClueArray.get(i).getRelatedCharId().contains(inputPersonArray.get(j).getId(), false)){
+                    outputClueArray.add(inputClueArray.get(i));
                     break;
                 }
             }
-
-            if(!idMatch){
-                clueArray.removeIndex(i);
-            }
         }
 
-        return clueArray;
+        return outputClueArray;
     }
 }

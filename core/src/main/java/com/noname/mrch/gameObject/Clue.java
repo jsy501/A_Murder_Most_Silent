@@ -8,6 +8,8 @@ import com.noname.mrch.helper.ClueType;
  */
 
 public class Clue {
+    public static final int ID_OFFSET = 100;
+
     private int id;
     private String name;
     private String description;
@@ -25,6 +27,10 @@ public class Clue {
 
     public Array<Integer> getRelatedCharId() {
         return relatedCharId;
+    }
+
+    public ClueType getClueType() {
+        return clueType;
     }
 
     @Override

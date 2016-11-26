@@ -8,14 +8,17 @@ import com.badlogic.gdx.utils.JsonWriter;
 import com.noname.mrch.gameObject.Person;
 import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
+import com.noname.mrch.helper.ClueType;
 import com.noname.mrch.helper.InitUtil;
+
+import java.io.IOException;
 
 /**
  * Initialises and holds all the game objects
  */
 
 public class GameWorld {
-    private final int PERSON_COUNT = 3;
+    private final int PERSON_COUNT = 7;
 
     private Array<Item> itemList = new Array<>();
     private Array<Clue> clueList = new Array<>();
@@ -24,12 +27,21 @@ public class GameWorld {
     private Person murderer;
     private Person victim;
 
+    private Clue motiveClue;
+
     private Item key;
 
     public GameWorld(){
         initPersonList();
         initItemList();
         initClueList();
+
+        System.out.println(personList);
+        System.out.println("Murderer: " + murderer.toString());
+        System.out.println("Victim: " + victim.toString());
+        System.out.println("Motive: " + motiveClue.toString());
+        System.out.println(itemList);
+        System.out.println(clueList);
     }
 
     private void initPersonList() {
@@ -50,7 +62,7 @@ public class GameWorld {
 
         //pick items that are relevant to the characters in the game
         for (int i = 0; i < personList.size; i++){
-            int index = personList.get(i).getId() - 300;
+            int index = personList.get(i).getId() - Person.ID_OFFSET;
             itemList.add(totalItemList.get(index));
 
             if (i>0) {
@@ -72,6 +84,17 @@ public class GameWorld {
     private void initClueList() {
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
+
+        motiveClue = totalClueList.get(murderer.getId() - Person.ID_OFFSET);
+
+        //json import check
+        if (motiveClue.getClueType() != ClueType.Motive ||
+                !motiveClue.getRelatedCharId().contains(murderer.getId(), false)){
+            throw new RuntimeException("Invalid json format");
+        }
+
+        clueList.add(motiveClue);
+
         clueList = InitUtil.filterClues(totalClueList, personList);
     }
 }
