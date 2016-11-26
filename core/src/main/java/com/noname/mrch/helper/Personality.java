@@ -1,7 +1,15 @@
 package com.noname.mrch.helper;
 
-public final class Personality {
-    public static final int FRIENDLY = 0;
-    public static final int NEUTRAL = 1;
-    public static final int AGGRESSIVE = 2;
+public enum Personality {
+    Friendly(0), Neutral(1), Aggressive(2);
+
+    private int value;
+
+    private Personality(int value){
+        this.value = value;
+    }
+
+    public int getValue(){
+        return value;
+    }
 }

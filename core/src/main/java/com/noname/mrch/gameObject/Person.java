@@ -1,5 +1,7 @@
 package com.noname.mrch.gameObject;
 
+import com.noname.mrch.helper.Personality;
+
 /**
  * Represents a person object
  */
@@ -8,7 +10,7 @@ public class Person extends HasObject {
 
 	private int id;
 	private String name;
-	private int personality;
+	private Personality personality;
 	private boolean isMurderer = false;
 	private boolean isVictim = false;
 	private boolean isAccused = false;
@@ -27,7 +29,7 @@ public class Person extends HasObject {
 		return response;
 	}
 
-	public int getPersonality() {
+	public Personality getPersonality() {
 		return personality;
 	}
 

@@ -1,6 +1,7 @@
 package com.noname.mrch.gameObject;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.helper.ClueType;
 
 /**
  *  Represents a clue object
@@ -10,12 +11,9 @@ public class Clue {
     private int id;
     private String name;
     private String description;
+    private ClueType clueType;
     private Array<Integer> relatedCharId = new Array<Integer>();
     private String response;
-
-    public Clue(){
-
-    }
 
     public int getId() {
         return id;

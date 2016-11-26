@@ -18,7 +18,7 @@ public class Interactions {
         if (target.isAccused() == true) {
             return "Go Away";
         } else {
-            int diff = Math.abs(questionStyle - target.getPersonality());
+            int diff = Math.abs(questionStyle - target.getPersonality().getValue());
             // todo once characters and dialogue finalized get do some math
         }
         return null;
