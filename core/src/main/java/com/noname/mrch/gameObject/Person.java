@@ -11,7 +11,6 @@ public class Person extends HasObject {
 	private int id;
 	private String name;
 	private int personality;
-	private int role;
 	private boolean isFalseAccused;
 	private String greeting;
 

@@ -22,10 +22,16 @@ public class NoteBook {
     }
 
     public static void addClue(Clue clue){
+        if (clueList.contains(clue, false)){
+            throw new RuntimeException("Clue already in notebook");
+        }
         clueList.add(clue);
     }
 
     public static void addItem(Item item){
+        if (itemList.contains(item, false)){
+            throw new RuntimeException("Item already in notebook");
+        }
         itemList.add(item);
     }
 

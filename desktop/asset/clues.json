@@ -3,12 +3,12 @@
     "id": 100,
     "name": "clue1",
     "description": "description1",
-    "relateTo": [301,302]
+    "relatedCharId": [301,302]
   },
   {
     "id": 101,
     "name": "clue2",
     "description": "description1",
-    "relateTo": [303,304]
+    "relatedCharId": [303,304]
   }
 ]
