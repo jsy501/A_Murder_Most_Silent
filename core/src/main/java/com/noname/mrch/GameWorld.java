@@ -21,6 +21,9 @@ public class GameWorld {
     private Array<Clue> clueList = new Array<>();
     private Array<Person> personList = new Array<>();
 
+    private Person murderer;
+    private Person victim;
+
     private Item key;
 
     public GameWorld(){
@@ -33,6 +36,12 @@ public class GameWorld {
         Json json = new Json();
         Array<Person> totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("persons.json"));
         personList = InitUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
+
+        murderer = personList.pop();
+        murderer.setMurderer(true);
+
+        victim = personList.pop();
+        victim.setVictim(true);
     }
 
     private void initItemList() {

@@ -88,12 +88,12 @@ public class Dialogue {
 
     public void getResponse(Player player, int questionSytle){
         Random rn = new Random();
-        if (person.getPersonality() == 2){
+        if (person.getPersonality().getValue() == 2){
             NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
             person.removeClue(person.getClueList().get(0));
         }
 
-        if(person.getPersonality() == 1){
+        if(person.getPersonality().getValue() == 1){
             int  n = rn.nextInt(10) + 1;
             if(player.getPersonality()+questionSytle>0 && n>=8){
                 NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
@@ -110,7 +110,7 @@ public class Dialogue {
 
 
 
-        if(person.getPersonality() == 0){
+        if(person.getPersonality().getValue() == 0){
             int  n = rn.nextInt(10) + 1;
             if(player.getPersonality()+questionSytle>1 && n>=5){
                 NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
