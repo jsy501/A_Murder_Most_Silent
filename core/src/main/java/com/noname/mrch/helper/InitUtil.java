@@ -6,6 +6,12 @@ import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.gameObject.Person;
 
 public final class InitUtil {
+    /**
+     * Generate randomly ordered array of desired size from the given array
+     *
+     * @param inputArray Original array to be used
+     * @param outputSize Desired size of output array
+     */
     public static Array generateRandomArray(Array inputArray, int outputSize){
         if (outputSize > inputArray.size){
             throw new IllegalArgumentException("Output size cannot be greater than input array size");
