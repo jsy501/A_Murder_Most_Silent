@@ -19,8 +19,9 @@ public class Item {
 
     }
 
-    public Item(int id, String description, boolean isKey){
+    public Item(int id, String name, String description, boolean isKey){
         this.id = id;
+        this.name = name;
         this.description = description;
         this.isKey = isKey;
     }

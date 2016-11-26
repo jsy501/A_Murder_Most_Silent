@@ -5,8 +5,8 @@ import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.gameObject.Person;
 
-public class InitUtil {
-    public Array generateRandomArray(Array inputArray, int outputSize){
+public final class InitUtil {
+    public static Array generateRandomArray(Array inputArray, int outputSize){
         if (outputSize > inputArray.size){
             throw new IllegalArgumentException("Output size cannot be greater than input array size");
         }
@@ -20,13 +20,6 @@ public class InitUtil {
         return outputArray;
     }
 
-    public Array<Item> generateItemLinks (Array<Item> inputArray){
-        for (int i = 0; i < inputArray.size-1; i++){
-            inputArray.get(i).setReturnItem(inputArray.get(i+1));
-        }
-        return inputArray;
-    }
-
     /**
      * Filter out clues that has no related character in the given array of characters
      *
@@ -35,7 +28,7 @@ public class InitUtil {
      * @return Array of clues with at least one related character from the personArray
      */
 
-    public Array<Clue> filterClues(Array<Clue> clueArray, Array<Person> personArray){
+    public static Array<Clue> filterClues(Array<Clue> clueArray, Array<Person> personArray){
         for (int i = 0; i < clueArray.size; i++){
             boolean idMatch = false;
 

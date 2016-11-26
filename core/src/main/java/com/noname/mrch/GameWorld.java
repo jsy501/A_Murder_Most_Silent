@@ -1,6 +1,7 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameObject.Person;
@@ -28,32 +29,39 @@ public class GameWorld {
     }
 
     private void initPersonList() {
-        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Person> totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("persons.json"));
-        personList = initUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
+        personList = InitUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
     }
 
     private void initItemList() {
-        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
 
+        //pick items that are relevant to the characters in the game
         for (int i = 0; i < personList.size; i++){
             int index = personList.get(i).getId() - 300;
             itemList.add(totalItemList.get(index));
+
+            if (i>0) {
+                personList.get(i - 1).addItem(itemList.peek());
+            }
         }
 
-        itemList = initUtil.generateItemLinks(itemList);
+        key = new Item(500, "key", "It's a key", true); // the final item to be given
+        personList.get(personList.size-1).addItem(key);
 
+        itemList.add(key);
 
-        key = new Item(500, "It's a key", true);
+        //generate item links
+        for (int i = 0; i < itemList.size-1; i++){
+            itemList.get(i).setReturnItem(itemList.get(i+1));
+        }
     }
 
     private void initClueList() {
-        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
-        clueList = initUtil.filterClues(totalClueList, personList);
+        clueList = InitUtil.filterClues(totalClueList, personList);
     }
 }
