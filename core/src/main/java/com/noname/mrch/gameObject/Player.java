@@ -16,21 +16,26 @@ public class Player {
         personality = playerPersonality;
     }
 
-    void setLocation(Room room){
+    public void setLocation(Room room){
         // Will be called everytime the player moves to a new
         // location such as changing rooms
         location = room;
     }
 
-    String getName(){
+    public String getName(){
         return name;
     }
 
-    int getPersonality(){
+    public int getPersonality(){
         return personality;
     }
 
-    Room getLocation(){
+    public Room getLocation(){
         return location;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

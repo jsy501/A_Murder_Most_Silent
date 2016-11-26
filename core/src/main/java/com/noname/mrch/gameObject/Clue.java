@@ -28,4 +28,9 @@ public class Clue {
     public Array<Integer> getRelatedCharId() {
         return relatedCharId;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

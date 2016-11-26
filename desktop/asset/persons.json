@@ -3,21 +3,48 @@
     "id": 300,
     "name": "char1",
     "personality": 3,
-    "role": 3,
     "isFalseAccused": false
   },
   {
     "id": 301,
     "name": "char2",
     "personality": 2,
-    "role": 1,
     "isFalseAccused": true
   },
   {
     "id": 302,
     "name": "char3",
     "personality": 1,
-    "role": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 303,
+    "name": "char4",
+    "personality": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 304,
+    "name": "char5",
+    "personality": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 305,
+    "name": "char6",
+    "personality": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 306,
+    "name": "char7",
+    "personality": 1,
+    "isFalseAccused": true
+  },
+  {
+    "id": 307,
+    "name": "char8",
+    "personality": 1,
     "isFalseAccused": true
   }
 ]

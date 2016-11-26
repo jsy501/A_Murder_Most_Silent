@@ -6,6 +6,7 @@ package com.noname.mrch.gameObject;
 
 public class Item {
     private int id;
+    private String name;
     private String description;
     private int linkedPersonId;
     private Item returnItem;
@@ -52,7 +53,12 @@ public class Item {
         return isKey;
     }
 
-//    public String getReturnResponse() {
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    //    public String getReturnResponse() {
 //        return returnResponse;
 //    }
 }
