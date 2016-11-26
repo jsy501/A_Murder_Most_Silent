@@ -1,13 +1,12 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameObject.Person;
 import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
-import com.noname.mrch.helper.Randomiser;
+import com.noname.mrch.helper.InitUtil;
 
 /**
  * Initialises and holds all the game objects
@@ -29,14 +28,14 @@ public class GameWorld {
     }
 
     private void initPersonList() {
-        Randomiser randomiser = new Randomiser();
+        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Person> totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("persons.json"));
-        personList = randomiser.generateRandomArray(totalCharacterList, PERSON_COUNT);
+        personList = initUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
     }
 
     private void initItemList() {
-        Randomiser randomiser = new Randomiser();
+        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
 
@@ -45,16 +44,16 @@ public class GameWorld {
             itemList.add(totalItemList.get(index));
         }
 
-        itemList = randomiser.generateItemLinks(itemList);
+        itemList = initUtil.generateItemLinks(itemList);
 
 
         key = new Item(500, "It's a key", true);
     }
 
     private void initClueList() {
-        Randomiser randomiser = new Randomiser();
+        InitUtil initUtil = new InitUtil();
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
-        clueList = randomiser.filterClues(totalClueList, personList);
+        clueList = initUtil.filterClues(totalClueList, personList);
     }
 }

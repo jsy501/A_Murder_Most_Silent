@@ -5,7 +5,7 @@ import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.gameObject.Person;
 
-public class Randomiser {
+public class InitUtil {
     public Array generateRandomArray(Array inputArray, int outputSize){
         if (outputSize > inputArray.size){
             throw new IllegalArgumentException("Output size cannot be greater than input array size");
