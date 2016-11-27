@@ -21,7 +21,7 @@ public class Interactions {
             return "Go Away";
         } else {
             int diff = Math.abs(questionStyle - target.getPersonality().getValue());
-            float chanceOfSuccess = ((random.nextFloat()*10)+(diff));
+            float chanceOfSuccess = ((random.nextFloat())+(diff/10));
             if (chanceOfSuccess <= 0.5){
                 //return target.getClue?
             } else {
