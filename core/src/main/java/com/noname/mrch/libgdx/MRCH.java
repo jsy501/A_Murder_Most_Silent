@@ -12,11 +12,12 @@ import com.noname.mrch.GameWorld;
 
 public class MRCH extends ApplicationAdapter {
 	SpriteBatch batch;
-	
+	GameInputAdapter eventHandling = new GameInputAdapter();
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		GameWorld gameWorld = new GameWorld();
+        Gdx.input.setInputProcessor(eventHandling);
 	}
 
 	@Override
