@@ -2,6 +2,7 @@ package com.noname.mrch;
 
 import com.noname.mrch.gameObject.Person;
 import com.noname.mrch.gameObject.Item;
+import java.util.Random;
 
 /**
  * Interactions class handles methods for interacting between
@@ -9,6 +10,7 @@ import com.noname.mrch.gameObject.Item;
  */
 public class Interactions {
     private static Interactions INSTANCE = new Interactions();
+    private static Random random = new Random();
 
     public static Interactions getInstance(){
         return INSTANCE;
@@ -19,7 +21,12 @@ public class Interactions {
             return "Go Away";
         } else {
             int diff = Math.abs(questionStyle - target.getPersonality().getValue());
-            // todo once characters and dialogue finalized get do some math
+            float chanceOfSuccess = ((random.nextFloat()*10)+(diff));
+            if (chanceOfSuccess <= 0.5){
+                //return target.getClue?
+            } else {
+                return target.getResponse();
+            }
         }
         return null;
     }
