@@ -1,4 +1,4 @@
-package com.noname.mrch;
+package com.noname.mrch.libgdx;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
+import com.noname.mrch.GameWorld;
 
 public class MRCH extends ApplicationAdapter {
 	SpriteBatch batch;
