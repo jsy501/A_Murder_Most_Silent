@@ -3,6 +3,8 @@ package com.noname.mrch;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
+import com.noname.mrch.gameobject.NoteBook;
+
 import java.util.Random;
 
 /**
