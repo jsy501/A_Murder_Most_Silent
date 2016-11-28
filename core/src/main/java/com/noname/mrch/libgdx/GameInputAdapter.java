@@ -3,7 +3,8 @@ package com.noname.mrch.libgdx;
 import com.badlogic.gdx.InputAdapter;
 
 /**
- * Alternative to GameInputProcessor that only implements methods we need
+ * handles input processing functions called when an event
+ * of the specified type is detected.
  */
 public class GameInputAdapter extends InputAdapter{
     @Override
