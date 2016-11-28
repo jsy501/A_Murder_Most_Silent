@@ -17,8 +17,8 @@ public class MRCH extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+
 		GameWorld gameWorld = new GameWorld();
-        Gdx.input.setInputProcessor(eventHandling);
 	}
 
 	@Override

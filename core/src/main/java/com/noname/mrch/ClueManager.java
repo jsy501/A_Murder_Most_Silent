@@ -9,6 +9,8 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.InitUtil;
 
 public class ClueManager {
+    private static ClueManager Instance = new ClueManager(CharacterManager.getInstance());
+
     private Array<Clue> clueArray;
     private Clue motiveClue;
 
