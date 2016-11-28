@@ -28,6 +28,15 @@ public class Item {
         this.isKey = isKey;
     }
 
+    public Item(int id, String name, String description, int linkedPersonId, Item returnItem, boolean isKey){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.isKey = isKey;
+        this.linkedPersonId = linkedPersonId;
+        this.returnItem = returnItem;
+    }
+
     public int getId() {
         return id;
     }
@@ -38,10 +47,6 @@ public class Item {
 
     public int getLinkedPerson() {
         return linkedPersonId;
-    }
-
-    public void setLinkedPerson(int linkedPersonId) {
-        this.linkedPersonId = linkedPersonId;
     }
 
     public Item getReturnItem() {
