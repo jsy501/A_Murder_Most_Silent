@@ -22,30 +22,30 @@
   },
   {
     "id": 133,
-    "name": "appearance3",
-    "description": "description3",
+    "name": "appearance4",
+    "description": "description4",
     "relatedCharId": [300, 304],
     "clueType": "Appearance"
   },
   {
     "id": 134,
-    "name": "appearance3",
-    "description": "description3",
+    "name": "appearance5",
+    "description": "description5",
     "relatedCharId": [300, 304],
     "clueType": "Appearance"
   },
   {
     "id": 135,
-    "name": "appearance3",
-    "description": "description3",
+    "name": "appearance6",
+    "description": "description6",
     "relatedCharId": [300, 304],
     "clueType": "Appearance"
   },
   {
     "id": 136,
-    "name": "appearance3",
-    "description": "description3",
-    "relatedCharId": [300, 304],
+    "name": "appearance7",
+    "description": "description7",
+    "relatedCharId": [302, 304],
     "clueType": "Appearance"
   }
 ]

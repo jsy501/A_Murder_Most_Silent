@@ -12,7 +12,8 @@ import com.noname.mrch.gameobject.Item;
 
 public class ItemManager {
     private static ItemManager Instance = new ItemManager();
-    private Array<Item> itemList = new Array<>();
+
+    private Array<Item> itemArray = new Array<>();
     private Item key;
 
     ItemManager () {
@@ -23,29 +24,29 @@ public class ItemManager {
         //pick items that are relevant to the characters in the game
         for (int i = 0; i < characterArray.size; i++) {
             int index = characterArray.get(i).getId() - GameCharacter.ID_OFFSET;
-            itemList.add(totalItemList.get(index));
+            itemArray.add(totalItemList.get(index));
 
             if (i > 0) {
-                characterArray.get(i - 1).addItem(itemList.peek());
+                characterArray.get(i - 1).addItem(itemArray.peek());
             }
         }
 
         key = new Item(500, "key", "It's a key", true); // the final item to be given
         characterArray.get(characterArray.size - 1).addItem(key);
 
-        itemList.add(key);
+        itemArray.add(key);
 
         //generate item links
-        for (int i = 0; i < itemList.size - 1; i++) {
-            itemList.get(i).setReturnItem(itemList.get(i + 1));
+        for (int i = 0; i < itemArray.size - 1; i++) {
+            itemArray.get(i).setReturnItem(itemArray.get(i + 1));
         }
 
     }
 
-
     public static  ItemManager getInstance(){
         return Instance;
     }
+
     public Item getKey(){
         return key;
     }

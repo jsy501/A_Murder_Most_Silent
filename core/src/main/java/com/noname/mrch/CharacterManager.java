@@ -8,18 +8,18 @@ import com.noname.mrch.helper.InitUtil;
 
 
 public class CharacterManager {
-    private final int CHARACTER_COUNT = 7;
+    private final int CHARACTER_COUNT = 5;
 
     private static CharacterManager Instance = new CharacterManager();
     private GameCharacter murderer;
     private GameCharacter victim;
 
-    private Array<GameCharacter> characterArray = new Array<>();
+    private Array<GameCharacter> characterArray = new Array<>(); //character array excluding murderer and victim
 
     CharacterManager() {
         Json json = new Json();
 
-        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("persons.json"));
+        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("character.json"));
         characterArray = InitUtil.generateRandomArray(totalCharacterList, CHARACTER_COUNT);
         murderer = characterArray.pop();
         murderer.setMurderer(true);
@@ -33,15 +33,15 @@ public class CharacterManager {
         return Instance;
     }
 
-
     public GameCharacter getMurderer (){
         return murderer;
     }
+
     public GameCharacter getVictim(){
         return victim;
     }
-    public Array<GameCharacter> getCharacterArray(){
 
+    public Array<GameCharacter> getCharacterArray(){
         return characterArray;
     }
 }
