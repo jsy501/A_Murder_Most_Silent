@@ -18,6 +18,10 @@ public class Room extends HasObject {
 		this.isLocked = locked;
 	}
 
+	public Room(){
+
+	}
+
 	public void addActor(Actor actor){
 		stage.addActor(actor);
 	}

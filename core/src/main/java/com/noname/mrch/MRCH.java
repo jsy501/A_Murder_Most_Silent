@@ -12,12 +12,30 @@ import com.noname.mrch.GameWorld;
 import com.noname.mrch.libgdx.GameInputAdapter;
 
 public class MRCH extends ApplicationAdapter {
+	public CharacterManager characterManager;
+	public ItemManager itemManager;
+	public ClueManager clueManager;
+	public RoomManager roomManager;
+
 	SpriteBatch batch;
 	GameInputAdapter eventHandling = new GameInputAdapter();
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
+		characterManager = CharacterManager.getInstance();
+		itemManager = ItemManager.getInstance();
+		clueManager = ClueManager.getInstance();
+		roomManager = RoomManager.getInstance();
 
+		System.out.println("Character list: " + characterManager.getCharacterArray());
+		System.out.println("Murderer: " + characterManager.getMurderer());
+		System.out.println("Victim: " + characterManager.getVictim());
+		System.out.println("Item list: " + itemManager.getItemArray());
+		System.out.println("Motive Clue: " + clueManager.getMotiveClue());
+		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
+		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
+		System.out.println("Room list: " + roomManager.getRoomArray());
+
+		batch = new SpriteBatch();
 	}
 
 	@Override

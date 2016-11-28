@@ -19,7 +19,7 @@ public class CharacterManager {
     CharacterManager() {
         Json json = new Json();
 
-        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("character.json"));
+        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("characters.json"));
         characterArray = InitUtil.generateRandomArray(totalCharacterList, CHARACTER_COUNT);
         murderer = characterArray.pop();
         murderer.setMurderer(true);

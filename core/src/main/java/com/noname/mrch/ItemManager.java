@@ -47,6 +47,10 @@ public class ItemManager {
         return Instance;
     }
 
+    public Array<Item> getItemArray(){
+        return itemArray;
+    }
+
     public Item getKey(){
         return key;
     }

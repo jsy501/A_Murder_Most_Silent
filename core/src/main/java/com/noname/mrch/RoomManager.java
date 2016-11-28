@@ -23,6 +23,10 @@ public class RoomManager {
         return Instance;
     }
 
+    public Array<Room> getRoomArray(){
+        return roomArray;
+    }
+
     public void setCurrentStage(Stage stage){
         stageStack.pop();
         stageStack.push(stage);
