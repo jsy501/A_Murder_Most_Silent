@@ -3,10 +3,10 @@ package com.noname.mrch.gameObject;
 import com.noname.mrch.helper.Personality;
 
 /**
- * Represents a person object
+ * Represents a gameCharacter object
  */
 
-public class Person extends HasObject {
+public class GameCharacter extends HasObject {
 	public static final int ID_OFFSET = 300;
 	public static final int ROSTER_NUMBER = 10;
 

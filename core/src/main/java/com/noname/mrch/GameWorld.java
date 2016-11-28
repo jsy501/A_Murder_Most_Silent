@@ -1,17 +1,13 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonWriter;
-import com.noname.mrch.gameObject.Person;
+import com.noname.mrch.gameObject.GameCharacter;
 import com.noname.mrch.gameObject.Clue;
 import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.helper.ClueType;
 import com.noname.mrch.helper.InitUtil;
-
-import java.io.IOException;
 
 /**
  * Initialises and holds all the game objects
@@ -22,10 +18,10 @@ public class GameWorld {
 
     private Array<Item> itemList = new Array<>();
     private Array<Clue> clueList = new Array<>();
-    private Array<Person> personList = new Array<>();
+    private Array<GameCharacter> characterArray = new Array<>();
 
-    private Person murderer;
-    private Person victim;
+    private GameCharacter murderer;
+    private GameCharacter victim;
 
     private Clue motiveClue;
 
@@ -36,7 +32,7 @@ public class GameWorld {
         initItemList();
         initClueList();
 
-        System.out.println(personList);
+        System.out.println(characterArray);
         System.out.println("Murderer: " + murderer.toString());
         System.out.println("Victim: " + victim.toString());
         System.out.println("Motive: " + motiveClue.toString());
@@ -46,13 +42,13 @@ public class GameWorld {
 
     private void initPersonList() {
         Json json = new Json();
-        Array<Person> totalCharacterList = json.fromJson(Array.class, Person.class, Gdx.files.local("persons.json"));
-        personList = InitUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
+        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("persons.json"));
+        characterArray = InitUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
 
-        murderer = personList.pop();
+        murderer = characterArray.pop();
         murderer.setMurderer(true);
 
-        victim = personList.pop();
+        victim = characterArray.pop();
         victim.setVictim(true);
     }
 
@@ -61,17 +57,17 @@ public class GameWorld {
         Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
 
         //pick items that are relevant to the characters in the game
-        for (int i = 0; i < personList.size; i++){
-            int index = personList.get(i).getId() - Person.ID_OFFSET;
+        for (int i = 0; i < characterArray.size; i++){
+            int index = characterArray.get(i).getId() - GameCharacter.ID_OFFSET;
             itemList.add(totalItemList.get(index));
 
             if (i>0) {
-                personList.get(i - 1).addItem(itemList.peek());
+                characterArray.get(i - 1).addItem(itemList.peek());
             }
         }
 
         key = new Item(500, "key", "It's a key", true); // the final item to be given
-        personList.get(personList.size-1).addItem(key);
+        characterArray.get(characterArray.size-1).addItem(key);
 
         itemList.add(key);
 
@@ -85,7 +81,7 @@ public class GameWorld {
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
 
-        motiveClue = totalClueList.get(murderer.getId() - Person.ID_OFFSET);
+        motiveClue = totalClueList.get(murderer.getId() - GameCharacter.ID_OFFSET);
 
         //json import check
         if (motiveClue.getClueType() != ClueType.Motive ||
@@ -95,6 +91,6 @@ public class GameWorld {
 
         clueList.add(motiveClue);
 
-        clueList = InitUtil.filterClues(totalClueList, personList);
+        clueList = InitUtil.filterClues(totalClueList, characterArray);
     }
 }

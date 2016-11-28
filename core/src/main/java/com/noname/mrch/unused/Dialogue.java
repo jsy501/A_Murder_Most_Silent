@@ -2,7 +2,7 @@ package com.noname.mrch.unused;
 
 
 
-import com.noname.mrch.gameObject.Person;
+import com.noname.mrch.gameObject.GameCharacter;
 import com.noname.mrch.gameObject.Item;
 import com.noname.mrch.NoteBook;
 import com.noname.mrch.gameObject.Player;
@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class Dialogue {
     public Map<String, List<String>> dialogues;
-    public Person person;
+    public GameCharacter gameCharacter;
     public int questionStyle;
 
     public int getQuestionStyle() {
@@ -25,8 +25,8 @@ public class Dialogue {
         this.questionStyle = questionStyle;
     }
 
-    public Dialogue(Person person, String fileName) {
-        this.person = person;
+    public Dialogue(GameCharacter gameCharacter, String fileName) {
+        this.gameCharacter = gameCharacter;
         this.dialogues= LoadDialogues.loadFromFile(fileName);
     }
     //greeting by "/"
@@ -74,10 +74,10 @@ public class Dialogue {
     //Use "#" represents dialogues when not match
     public List getGive(Item item){
         List give ;
-        if(person.getItemList().contains(item,true)){
-            NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove item from player and person.
-            person.removeClue(person.getClueList().get(0));
-            person.removeItem(item);
+        if(gameCharacter.getItemList().contains(item,true)){
+            NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove item from player and gameCharacter.
+            gameCharacter.removeClue(gameCharacter.getClueList().get(0));
+            gameCharacter.removeItem(item);
             return give = dialogues.get("@");
         }
         else{
@@ -88,40 +88,40 @@ public class Dialogue {
 
     public void getResponse(Player player, int questionSytle){
         Random rn = new Random();
-        if (person.getPersonality().getValue() == 2){
-            NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
-            person.removeClue(person.getClueList().get(0));
+        if (gameCharacter.getPersonality().getValue() == 2){
+            NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove clue from player and gameCharacter.
+            gameCharacter.removeClue(gameCharacter.getClueList().get(0));
         }
 
-        if(person.getPersonality().getValue() == 1){
+        if(gameCharacter.getPersonality().getValue() == 1){
             int  n = rn.nextInt(10) + 1;
             if(player.getPersonality()+questionSytle>0 && n>=8){
-                NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
-                person.removeClue(person.getClueList().get(0));
+                NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove clue from player and gameCharacter.
+                gameCharacter.removeClue(gameCharacter.getClueList().get(0));
             }
         }
         else{
             int  n = rn.nextInt(10) + 1;
             if(n>=5){
-                NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
-                person.removeClue(person.getClueList().get(0));
+                NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove clue from player and gameCharacter.
+                gameCharacter.removeClue(gameCharacter.getClueList().get(0));
             }
         }
 
 
 
-        if(person.getPersonality().getValue() == 0){
+        if(gameCharacter.getPersonality().getValue() == 0){
             int  n = rn.nextInt(10) + 1;
             if(player.getPersonality()+questionSytle>1 && n>=5){
-                NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
-                person.removeClue(person.getClueList().get(0));
+                NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove clue from player and gameCharacter.
+                gameCharacter.removeClue(gameCharacter.getClueList().get(0));
             }
         }
         else{
             int  n = rn.nextInt(10) + 1;
             if(n>=7){
-                NoteBook.addClue(person.getClueList().get(0));  //add target clue to notebook remove clue from player and person.
-                person.removeClue(person.getClueList().get(0));
+                NoteBook.addClue(gameCharacter.getClueList().get(0));  //add target clue to notebook remove clue from player and gameCharacter.
+                gameCharacter.removeClue(gameCharacter.getClueList().get(0));
             }
         }
     }

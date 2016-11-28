@@ -1,6 +1,6 @@
 package com.noname.mrch;
 
-import com.noname.mrch.gameObject.Person;
+import com.noname.mrch.gameObject.GameCharacter;
 import com.noname.mrch.gameObject.Item;
 import java.util.Random;
 
@@ -16,7 +16,7 @@ public class Interactions {
         return INSTANCE;
     }
 
-    public static String question(int questionStyle, Person target) {
+    public static String question(int questionStyle, GameCharacter target) {
         if (target.isAccused() == true) {
             return "Go Away";
         } else {
@@ -31,7 +31,7 @@ public class Interactions {
         return null;
     }
 
-    public static String give(Item item, Person target){
+    public static String give(Item item, GameCharacter target){
         if (target.isAccused() == true){
             return "Go Away!";
         } else {
@@ -40,7 +40,7 @@ public class Interactions {
         return null;
     }
 
-    public static String accuse(Person target){
+    public static String accuse(GameCharacter target){
         //todo add the accuse conditions
         return null;
     }
