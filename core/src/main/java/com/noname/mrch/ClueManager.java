@@ -20,11 +20,11 @@ public class ClueManager {
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
 
-        motiveClue = totalClueList.get(characterManager.getMurderer.getId() - GameCharacter.ID_OFFSET);
+        motiveClue = totalClueList.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
 
         //json import check
         if (motiveClue.getClueType() != ClueType.Motive ||
-                !motiveClue.getRelatedCharId().contains(characterManager.getMurderer.getId(), false)){
+                !motiveClue.getRelatedCharId().contains(characterManager.getMurderer().getId(), false)){
             throw new RuntimeException("Invalid json format");
         }
 
