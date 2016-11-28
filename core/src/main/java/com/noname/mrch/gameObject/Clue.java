@@ -15,6 +15,9 @@ public class Clue {
     private String description;
     private ClueType clueType;
     private Array<Integer> relatedCharId = new Array<Integer>();
+
+
+
     private String response;
 
     public int getId() {
@@ -36,5 +39,9 @@ public class Clue {
     @Override
     public String toString() {
         return name;
+    }
+
+    public String getResponse() {
+        return response;
     }
 }
