@@ -1,8 +1,8 @@
 package com.noname.mrch.helper;
 
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.gameObject.Clue;
-import com.noname.mrch.gameObject.GameCharacter;
+import com.noname.mrch.gameobject.Clue;
+import com.noname.mrch.gameobject.GameCharacter;
 
 public final class InitUtil {
     /**

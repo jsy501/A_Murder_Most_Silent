@@ -1,8 +1,6 @@
-package com.noname.mrch.gameObject;
+package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.gameObject.Clue;
-import com.noname.mrch.gameObject.Item;
 
 /**
  * Objects that give out clues and items

@@ -1,4 +1,4 @@
-package com.noname.mrch.gameObject;
+package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.helper.ClueType;
