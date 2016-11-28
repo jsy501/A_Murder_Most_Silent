@@ -24,33 +24,4 @@ public final class InitUtil {
         }
         return outputArray;
     }
-
-    /**
-     * Filter out clues that has no related character in the given array of characters
-     * and include only one motive clue
-     *
-     * @param inputClueArray Array of clues to be filtered
-     * @param inputPersonArray Array of characters used to filter
-     * @return Array of clues with at least one related character from the personArray
-     */
-
-    public static Array<Clue> filterClues(Array<Clue> inputClueArray, Array<GameCharacter> inputPersonArray){
-        /*
-         the first n clues loaded from json are character unique motive clues
-         where n is the total number of character roster
-          */
-
-        Array<Clue> outputClueArray = new Array<>();
-
-        for (int i = GameCharacter.ROSTER_NUMBER-1; i < inputClueArray.size; i++){
-            for (int j = 0; j < inputPersonArray.size; j++){
-                if (inputClueArray.get(i).getRelatedCharId().contains(inputPersonArray.get(j).getId(), false)){
-                    outputClueArray.add(inputClueArray.get(i));
-                    break;
-                }
-            }
-        }
-
-        return outputClueArray;
-    }
 }

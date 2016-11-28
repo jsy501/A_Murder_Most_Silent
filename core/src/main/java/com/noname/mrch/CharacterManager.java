@@ -8,7 +8,6 @@ import com.noname.mrch.helper.InitUtil;
 
 
 public class CharacterManager {
-
     private final int CHARACTER_COUNT = 7;
 
     private static CharacterManager Instance = new CharacterManager();

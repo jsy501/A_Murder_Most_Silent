@@ -15,8 +15,6 @@ public class Clue {
     private ClueType clueType;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
-
-
     private String response;
 
     public int getId() {

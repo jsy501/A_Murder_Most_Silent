@@ -7,7 +7,7 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 
 /**
- * Created by PPPPPP on 2016/11/28.
+ *  Initialises and manages items
  */
 
 public class ItemManager {
@@ -19,6 +19,7 @@ public class ItemManager {
         Json json = new Json();
         Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
         Array<GameCharacter> characterArray = CharacterManager.getInstance().getCharacterArray();
+
         //pick items that are relevant to the characters in the game
         for (int i = 0; i < characterArray.size; i++) {
             int index = characterArray.get(i).getId() - GameCharacter.ID_OFFSET;

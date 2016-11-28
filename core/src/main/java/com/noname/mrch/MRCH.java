@@ -18,7 +18,6 @@ public class MRCH extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 
-		GameWorld gameWorld = new GameWorld();
 	}
 
 	@Override
