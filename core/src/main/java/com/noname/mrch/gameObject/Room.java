@@ -1,5 +1,7 @@
 package com.noname.mrch.gameObject;
 
+import com.noname.mrch.NoteBook;
+
 public class Room extends HasObject {
 
 
@@ -12,6 +14,7 @@ public class Room extends HasObject {
 		this.id = id;
 		this.name = name;
 		this.isLocked = locked;
+
 	}
 }
 	

@@ -21,21 +21,21 @@ public class NoteBook {
         return INSTANCE;
     }
 
-    public static void addClue(Clue clue){
+    public void addClue(Clue clue){
         if (clueList.contains(clue, false)){
             throw new RuntimeException("Clue already in notebook");
         }
         clueList.add(clue);
     }
 
-    public static void addItem(Item item){
+    public void addItem(Item item){
         if (itemList.contains(item, false)){
             throw new RuntimeException("Item already in notebook");
         }
         itemList.add(item);
     }
 
-    public static Clue getClue(int id) {
+    public Clue getClue(int id) {
         for (int i =0; i < clueList.size; i++){
             if (clueList.get(i).getId() == id){
                 return clueList.get(i);
@@ -45,7 +45,7 @@ public class NoteBook {
     }
 
 
-    public static Item getItem(int id){
+    public Item getItem(int id){
         for (int i =0; i < itemList.size; i++){
             if (itemList.get(i).getId() == id){
                 return itemList.get(i);
@@ -54,19 +54,19 @@ public class NoteBook {
         throw new RuntimeException("Item not in notebook");
     }
 
-    public static boolean contains(Item item) {
+    public boolean contains(Item item) {
         return (itemList.contains(item, false));
     }
 
-    public static boolean contains(Clue clue) {
+    public boolean contains(Clue clue) {
         return (clueList.contains(clue, false));
     }
 
-    public static Array<Clue> getClueList() {
+    public Array<Clue> getClueList() {
         return clueList;
     }
 
-    public static Array<Item> getItemList() {
+    public Array<Item> getItemList() {
         return itemList;
     }
 }

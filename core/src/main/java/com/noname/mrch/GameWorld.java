@@ -14,7 +14,7 @@ import com.noname.mrch.helper.InitUtil;
  */
 
 public class GameWorld {
-    private final int PERSON_COUNT = 7;
+    private final int CHARACTER_COUNT = 7;
 
     private Array<Item> itemList = new Array<>();
     private Array<Clue> clueList = new Array<>();
@@ -28,7 +28,7 @@ public class GameWorld {
     private Item key;
 
     public GameWorld(){
-        initPersonList();
+        initCharacterList();
         initItemList();
         initClueList();
 
@@ -40,10 +40,10 @@ public class GameWorld {
         System.out.println(clueList);
     }
 
-    private void initPersonList() {
+    private void initCharacterList() {
         Json json = new Json();
         Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("persons.json"));
-        characterArray = InitUtil.generateRandomArray(totalCharacterList, PERSON_COUNT);
+        characterArray = InitUtil.generateRandomArray(totalCharacterList, CHARACTER_COUNT);
 
         murderer = characterArray.pop();
         murderer.setMurderer(true);
