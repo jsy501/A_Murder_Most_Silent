@@ -17,7 +17,7 @@ public class GameCharacter extends HasObject {
 	private boolean isVictim = false;
 	private boolean isAccused = false;
 	private String greeting;
-	private String response;
+	private String negativeClueResponse;
 
 	public int getId(){
 		return id;
@@ -28,7 +28,7 @@ public class GameCharacter extends HasObject {
 	}
 
 	public String getResponse() {
-		return response;
+		return negativeClueResponse;
 	}
 
 	public Personality getPersonality() {
