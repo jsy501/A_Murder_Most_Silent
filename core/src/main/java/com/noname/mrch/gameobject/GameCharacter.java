@@ -1,7 +1,5 @@
 package com.noname.mrch.gameobject;
 
-import com.noname.mrch.helper.Personality;
-
 /**
  * Represents a gameCharacter object
  */
