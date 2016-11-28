@@ -1,4 +1,4 @@
-package com.noname.mrch.helper;
+package com.noname.mrch.gameobject;
 
 public enum Personality {
     Friendly(0), Neutral(1), Aggressive(2);

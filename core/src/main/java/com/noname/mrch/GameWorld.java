@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.Item;
-import com.noname.mrch.helper.ClueType;
+import com.noname.mrch.gameobject.ClueType;
 import com.noname.mrch.helper.InitUtil;
 
 /**
@@ -78,19 +78,6 @@ public class GameWorld {
     }
 
     private void initClueList() {
-        Json json = new Json();
-        Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));
 
-        motiveClue = totalClueList.get(murderer.getId() - GameCharacter.ID_OFFSET);
-
-        //json import check
-        if (motiveClue.getClueType() != ClueType.Motive ||
-                !motiveClue.getRelatedCharId().contains(murderer.getId(), false)){
-            throw new RuntimeException("Invalid json format");
-        }
-
-        clueList.add(motiveClue);
-
-        clueList = InitUtil.filterClues(totalClueList, characterArray);
     }
 }

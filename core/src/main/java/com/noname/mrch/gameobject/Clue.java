@@ -1,7 +1,6 @@
 package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.helper.ClueType;
 
 /**
  *  Represents a clue object
