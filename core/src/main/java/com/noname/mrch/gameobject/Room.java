@@ -1,6 +1,4 @@
-package com.noname.mrch.gameObject;
-
-import com.noname.mrch.NoteBook;
+package com.noname.mrch.gameobject;
 
 public class Room extends HasObject {
 

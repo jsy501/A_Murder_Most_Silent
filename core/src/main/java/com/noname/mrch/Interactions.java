@@ -1,8 +1,8 @@
 package com.noname.mrch;
 
-import com.noname.mrch.gameObject.Clue;
-import com.noname.mrch.gameObject.GameCharacter;
-import com.noname.mrch.gameObject.Item;
+import com.noname.mrch.gameobject.Clue;
+import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.gameobject.Item;
 import java.util.Random;
 
 /**
@@ -32,7 +32,6 @@ public class Interactions {
                 return target.getResponse();
             }
         }
-        return null;
     }
 
     public static String give(Item item, GameCharacter target){

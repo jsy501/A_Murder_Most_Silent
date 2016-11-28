@@ -2,10 +2,10 @@ package com.noname.mrch.unused;
 
 
 
-import com.noname.mrch.gameObject.GameCharacter;
-import com.noname.mrch.gameObject.Item;
+import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.NoteBook;
-import com.noname.mrch.gameObject.Player;
+import com.noname.mrch.gameobject.Player;
 
 import java.util.*;
 

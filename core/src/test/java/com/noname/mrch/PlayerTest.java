@@ -1,7 +1,7 @@
 package com.noname.mrch;
 
-import com.noname.mrch.gameObject.Player;
-import com.noname.mrch.gameObject.Room;
+import com.noname.mrch.gameobject.Player;
+import com.noname.mrch.gameobject.Room;
 
 import org.junit.After;
 import org.junit.Before;

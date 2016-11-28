@@ -1,6 +1,6 @@
 package com.noname.mrch;
 
-import com.noname.mrch.gameObject.Item;
+import com.noname.mrch.gameobject.Item;
 
 import org.junit.After;
 import org.junit.Before;

@@ -3,9 +3,9 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.noname.mrch.gameObject.GameCharacter;
-import com.noname.mrch.gameObject.Clue;
-import com.noname.mrch.gameObject.Item;
+import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.gameobject.Clue;
+import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.helper.ClueType;
 import com.noname.mrch.helper.InitUtil;
 

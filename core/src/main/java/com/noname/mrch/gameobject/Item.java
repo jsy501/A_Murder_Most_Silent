@@ -1,4 +1,4 @@
-package com.noname.mrch.gameObject;
+package com.noname.mrch.gameobject;
 
 /**
  *  Represents an item object
