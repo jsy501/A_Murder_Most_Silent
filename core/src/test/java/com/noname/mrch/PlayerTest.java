@@ -26,45 +26,38 @@ public class PlayerTest {
     }
 
     @Test
-    public void setLocation() throws Exception {
-        // create player
-        // check location
-        // player.setLocation()
-        // check new location
-        // asserts
-        Room testroom = new Room(0,"Test Room",false);
+    public void setLocationTest() throws Exception {
+        assertEquals("failure - the players room does not initialise to null", null, player.getLocation());
 
-        Room expected = testroom;
-        Room actual = player.getLocation();
-        assertEquals("failure - player location not correct", expected, actual);
-
-
-
-    }
-
-    @Test
-    public void getName() throws Exception {
-        String expected = "test";
-        String actual = player.getName();
-        assertEquals("failure - player name not correct",expected,actual);
-    }
-
-    @Test
-    public void getPersonality() throws Exception {
-        int expected = 0;
-        int actual = player.getPersonality();
-
-        assertEquals("failure - players personality is not correct", expected, actual);
-
-    }
-
-    @Test
-    public void getLocation() throws Exception {
         Room testroom = new Room(0, "test room", false);
         player.setLocation(testroom);
 
-        Room expected = testroom;
-        Room actual = player.getLocation();
-        assertEquals("failure - room is not the room the player is in", expected, actual);
+        assertEquals("failure - room is not the room the player is in", testroom, player.getLocation());
+
+
+
+
+    }
+
+    @Test
+    public void getNameTest() throws Exception {
+        assertEquals("failure - player name not correct", "test name", player.getName());
+    }
+
+    @Test
+    public void getPersonalityTest() throws Exception {
+        assertEquals("failure - players personality is not correct", 0, player.getPersonality());
+
+    }
+
+    @Test
+    public void getLocationTest() throws Exception {
+        assertEquals("failure - player does not initialise location to null", null, player.getLocation());
+
+
+        Room testroom = new Room(0,"Test Room",false);
+        player.setLocation(testroom);
+
+        assertEquals("failure - player location not correct", testroom, player.getLocation());
     }
 }
