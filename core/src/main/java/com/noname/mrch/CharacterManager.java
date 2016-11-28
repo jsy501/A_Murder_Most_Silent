@@ -14,11 +14,12 @@ public class CharacterManager {
     private static CharacterManager Instance = new CharacterManager();
     private GameCharacter murderer;
     private GameCharacter victim;
-    Json json = new Json();
 
     private Array<GameCharacter> characterArray = new Array<>();
 
     CharacterManager() {
+        Json json = new Json();
+
         Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("persons.json"));
         characterArray = InitUtil.generateRandomArray(totalCharacterList, CHARACTER_COUNT);
         murderer = characterArray.pop();

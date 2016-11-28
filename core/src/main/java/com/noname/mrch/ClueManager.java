@@ -9,13 +9,15 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.InitUtil;
 
 public class ClueManager {
-    private static ClueManager Instance = new ClueManager(CharacterManager.getInstance());
+    private static ClueManager Instance = new ClueManager();
 
     private Array<Clue> clueArray;
     private Clue motiveClue;
 
-    ClueManager(CharacterManager characterManager){
+    ClueManager(){
         clueArray = new Array<>();
+
+        CharacterManager characterManager = new CharacterManager();
 
         Json json = new Json();
         Array<Clue> totalClueList = json.fromJson(Array.class, Clue.class, Gdx.files.local("clues.json"));

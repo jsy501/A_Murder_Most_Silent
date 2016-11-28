@@ -9,9 +9,9 @@ import com.noname.mrch.gameobject.Item;
 /**
  * Created by PPPPPP on 2016/11/28.
  */
+
 public class ItemManager {
     private static ItemManager Instance = new ItemManager();
-    Json json = new Json();
     private Array<Item> itemList = new Array<>();
     private Item key;
 
