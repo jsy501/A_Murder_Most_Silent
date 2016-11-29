@@ -40,14 +40,18 @@ public class Interactions {
         if (target.isAccused() == true){
             return "Go Away!";
         } else {
-            //todo change some stuff make it work
+            //todo change some stuff m
         }
         return null;
     }
 
-    public static String accuse(GameCharacter target){
-        //todo add the accuse conditions
-        return null;
+    public static String accuse(GameCharacter target, Clue murderMotive, Clue murderWeapon, Clue clueOne, Clue clueTwo, Clue clueThree){
+        if (murderMotive.checkId(target) == true && murderWeapon.checkId(target) == true && clueOne.checkId(target) == true && clueTwo.checkId(target) == true && clueThree.checkId(target) == true){
+            return "You have accused the correct person congratulations you win!"; //placeholder
+        } else {
+            target.setAccused(true);
+            return "you have accused the wrong person"; //placeholder
+        }
     }
 
     public static String ignore(){

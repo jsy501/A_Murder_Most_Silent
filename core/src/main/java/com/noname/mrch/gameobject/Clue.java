@@ -50,4 +50,12 @@ public class Clue {
     public String getResponse() {
         return response;
     }
+
+    public boolean checkId(GameCharacter target){
+        if (this.getRelatedCharId().contains(target.getId(), true)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
