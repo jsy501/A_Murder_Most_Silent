@@ -17,6 +17,15 @@ public class Clue {
 
     private String response;
 
+    public Clue(int id, String name, String description, ClueType clueType, Array<Integer> relatedCharId, String response){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.clueType = clueType;
+        this.relatedCharId = relatedCharId;
+        this.response = response;
+    }
+
     public int getId() {
         return id;
     }
