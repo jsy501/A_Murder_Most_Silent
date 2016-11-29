@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by User on 29/11/2016.
+ * Character Manager Unit Test
  */
 public class CharacterManagerTest {
     CharacterManager characterManager;
