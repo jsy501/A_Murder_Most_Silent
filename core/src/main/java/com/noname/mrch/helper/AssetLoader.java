@@ -24,11 +24,11 @@ public class AssetLoader {
         manager = new AssetManager();
 
         Json json = new Json();
-        totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("characters.json"));
-        totalItemClue = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
-        totalMotiveClue  = json.fromJson(Array.class, Clue.class, Gdx.files.local("motive_clues.json"));
-        totalWeaponClue = json.fromJson(Array.class, Clue.class, Gdx.files.local("weapon_clues.json"));
-        totalAppearanceClue = json.fromJson(Array.class, Clue.class, Gdx.files.local("appearance_clues.json"));
+        totalCharacterList = json.fromJson(Array.class, GameCharacter.class, new FileHandle("characters.json"));
+        totalItemClue = json.fromJson(Array.class, Item.class, new FileHandle("items.json"));
+        totalMotiveClue  = json.fromJson(Array.class, Clue.class, new FileHandle("motive_clues.json"));
+        totalWeaponClue = json.fromJson(Array.class, Clue.class, new FileHandle("weapon_clues.json"));
+        totalAppearanceClue = json.fromJson(Array.class, Clue.class, new FileHandle("appearance_clues.json"));
     }
 
     public static AssetLoader getInstance(){
