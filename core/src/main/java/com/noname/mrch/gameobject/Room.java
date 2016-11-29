@@ -18,6 +18,13 @@ public class Room extends HasObject {
 		this.isLocked = locked;
 	}
 
+	public Room(int id, String name, boolean locked, Stage stage){
+		this.id = id;
+		this.name = name;
+		this.isLocked = locked;
+		this.stage = stage;
+	}
+
 	public Room(){
 
 	}
