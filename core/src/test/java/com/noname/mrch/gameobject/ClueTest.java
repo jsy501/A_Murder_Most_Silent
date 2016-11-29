@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Created by User on 29/11/2016.
+ * Clue Unit test
  */
 public class ClueTest {
     Clue clue;

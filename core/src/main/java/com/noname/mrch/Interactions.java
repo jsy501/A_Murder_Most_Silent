@@ -5,7 +5,9 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.NoteBook;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+
 
 /**
  * Interactions class handles methods for interacting between
@@ -13,7 +15,7 @@ import java.util.Random;
  */
 public class Interactions {
     private static Interactions INSTANCE = new Interactions();
-    private static Random random = new Random();
+
 
     public static Interactions getInstance(){
         return INSTANCE;
@@ -23,9 +25,9 @@ public class Interactions {
         if (target.isAccused() == true) {
             return "Go Away";
         } else {
-            int diff = Math.abs(questionStyle - target.getPersonality().getValue());
-            float chanceOfSuccess = ((random.nextFloat())+(diff/10));
-            if (chanceOfSuccess >= 0.5){
+            int diff = questionStyle - target.getPersonality().getValue();
+            int chanceOfSuccess = ThreadLocalRandom.current().nextInt(0, 9 + 1)+(diff);
+            if (chanceOfSuccess >= 5){
                 Clue clue = target.getClueList().random();
                 target.removeClue(clue);
                 NoteBook.getInstance().addClue(clue);
