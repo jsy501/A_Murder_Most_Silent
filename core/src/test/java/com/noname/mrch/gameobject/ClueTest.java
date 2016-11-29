@@ -23,6 +23,7 @@ public class ClueTest {
         succesfulTarget = new GameCharacter(0,"test name", Personality.Aggressive, false, false, false, "hello test", "negative response test");
         failingTarget = new GameCharacter(5, "test name", Personality.Aggressive, false, false, false, "hello", "negative test response");
 
+        characterRelated = new Array<>();
         characterRelated.add(0);
         characterRelated.add(1);
 

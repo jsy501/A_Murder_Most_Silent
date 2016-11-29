@@ -5,8 +5,6 @@ package com.noname.mrch;
  */
 
 public class GameWorld {
-    private final int CHARACTER_COUNT = 7;
-
     public GameWorld() {
     }
 }
