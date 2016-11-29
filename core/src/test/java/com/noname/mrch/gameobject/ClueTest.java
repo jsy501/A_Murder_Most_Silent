@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.noname.mrch.gameobject.ClueType.Motive;
 import static org.junit.Assert.*;
 
 import com.badlogic.gdx.utils.Array;
@@ -27,7 +26,7 @@ public class ClueTest {
         characterRelated.add(0);
         characterRelated.add(1);
 
-        clue = new Clue(0,"test clue", "test description", Motive, characterRelated, "test response");
+        clue = new Clue(0,"test clue", "test description", ClueType.Motive, characterRelated, "test response");
     }
 
     @After
@@ -55,7 +54,7 @@ public class ClueTest {
 
     @Test
     public void getClueTypeTest() throws Exception {
-        assertEquals("failure - test clue type not returned", Motive, clue.getClueType());
+        assertEquals("failure - test clue type not returned", ClueType.Motive, clue.getClueType());
     }
 
     @Test
