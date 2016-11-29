@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
  * Objects that give out clues and items
  */
 
-public class HasObject {
+public class HasObject{
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
 

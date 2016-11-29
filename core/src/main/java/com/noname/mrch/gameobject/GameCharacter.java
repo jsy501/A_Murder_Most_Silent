@@ -17,6 +17,22 @@ public class GameCharacter extends HasObject {
 	private String greeting;
 	private String negativeClueResponse;
 
+	public GameCharacter(int id, String name, Personality personality, boolean isMurderer, boolean isVictim, boolean isAccused, String greeting, String negativeClueResponse){
+		this.id = id;
+		this.name = name;
+		this.personality = personality;
+		this.isMurderer = isMurderer;
+		this.isVictim = isVictim;
+		this.isAccused = isAccused;
+		this.greeting = greeting;
+		this.negativeClueResponse = negativeClueResponse;
+
+	}
+
+	public GameCharacter(){
+		
+	}
+
 	public int getId(){
 		return id;
 	}

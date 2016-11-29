@@ -1,34 +1,47 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonWriter;
-import com.noname.mrch.GameWorld;
-import com.noname.mrch.libgdx.GameInputAdapter;
+import com.noname.mrch.helper.AssetLoader;
 
-public class MRCH extends ApplicationAdapter {
-	SpriteBatch batch;
-	GameInputAdapter eventHandling = new GameInputAdapter();
+public class MRCH extends Game {
+	public AssetLoader assetLoader;
+	public CharacterManager characterManager;
+	public ItemManager itemManager;
+	public ClueManager clueManager;
+	public RoomManager roomManager;
+
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
+		assetLoader = AssetLoader.getInstance();
+		characterManager = CharacterManager.getInstance();
+		itemManager = ItemManager.getInstance();
+		clueManager = ClueManager.getInstance();
+		roomManager = RoomManager.getInstance();
 
-		GameWorld gameWorld = new GameWorld();
+		System.out.println("Character list: " + characterManager.getCharacterArray());
+		System.out.println("Murderer: " + characterManager.getMurderer());
+		System.out.println("Victim: " + characterManager.getVictim());
+		System.out.println("Item list: " + itemManager.getItemArray());
+		System.out.println("Motive Clue: " + clueManager.getMotiveClue());
+		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
+		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
+		System.out.println("Room list: " + roomManager.getRoomArray());
+
+
+
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+		assetLoader.dispose();
 	}
 }

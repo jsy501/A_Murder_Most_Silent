@@ -15,9 +15,20 @@ public class Clue {
     private ClueType clueType;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
-
-
     private String response;
+
+    public Clue(int id, String name, String description, ClueType clueType, Array<Integer> relatedCharId, String response){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.clueType = clueType;
+        this.relatedCharId = relatedCharId;
+        this.response = response;
+    }
+
+    public Clue(){
+
+    }
 
     public int getId() {
         return id;
@@ -42,5 +53,13 @@ public class Clue {
 
     public String getResponse() {
         return response;
+    }
+
+    public boolean checkId(GameCharacter target){
+        if (this.getRelatedCharId().contains(target.getId(), true)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

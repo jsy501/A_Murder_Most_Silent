@@ -33,40 +33,5 @@
     "description": "description5",
     "linkedPersonId": 304,
     "isKey": false
-  },
-  {
-    "id": 205,
-    "name": "item6",
-    "description": "description6",
-    "linkedPersonId": 305,
-    "isKey": false
-  },
-  {
-    "id": 206,
-    "name": "item7",
-    "description": "description7",
-    "linkedPersonId": 306,
-    "isKey": false
-  },
-  {
-    "id": 207,
-    "name": "item8",
-    "description": "description8",
-    "linkedPersonId": 307,
-    "isKey": false
-  },
-  {
-    "id": 208,
-    "name": "item9",
-    "description": "description9",
-    "linkedPersonId": 308,
-    "isKey": false
-  },
-  {
-    "id": 209,
-    "name": "item10",
-    "description": "description10",
-    "linkedPersonId": 309,
-    "isKey": false
   }
 ]

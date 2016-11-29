@@ -34,40 +34,5 @@
     "description": "description5",
     "relatedCharId": [304],
     "clueType": "Motive"
-  },
-  {
-    "id": 105,
-    "name": "motive6",
-    "description": "description6",
-    "relatedCharId": [305],
-    "clueType": "Motive"
-  },
-  {
-    "id": 106,
-    "name": "motive7",
-    "description": "description7",
-    "relatedCharId": [306],
-    "clueType": "Motive"
-  },
-  {
-    "id": 107,
-    "name": "motive8",
-    "description": "description8",
-    "relatedCharId": [307],
-    "clueType": "Motive"
-  },
-  {
-    "id": 108,
-    "name": "motive9",
-    "description": "description9",
-    "relatedCharId": [308],
-    "clueType": "Motive"
-  },
-  {
-    "id": 109,
-    "name": "motive10",
-    "description": "description10",
-    "relatedCharId": [309],
-    "clueType": "Motive"
   }
 ]
