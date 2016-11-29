@@ -2,15 +2,9 @@ package com.noname.mrch;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonWriter;
-import com.noname.mrch.GameWorld;
 import com.noname.mrch.helper.AssetLoader;
-import com.noname.mrch.libgdx.GameInputAdapter;
 
 public class MRCH extends ApplicationAdapter {
 	public AssetLoader assetLoader;
@@ -20,7 +14,6 @@ public class MRCH extends ApplicationAdapter {
 	public RoomManager roomManager;
 
 	SpriteBatch batch;
-	GameInputAdapter eventHandling = new GameInputAdapter();
 	@Override
 	public void create () {
 		assetLoader = AssetLoader.getInstance();
