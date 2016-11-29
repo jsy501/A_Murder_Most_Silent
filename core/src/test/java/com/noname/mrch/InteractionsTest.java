@@ -69,16 +69,15 @@ public class InteractionsTest {
     }
 
     @Test
-    public void question() throws Exception {
+    public void questionIfAlreadyAccusedTest() throws Exception {
         assertEquals("failure - target accuse not initialised to false", false, target.isAccused());
         target.setAccused(true);
 
         assertEquals("failure - go away was not returned", "Go Away", interactions.question(1, target));
+    }
 
-        target.setAccused(false);
-
-        assertEquals("failure - target's accused status not set to false", false, target.isAccused());
-
+    @Test
+    public void questionIfNotAlreadyAccusedTest() throws Exception {
         //currently fails due to code in GameCharacter.
         //assertEquals("failure - clue response not returned", "motive response", interactions.question(9, target));
 
@@ -87,7 +86,7 @@ public class InteractionsTest {
     }
 
     @Test
-    public void give() throws Exception {
+    public void giveTest() throws Exception {
 
     }
 
