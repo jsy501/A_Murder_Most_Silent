@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.ClueType;
 import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.helper.AssetLoader;
 
 /**
  *  Initialises and manages clues
@@ -19,18 +20,20 @@ public class ClueManager {
     private Array<Clue> appearanceClue;
 
     ClueManager(){
-        initMotiveClue();
-        initWeaponClue();
-        initAppearanceClue();
+        AssetLoader assetLoader = AssetLoader.getInstance();
+
+        initMotiveClue(assetLoader);
+        initWeaponClue(assetLoader);
+        initAppearanceClue(assetLoader);
     }
 
     public static ClueManager getInstance(){
         return Instance;
     }
 
-    private void initMotiveClue(){
-        Json json = new Json();
-        Array<Clue> totalClueArray = json.fromJson(Array.class, Clue.class, Gdx.files.local("motive_clues.json"));
+    private void initMotiveClue(AssetLoader assetLoader){
+
+        Array<Clue> totalClueArray = assetLoader.totalMotiveClue;
 
         CharacterManager characterManager = CharacterManager.getInstance();
 
@@ -43,9 +46,8 @@ public class ClueManager {
         }
     }
 
-    private void initWeaponClue(){
-        Json json = new Json();
-        Array<Clue> totalClueArray = json.fromJson(Array.class, Clue.class, Gdx.files.local("weapon_clues.json"));
+    private void initWeaponClue(AssetLoader assetLoader){
+        Array<Clue> totalClueArray = assetLoader.totalWeaponClue;
 
         weaponClue = totalClueArray.random();
 
@@ -57,9 +59,8 @@ public class ClueManager {
         weaponClue.getRelatedCharId().add(CharacterManager.getInstance().getMurderer().getId());
     }
 
-    private void initAppearanceClue(){
-        Json json = new Json();
-        Array<Clue> totalClueArray = json.fromJson(Array.class, Clue.class, Gdx.files.local("appearance_clues.json"));
+    private void initAppearanceClue(AssetLoader assetLoader){
+        Array<Clue> totalClueArray = assetLoader.totalAppearanceClue;
 
         appearanceClue = new Array<>();
 

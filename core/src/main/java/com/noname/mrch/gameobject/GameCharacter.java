@@ -29,6 +29,10 @@ public class GameCharacter extends HasObject {
 
 	}
 
+	public GameCharacter(){
+		
+	}
+
 	public int getId(){
 		return id;
 	}

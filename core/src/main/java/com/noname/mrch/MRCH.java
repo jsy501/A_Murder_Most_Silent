@@ -9,9 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import com.noname.mrch.GameWorld;
+import com.noname.mrch.helper.AssetLoader;
 import com.noname.mrch.libgdx.GameInputAdapter;
 
 public class MRCH extends ApplicationAdapter {
+	public AssetLoader assetLoader;
 	public CharacterManager characterManager;
 	public ItemManager itemManager;
 	public ClueManager clueManager;
@@ -21,6 +23,7 @@ public class MRCH extends ApplicationAdapter {
 	GameInputAdapter eventHandling = new GameInputAdapter();
 	@Override
 	public void create () {
+		assetLoader = AssetLoader.getInstance();
 		characterManager = CharacterManager.getInstance();
 		itemManager = ItemManager.getInstance();
 		clueManager = ClueManager.getInstance();

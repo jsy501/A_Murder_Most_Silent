@@ -26,6 +26,10 @@ public class Clue {
         this.response = response;
     }
 
+    public Clue(){
+
+    }
+
     public int getId() {
         return id;
     }

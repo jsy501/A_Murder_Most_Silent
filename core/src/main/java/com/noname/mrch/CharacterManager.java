@@ -1,9 +1,11 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.helper.AssetLoader;
 import com.noname.mrch.helper.InitUtil;
 
 
@@ -17,10 +19,9 @@ public class CharacterManager {
     private Array<GameCharacter> characterArray = new Array<>(); //character array excluding murderer and victim
 
     CharacterManager() {
-        Json json = new Json();
+        AssetLoader assetLoader = AssetLoader.getInstance();
 
-        Array<GameCharacter> totalCharacterList = json.fromJson(Array.class, GameCharacter.class, Gdx.files.local("characters.json"));
-        characterArray = InitUtil.generateRandomArray(totalCharacterList, CHARACTER_COUNT);
+        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterList, CHARACTER_COUNT);
         murderer = characterArray.pop();
         murderer.setMurderer(true);
 

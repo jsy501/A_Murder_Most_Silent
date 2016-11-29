@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
+import com.noname.mrch.helper.AssetLoader;
 
 /**
  *  Initialises and manages items
@@ -17,8 +18,9 @@ public class ItemManager {
     private Item key;
 
     ItemManager () {
-        Json json = new Json();
-        Array<Item> totalItemList = json.fromJson(Array.class, Item.class, Gdx.files.local("items.json"));
+        AssetLoader assetLoader = AssetLoader.getInstance();
+
+        Array<Item> totalItemList = assetLoader.totalItemClue;
         Array<GameCharacter> characterArray = CharacterManager.getInstance().getCharacterArray();
 
         //pick items that are relevant to the characters in the game
