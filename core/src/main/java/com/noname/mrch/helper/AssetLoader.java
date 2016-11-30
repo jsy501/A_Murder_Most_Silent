@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
+import com.noname.mrch.gameobject.Room;
 
 public class AssetLoader {
     public static AssetLoader Instance = new AssetLoader();
@@ -19,6 +20,7 @@ public class AssetLoader {
     public Array<Clue> totalMotiveClue;
     public Array<Clue> totalWeaponClue;
     public Array<Clue> totalAppearanceClue;
+    public Array<Room> totalRoomClue;
 
     private AssetLoader() {
         manager = new AssetManager();
@@ -29,6 +31,7 @@ public class AssetLoader {
         totalMotiveClue  = json.fromJson(Array.class, Clue.class, new FileHandle("asset/motive_clues.json"));
         totalWeaponClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/weapon_clues.json"));
         totalAppearanceClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/appearance_clues.json"));
+        totalRoomClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/rooms.json"));
     }
 
     public static AssetLoader getInstance(){

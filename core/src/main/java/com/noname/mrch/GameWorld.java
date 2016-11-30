@@ -6,5 +6,6 @@ package com.noname.mrch;
 
 public class GameWorld {
     public GameWorld() {
+
     }
 }

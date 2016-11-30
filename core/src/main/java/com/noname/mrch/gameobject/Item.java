@@ -4,7 +4,7 @@ package com.noname.mrch.gameobject;
  *  Represents an item object
  */
 
-public class Item {
+public class Item{
     public static final int ID_OFFSET = 200;
 
     private int id;
