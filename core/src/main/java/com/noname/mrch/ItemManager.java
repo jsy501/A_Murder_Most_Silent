@@ -13,7 +13,7 @@ import com.noname.mrch.helper.AssetLoader;
 public class ItemManager {
     private static ItemManager Instance = null;
 
-    private Array<Item> itemArray = new Array<>();
+    private Array<Item> itemArray = new Array<>(); //all of the items EXCLUDING key
     private Item key;
 
     /**
@@ -33,16 +33,6 @@ public class ItemManager {
         }
 
         key = new Item(500, "key", "It's a key", true); // the final item to be given
-        itemArray.add(key);
-
-        for (int i = 0; i < characterArray.size; i++) {
-            //assign every item but the first one to every character
-            //the first item is to be found in a room
-            characterArray.get(i).addItem(itemArray.get(i+1));
-
-            //create links between items
-            itemArray.get(i).setReturnItem(itemArray.get(i+1));
-        }
     }
 
     static void createInstance(){
