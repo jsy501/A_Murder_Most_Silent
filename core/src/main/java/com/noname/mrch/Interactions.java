@@ -21,7 +21,7 @@ public class Interactions {
         return INSTANCE;
     }
 
-    public static String question(int questionStyle, GameCharacter target) {
+    public String question(int questionStyle, GameCharacter target) {
         if (target.isAccused() == true) {
             return "Go Away";
         } else {
@@ -38,7 +38,7 @@ public class Interactions {
         }
     }
 
-    public static String give(Item item, GameCharacter target){
+    public String give(Item item, GameCharacter target){
         if (target.isAccused() == true){
             return "Go Away!";
         } else {
@@ -47,7 +47,7 @@ public class Interactions {
         return null;
     }
 
-    public static String accuse(GameCharacter target, Clue murderMotive, Clue murderWeapon, Clue clueOne, Clue clueTwo, Clue clueThree){
+    public String accuse(GameCharacter target, Clue murderMotive, Clue murderWeapon, Clue clueOne, Clue clueTwo, Clue clueThree){
         if (murderMotive.checkId(target) == true && murderWeapon.checkId(target) == true && clueOne.checkId(target) == true && clueTwo.checkId(target) == true && clueThree.checkId(target) == true){
             return "You have accused the correct person congratulations you win!"; //placeholder
         } else {
@@ -56,7 +56,7 @@ public class Interactions {
         }
     }
 
-    public static String ignore(){
+    public String ignore(){
         return "Good bye"; // characters goodbye code
     }
 }

@@ -1,8 +1,6 @@
 package com.noname.mrch;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.ClueType;
 import com.noname.mrch.gameobject.GameCharacter;
@@ -50,7 +48,7 @@ public class ClueManager {
      */
     private void initMotiveClue(AssetLoader assetLoader){
 
-        Array<Clue> totalClueArray = assetLoader.totalMotiveClue;
+        Array<Clue> totalClueArray = assetLoader.totalMotiveClueArray;
 
         CharacterManager characterManager = CharacterManager.getInstance();
 
@@ -71,7 +69,7 @@ public class ClueManager {
      */
 
     private void initWeaponClue(AssetLoader assetLoader){
-        Array<Clue> totalClueArray = assetLoader.totalWeaponClue;
+        Array<Clue> totalClueArray = assetLoader.totalWeaponClueArray;
 
         weaponClue = totalClueArray.random();
 
@@ -89,7 +87,7 @@ public class ClueManager {
      */
 
     private void initAppearanceClue(AssetLoader assetLoader){
-        Array<Clue> totalClueArray = assetLoader.totalAppearanceClue;
+        Array<Clue> totalClueArray = assetLoader.totalAppearanceClueArray;
 
         appearanceClue = new Array<>();
 

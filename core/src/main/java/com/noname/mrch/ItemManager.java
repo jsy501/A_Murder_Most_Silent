@@ -1,8 +1,6 @@
 package com.noname.mrch;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.helper.AssetLoader;
@@ -25,7 +23,7 @@ public class ItemManager {
     private ItemManager () {
         AssetLoader assetLoader = AssetLoader.getInstance();
 
-        Array<Item> totalItemList = assetLoader.totalItemClue;
+        Array<Item> totalItemList = assetLoader.totalItemClueArray;
         Array<GameCharacter> characterArray = CharacterManager.getInstance().getCharacterArray();
 
         //pick items that are relevant to the characters in the game

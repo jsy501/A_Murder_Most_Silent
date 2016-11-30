@@ -1,0 +1,38 @@
+[
+  {
+    "id": 100,
+    "name": "motive1",
+    "description": "description1",
+    "relatedCharId": [300],
+    "clueType": "Motive"
+  },
+  {
+    "id": 101,
+    "name": "motive2",
+    "description": "description2",
+    "relatedCharId": [301],
+    "clueType": "Motive"
+  },
+  {
+    "id": 102,
+    "name": "motive3",
+    "description": "description3",
+    "relatedCharId": [302],
+    "clueType": "Motive"
+  },
+  {
+    "id": 103,
+    "name": "motive4",
+    "description": "description4",
+    "relatedCharId": [303],
+    "clueType": "Motive"
+
+  },
+  {
+    "id": 104,
+    "name": "motive5",
+    "description": "description5",
+    "relatedCharId": [304],
+    "clueType": "Motive"
+  }
+]

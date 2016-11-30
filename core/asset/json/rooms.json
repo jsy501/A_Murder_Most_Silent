@@ -1,0 +1,26 @@
+[
+  {
+    "id": 400,
+    "name": "Hub"
+  },
+  {
+    "id": 401,
+    "name": "Island"
+  },
+  {
+    "id": 402,
+    "name": "Lecture Hall"
+  },
+  {
+    "id": 403,
+    "name": "Seminar Room"
+  },
+  {
+    "id": 404,
+    "name": "Study Room"
+  },
+  {
+    "id": 405,
+    "name": "Tutor Room"
+  }
+]
