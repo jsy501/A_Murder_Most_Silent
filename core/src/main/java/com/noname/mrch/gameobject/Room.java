@@ -20,6 +20,8 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 		this.name = name;
 		this.isLocked = locked;
 	}
+
+
 	
 	public Room(){
 		super(new ScreenViewport());

@@ -23,6 +23,10 @@ public class Item extends GameActor implements JsonImport{
 
     }
 
+    public Item(int id) {
+        this.id = id;
+    }
+
     public Item(int id, String name, String description, boolean isKey){
         this.id = id;
         this.name = name;
