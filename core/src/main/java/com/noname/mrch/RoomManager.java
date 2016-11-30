@@ -16,7 +16,7 @@ public class RoomManager {
     private Stack<Stage> stageStack = new Stack<>();
 
     RoomManager(){
-        roomArray = AssetLoader.getInstance().totalRoomClue;
+        roomArray = AssetLoader.getInstance().totalRoom;
         stageStack.push(roomArray.first());
     }
     public static RoomManager getInstance(){

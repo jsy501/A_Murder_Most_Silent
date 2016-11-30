@@ -20,7 +20,7 @@ public class AssetLoader {
     public Array<Clue> totalMotiveClue;
     public Array<Clue> totalWeaponClue;
     public Array<Clue> totalAppearanceClue;
-    public Array<Room> totalRoomClue;
+    public Array<Room> totalRoom;
 
     private AssetLoader() {
         manager = new AssetManager();
@@ -31,7 +31,7 @@ public class AssetLoader {
         totalMotiveClue  = json.fromJson(Array.class, Clue.class, new FileHandle("asset/motive_clues.json"));
         totalWeaponClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/weapon_clues.json"));
         totalAppearanceClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/appearance_clues.json"));
-        totalRoomClue = json.fromJson(Array.class, Clue.class, new FileHandle("asset/rooms.json"));
+        totalRoom = json.fromJson(Array.class, Room.class, new FileHandle("asset/rooms.json"));
     }
 
     public static AssetLoader getInstance(){

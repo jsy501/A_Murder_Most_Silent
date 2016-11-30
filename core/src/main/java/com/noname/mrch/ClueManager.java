@@ -10,16 +10,17 @@ import com.noname.mrch.helper.AssetLoader;
 
 /**
  *  Initialises and manages clues
+ *  Dependent on CharacterManager
  */
 
 public class ClueManager {
-    private static ClueManager Instance = new ClueManager();
+    private static ClueManager Instance = null;
 
     private Clue motiveClue;
     private Clue weaponClue;
     private Array<Clue> appearanceClue;
 
-    ClueManager(){
+    private ClueManager(){
         AssetLoader assetLoader = AssetLoader.getInstance();
 
         initMotiveClue(assetLoader);
@@ -27,16 +28,33 @@ public class ClueManager {
         initAppearanceClue(assetLoader);
     }
 
-    public static ClueManager getInstance(){
-        return Instance;
+    static void createInstance(){
+        if (Instance == null) {
+            Instance = new ClueManager();
+        }
     }
 
+    public static ClueManager getInstance(){
+        if (Instance != null) {
+            return Instance;
+        }
+        else{
+            createInstance();
+            return Instance;
+        }
+    }
+
+    /**
+     * Assign motive clue and check error
+     * @param assetLoader used for loading total motive clue array
+     */
     private void initMotiveClue(AssetLoader assetLoader){
 
         Array<Clue> totalClueArray = assetLoader.totalMotiveClue;
 
         CharacterManager characterManager = CharacterManager.getInstance();
 
+        //motive clues are unique for every character
         motiveClue = totalClueArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
 
         //json import check
@@ -45,6 +63,12 @@ public class ClueManager {
             throw new RuntimeException("Invalid json format");
         }
     }
+
+    /**
+     * Choose one weapon clue randomly from a total weapon clue array and point to the murderer.
+     * Check json import error
+     * @param assetLoader used for loading total weapon clue array
+     */
 
     private void initWeaponClue(AssetLoader assetLoader){
         Array<Clue> totalClueArray = assetLoader.totalWeaponClue;
@@ -58,6 +82,11 @@ public class ClueManager {
 
         weaponClue.getRelatedCharId().add(CharacterManager.getInstance().getMurderer().getId());
     }
+
+    /**
+     * Choose 3 appearance clues that point to the murderer from a total appearance clue array
+     * @param assetLoader used for loading total appearance clue array
+     */
 
     private void initAppearanceClue(AssetLoader assetLoader){
         Array<Clue> totalClueArray = assetLoader.totalAppearanceClue;

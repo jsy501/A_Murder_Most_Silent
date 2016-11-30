@@ -23,20 +23,20 @@ public class MRCH extends Game {
 		GAME_HEIGHT = Gdx.graphics.getHeight();
 		GAME_WIDTH = Gdx.graphics.getWidth();
 
-		assetLoader = AssetLoader.getInstance();
-		characterManager = CharacterManager.getInstance();
-		itemManager = ItemManager.getInstance();
-		clueManager = ClueManager.getInstance();
-		roomManager = RoomManager.getInstance();
-
-		System.out.println("Character list: " + characterManager.getCharacterArray());
-		System.out.println("Murderer: " + characterManager.getMurderer());
-		System.out.println("Victim: " + characterManager.getVictim());
-		System.out.println("Item list: " + itemManager.getItemArray());
-		System.out.println("Motive Clue: " + clueManager.getMotiveClue());
-		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
-		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
-		System.out.println("Room list: " + roomManager.getRoomArray());
+//		assetLoader = AssetLoader.getInstance();
+//		characterManager = CharacterManager.getInstance();
+//		itemManager = ItemManager.getInstance();
+//		clueManager = ClueManager.getInstance();
+//		roomManager = RoomManager.getInstance();
+//
+//		System.out.println("Character list: " + characterManager.getCharacterArray());
+//		System.out.println("Murderer: " + characterManager.getMurderer());
+//		System.out.println("Victim: " + characterManager.getVictim());
+//		System.out.println("Item list: " + itemManager.getItemArray());
+//		System.out.println("Motive Clue: " + clueManager.getMotiveClue());
+//		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
+//		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
+//		System.out.println("Room list: " + roomManager.getRoomArray());
 
 		this.setScreen(new GamePlayScreen());
 	}

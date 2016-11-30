@@ -10,12 +10,12 @@ import com.noname.mrch.gameobject.*;
  * of the specified type is detected.
  */
 public class ActorInputAdapter extends InputListener{
-    GameActor actor;
-    String selectedOption;
-    Room room;
-    String toGui;
-    Interactions interactions = Interactions.getInstance();
-    int questioningStle;
+    private GameActor actor;
+    private String selectedOption;
+    private Room room;
+    private String toGui;
+    private Interactions interactions = Interactions.getInstance();
+    private int questioningStyle;
 
     public ActorInputAdapter(GameActor actor){
         this.actor = actor;
@@ -37,9 +37,9 @@ public class ActorInputAdapter extends InputListener{
         } else if (this.actor instanceof GameCharacter) {
             //todo gui displays options
             selectedOption = "question"; //this is set by the gui option
-            questioningStle = 1; // provided by gui option
+            questioningStyle = 1; // provided by gui option
             if (selectedOption == "question") {
-                toGui = interactions.question(questioningStle, (GameCharacter) actor);
+                toGui = interactions.question(questioningStyle, (GameCharacter) actor);
             } else if (selectedOption == "give") {
                 //todo add code to run the stuff
             } else if (selectedOption == "accuse") {

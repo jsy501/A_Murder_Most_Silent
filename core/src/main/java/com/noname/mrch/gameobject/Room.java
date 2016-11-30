@@ -11,6 +11,7 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 	private String name;
 	private boolean isLocked;
 
+	private Array<GameCharacter> characterList = new Array<>();
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
 	
@@ -19,15 +20,17 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 		this.name = name;
 		this.isLocked = locked;
 	}
-
-	public Room(int id, String name, boolean locked, Stage stage){
-		this.id = id;
-		this.name = name;
-		this.isLocked = locked;
-	}
-
+	
 	public Room(){
 		super(new ScreenViewport());
+	}
+
+	public void addCharacter(GameCharacter character){
+		characterList.add(character);
+	}
+
+	public Array<GameCharacter> getCharacterList(){
+		return characterList;
 	}
 
 	@Override

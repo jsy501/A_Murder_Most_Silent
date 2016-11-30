@@ -9,15 +9,20 @@ import com.noname.mrch.helper.AssetLoader;
 
 /**
  *  Initialises and manages items
+ *  Dependent on CharacterManager
  */
 
 public class ItemManager {
-    private static ItemManager Instance = new ItemManager();
+    private static ItemManager Instance = null;
 
     private Array<Item> itemArray = new Array<>();
     private Item key;
 
-    ItemManager () {
+    /**
+     * Filter out unnecessary items from a total item array and assign every item to every character
+     */
+
+    private ItemManager () {
         AssetLoader assetLoader = AssetLoader.getInstance();
 
         Array<Item> totalItemList = assetLoader.totalItemClue;
@@ -27,26 +32,35 @@ public class ItemManager {
         for (int i = 0; i < characterArray.size; i++) {
             int index = characterArray.get(i).getId() - GameCharacter.ID_OFFSET;
             itemArray.add(totalItemList.get(index));
-
-            if (i > 0) {
-                characterArray.get(i - 1).addItem(itemArray.peek());
-            }
         }
 
         key = new Item(500, "key", "It's a key", true); // the final item to be given
-        characterArray.get(characterArray.size - 1).addItem(key);
-
         itemArray.add(key);
 
-        //generate item links
-        for (int i = 0; i < itemArray.size - 1; i++) {
-            itemArray.get(i).setReturnItem(itemArray.get(i + 1));
-        }
+        for (int i = 0; i < characterArray.size; i++) {
+            //assign every item but the first one to every character
+            //the first item is to be found in a room
+            characterArray.get(i).addItem(itemArray.get(i+1));
 
+            //create links between items
+            itemArray.get(i).setReturnItem(itemArray.get(i+1));
+        }
     }
 
-    public static  ItemManager getInstance(){
-        return Instance;
+    static void createInstance(){
+        if (Instance == null) {
+            Instance = new ItemManager();
+        }
+    }
+
+    public static ItemManager getInstance(){
+        if (Instance != null) {
+            return Instance;
+        }
+        else{
+            createInstance();
+            return Instance;
+        }
     }
 
     public Array<Item> getItemArray(){
