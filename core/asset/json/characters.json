@@ -1,0 +1,27 @@
+[
+  {
+    "id": 300,
+    "name": "Chef",
+    "personality": "Aggressive"
+  },
+  {
+    "id": 301,
+    "name": "Detective",
+    "personality": "Neutral"
+  },
+  {
+    "id": 302,
+    "name": "Assistant",
+    "personality": "Friendly"
+  },
+  {
+    "id": 303,
+    "name": "Lady 1",
+    "personality": "Aggressive"
+  },
+  {
+    "id": 304,
+    "name": "Lady 2",
+    "personality": "Neutral"
+  }
+]

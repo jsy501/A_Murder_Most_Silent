@@ -1,0 +1,51 @@
+[
+  {
+    "id": 130,
+    "name": "appearance1",
+    "description": "description1",
+    "relatedCharId": [300, 301],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 131,
+    "name": "appearance2",
+    "description": "description2",
+    "relatedCharId": [302, 303],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 132,
+    "name": "appearance3",
+    "description": "description3",
+    "relatedCharId": [300, 304],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 133,
+    "name": "appearance4",
+    "description": "description4",
+    "relatedCharId": [300, 304],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 134,
+    "name": "appearance5",
+    "description": "description5",
+    "relatedCharId": [300, 304],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 135,
+    "name": "appearance6",
+    "description": "description6",
+    "relatedCharId": [300, 304],
+    "clueType": "Appearance"
+  },
+  {
+    "id": 136,
+    "name": "appearance7",
+    "description": "description7",
+    "relatedCharId": [302, 304],
+    "clueType": "Appearance"
+  }
+]

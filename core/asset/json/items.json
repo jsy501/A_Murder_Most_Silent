@@ -1,0 +1,37 @@
+[
+  {
+    "id": 200,
+    "name": "item1",
+    "description": "description1",
+    "linkedPersonId": 300,
+    "isKey": false
+  },
+  {
+    "id": 201,
+    "name": "item2",
+    "description": "description2",
+    "linkedPersonId": 301,
+    "isKey": false
+  },
+  {
+    "id": 202,
+    "name": "item3",
+    "description": "description3",
+    "linkedPersonId": 302,
+    "isKey": false
+  },
+  {
+    "id": 203,
+    "name": "item4",
+    "description": "description4",
+    "linkedPersonId": 303,
+    "isKey": false
+  },
+  {
+    "id": 204,
+    "name": "item5",
+    "description": "description5",
+    "linkedPersonId": 304,
+    "isKey": false
+  }
+]

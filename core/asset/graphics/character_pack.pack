@@ -1,0 +1,45 @@
+
+character_pack.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+300
+  rotate: false
+  xy: 1, 1
+  size: 900, 1742
+  orig: 900, 1742
+  offset: 0, 0
+  index: -1
+301
+  rotate: false
+  xy: 903, 79
+  size: 805, 1664
+  orig: 805, 1664
+  offset: 0, 0
+  index: 1
+
+character_pack2.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+302
+  rotate: false
+  xy: 1, 1
+  size: 643, 1516
+  orig: 643, 1516
+  offset: 0, 0
+  index: -1
+303
+  rotate: false
+  xy: 646, 56
+  size: 670, 1461
+  orig: 670, 1461
+  offset: 0, 0
+  index: 2
+304
+  rotate: false
+  xy: 1318, 93
+  size: 519, 1424
+  orig: 519, 1424
+  offset: 0, 0
+  index: -1
