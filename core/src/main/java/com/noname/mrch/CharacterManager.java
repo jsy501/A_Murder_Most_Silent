@@ -1,5 +1,8 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
@@ -38,6 +41,14 @@ public class CharacterManager {
     static void createInstance(){
         if (Instance == null) {
             Instance = new CharacterManager();
+        }
+    }
+
+    public void setImage(AssetLoader assetLoader){
+        TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/character_pack.pack");
+        for (GameCharacter character : characterArray){
+            TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(character.getId())));
+            character.setImage(image);
         }
     }
 

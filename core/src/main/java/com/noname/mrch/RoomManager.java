@@ -1,5 +1,7 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.Room;
@@ -39,8 +41,11 @@ public class RoomManager {
         }
     }
 
-    public void setBackground(){
-
+    public void setBackground(AssetLoader assetLoader){
+        for (Room room : roomArray){
+            Texture background = assetLoader.manager.get("asset/graphics/" + String.valueOf(room.getId()) + ".png");
+            room.setBackground(background);
+        }
     }
 
     public Array<Room> getRoomArray(){

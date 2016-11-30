@@ -1,7 +1,5 @@
 package com.noname.mrch.gameobject;
 
-import com.noname.mrch.libgdx.GameActor;
-
 /**
  *  Represents an item object
  */
