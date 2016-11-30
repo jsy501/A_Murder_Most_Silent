@@ -16,7 +16,6 @@ public class RoomManager {
     private Stack<Stage> stageStack = new Stack<>();
 
     RoomManager(){
-        Json json = new Json();
         roomArray = AssetLoader.getInstance().totalRoomClue;
     }
     public static RoomManager getInstance(){

@@ -3,8 +3,9 @@ package com.noname.mrch.gameobject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class Room implements JsonImport, ObjectContainer {
+public class Room extends Stage implements JsonImport, ObjectContainer {
 
 	private int id;
 	private String name;
@@ -12,8 +13,6 @@ public class Room implements JsonImport, ObjectContainer {
 
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
-
-	private Stage stage = new Stage();
 	
 	public Room(int id, String name, boolean locked){
 		this.id = id;
@@ -25,23 +24,10 @@ public class Room implements JsonImport, ObjectContainer {
 		this.id = id;
 		this.name = name;
 		this.isLocked = locked;
-		this.stage = stage;
 	}
 
 	public Room(){
-
-	}
-
-	public void addActor(Actor actor){
-		stage.addActor(actor);
-	}
-
-	public void removeActor(Actor actor){
-		actor.remove();
-	}
-
-	public Stage getStage(){
-		return stage;
+		super(new ScreenViewport());
 	}
 
 	@Override

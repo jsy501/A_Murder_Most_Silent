@@ -48,7 +48,7 @@ public class RoomTest {
 
     @Test
     public void getStageTest() throws Exception {
-        assertEquals("failure - room does not have the correct stage", testStage, stageTest.getStage());
+        assertEquals("failure - room does not have the correct stage", testStage, stageTest);
     }
 
 }

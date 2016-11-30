@@ -30,9 +30,6 @@ public class InteractionsTest {
     public void setUp() throws Exception {
         interactions = Interactions.getInstance();
 
-        target = new GameCharacter(0,"test character", Personality.Aggressive,false, false, false, "hello", "negative test response");
-        target.addClue(murderMotive);
-
         characterRelated = new Array<>();
         characterRelated.add(0);
 
@@ -49,6 +46,8 @@ public class InteractionsTest {
         item = new Item(0, "test item", "test item description", 0, returnItem, false);
         returnItem = new Item(1, "return item", "return item description", true);
 
+        target = new GameCharacter(0,"test character", Personality.Aggressive,false, false, false, "hello", "negative test response");
+        target.addClue(murderMotive);
 
     }
 
@@ -78,8 +77,8 @@ public class InteractionsTest {
 
     @Test
     public void questionIfNotAlreadyAccusedTest() throws Exception {
-        //currently fails due to code in GameCharacter.
-        //assertEquals("failure - clue response not returned", "motive response", interactions.question(9, target));
+//        currently fails due to code in GameCharacter.
+        assertEquals("failure - clue response not returned", "motive response", interactions.question(9, target));
 
         assertEquals("failure - target response not returned", "negative test response", interactions.question(-9, target));
 

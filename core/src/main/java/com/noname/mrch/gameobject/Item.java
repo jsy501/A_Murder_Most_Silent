@@ -1,10 +1,12 @@
 package com.noname.mrch.gameobject;
 
+import com.noname.mrch.libgdx.GameActor;
+
 /**
  *  Represents an item object
  */
 
-public class Item implements JsonImport{
+public class Item extends GameActor implements JsonImport{
     public static final int ID_OFFSET = 200;
 
     private int id;

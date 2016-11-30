@@ -1,12 +1,13 @@
 package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.libgdx.GameActor;
 
 /**
  *  Represents a clue object
  */
 
-public class Clue implements JsonImport{
+public class Clue extends GameActor implements JsonImport{
     public static final int ID_OFFSET = 100;
 
     private int id;

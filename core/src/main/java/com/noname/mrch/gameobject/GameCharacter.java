@@ -1,12 +1,13 @@
 package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.libgdx.GameActor;
 
 /**
  * Represents a gameCharacter object
  */
 
-public class GameCharacter implements ObjectContainer {
+public class GameCharacter extends GameActor implements ObjectContainer {
 	public static final int ID_OFFSET = 300;
 	public static final int ROSTER_NUMBER = 10;
 

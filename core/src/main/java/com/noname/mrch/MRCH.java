@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.noname.mrch.helper.AssetLoader;
 
 public class MRCH extends Game {
+	public static float GAME_HEIGHT;
+	public static float GAME_WIDTH;
+
 	public AssetLoader assetLoader;
 	public CharacterManager characterManager;
 	public ItemManager itemManager;
@@ -16,6 +19,9 @@ public class MRCH extends Game {
 
 	@Override
 	public void create () {
+		GAME_HEIGHT = Gdx.graphics.getHeight();
+		GAME_WIDTH = Gdx.graphics.getWidth();
+
 		assetLoader = AssetLoader.getInstance();
 		characterManager = CharacterManager.getInstance();
 		itemManager = ItemManager.getInstance();
@@ -30,9 +36,6 @@ public class MRCH extends Game {
 		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
 		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
 		System.out.println("Room list: " + roomManager.getRoomArray());
-
-
-
 	}
 
 	@Override
