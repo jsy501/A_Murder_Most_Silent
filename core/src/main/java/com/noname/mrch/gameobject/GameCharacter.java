@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
  * Represents a gameCharacter object
  */
 
-public class GameCharacter extends HasObject {
+public class GameCharacter implements ObjectContainer {
 	public static final int ID_OFFSET = 300;
 	public static final int ROSTER_NUMBER = 10;
 
@@ -85,5 +85,35 @@ public class GameCharacter extends HasObject {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		itemList.add(item);
+	}
+
+	@Override
+	public void addClue(Clue clue) {
+		clueList.add(clue);
+	}
+
+	@Override
+	public Array<Item> getItemList() {
+		return itemList;
+	}
+
+	@Override
+	public Array<Clue> getClueList() {
+		return clueList;
+	}
+
+	@Override
+	public void removeClue(Clue clue) {
+		clueList.removeValue(clue, false);
+	}
+
+	@Override
+	public void removeItem(Item item) {
+		itemList.removeValue(item, false);
 	}
 }

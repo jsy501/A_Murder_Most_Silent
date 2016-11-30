@@ -4,8 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
-public class Room extends HasObject {
-
+public class Room implements JsonImport, ObjectContainer {
 
 	private int id;
 	private String name;
@@ -47,6 +46,46 @@ public class Room extends HasObject {
 
 	@Override
 	public String toString() {
+		return name;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		itemList.add(item);
+	}
+
+	@Override
+	public void addClue(Clue clue) {
+		clueList.add(clue);
+	}
+
+	@Override
+	public Array<Item> getItemList() {
+		return itemList;
+	}
+
+	@Override
+	public Array<Clue> getClueList() {
+		return clueList;
+	}
+
+	@Override
+	public void removeClue(Clue clue) {
+		clueList.removeValue(clue, false);
+	}
+
+	@Override
+	public void removeItem(Item item) {
+		itemList.removeValue(item, false);
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
 		return name;
 	}
 }

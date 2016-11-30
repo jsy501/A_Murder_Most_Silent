@@ -1,5 +1,7 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.utils.Array;
+
 /**
  * This class holds data about the player
  */
