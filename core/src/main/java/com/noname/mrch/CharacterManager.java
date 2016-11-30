@@ -1,9 +1,6 @@
 package com.noname.mrch;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 import com.noname.mrch.helper.InitUtil;
@@ -30,11 +27,11 @@ public class CharacterManager {
     private CharacterManager() {
         AssetLoader assetLoader = AssetLoader.getInstance();
 
-        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterList, CHARACTER_COUNT);
+        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
         victim = characterArray.pop();
         victim.setVictim(true);
 
-        murderer = characterArray.random();
+        murderer = characterArray.first();
         murderer.setMurderer(true);
     }
 

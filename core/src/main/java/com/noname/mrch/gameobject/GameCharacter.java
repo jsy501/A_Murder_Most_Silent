@@ -7,9 +7,8 @@ import com.noname.mrch.libgdx.GameActor;
  * Represents a gameCharacter object
  */
 
-public class GameCharacter extends GameActor implements ObjectContainer {
+public class GameCharacter extends GameActor implements ObjectContainer, JsonImport {
 	public static final int ID_OFFSET = 300;
-	public static final int ROSTER_NUMBER = 10;
 
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
@@ -37,10 +36,6 @@ public class GameCharacter extends GameActor implements ObjectContainer {
 
 	public GameCharacter(){
 		
-	}
-
-	public int getId(){
-		return id;
 	}
 
 	public String getGreeting() {
@@ -79,6 +74,12 @@ public class GameCharacter extends GameActor implements ObjectContainer {
 		isAccused = accused;
 	}
 
+	@Override
+	public int getId(){
+		return id;
+	}
+
+	@Override
 	public String getName() {
 		return name;
 	}

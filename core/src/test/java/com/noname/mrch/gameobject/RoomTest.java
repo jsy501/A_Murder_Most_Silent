@@ -24,8 +24,6 @@ public class RoomTest {
         lockedRoom = new Room(0,"test locked room", true);
 
         testStage = new Stage();
-
-        stageTest = new Room(0,"test stage room", false, testStage);
     }
 
     @After
@@ -35,20 +33,4 @@ public class RoomTest {
         stageTest = null;
         testStage = null;
     }
-
-    @Test
-    public void addActorTest() throws Exception {
-
-    }
-
-    @Test
-    public void removeActorTest() throws Exception {
-
-    }
-
-    @Test
-    public void getStageTest() throws Exception {
-        assertEquals("failure - room does not have the correct stage", testStage, stageTest);
-    }
-
 }
