@@ -7,8 +7,7 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public class HasObject{
-	private Array<Item> itemList = new Array<Item>() ;
-	private Array<Clue> clueList = new Array<Clue>() ;
+
 
 	public void addItem(Item item){
 		itemList.add(item);

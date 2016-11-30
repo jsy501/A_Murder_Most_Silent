@@ -1,5 +1,7 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.utils.Array;
+
 /**
  * Represents a gameCharacter object
  */
@@ -7,6 +9,9 @@ package com.noname.mrch.gameobject;
 public class GameCharacter extends HasObject {
 	public static final int ID_OFFSET = 300;
 	public static final int ROSTER_NUMBER = 10;
+
+	private Array<Item> itemList = new Array<Item>() ;
+	private Array<Clue> clueList = new Array<Clue>() ;
 
 	private int id;
 	private String name;

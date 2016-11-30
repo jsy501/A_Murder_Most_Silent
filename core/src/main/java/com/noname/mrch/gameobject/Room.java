@@ -2,6 +2,7 @@ package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
 public class Room extends HasObject {
 
@@ -9,6 +10,9 @@ public class Room extends HasObject {
 	private int id;
 	private String name;
 	private boolean isLocked;
+
+	private Array<Item> itemList = new Array<Item>() ;
+	private Array<Clue> clueList = new Array<Clue>() ;
 
 	private Stage stage = new Stage();
 	
