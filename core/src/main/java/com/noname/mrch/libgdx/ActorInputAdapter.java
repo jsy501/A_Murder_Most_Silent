@@ -21,7 +21,7 @@ public class ActorInputAdapter extends InputListener{
         this.actor = actor;
     }
     @Override
-    public boolean touchUp (InputEvent event, float x, float y, int pointer, int button){
+    public void touchUp (InputEvent event, float x, float y, int pointer, int button){
         if (this.actor instanceof Clue) {
             //todo gui displays some info
             NoteBook.getInstance().addClue((Clue) actor);
@@ -39,7 +39,7 @@ public class ActorInputAdapter extends InputListener{
             selectedOption = "question"; //this is set by the gui option
             questioningStle = 1; // provided by gui option
             if (selectedOption == "question") {
-                toGui = interactions.question(questioningStle,(GameCharacter) actor);
+                toGui = interactions.question(questioningStle, (GameCharacter) actor);
             } else if (selectedOption == "give") {
                 //todo add code to run the stuff
             } else if (selectedOption == "accuse") {
@@ -49,7 +49,6 @@ public class ActorInputAdapter extends InputListener{
             }
 
         }
-        return true;
     }
 }
 
