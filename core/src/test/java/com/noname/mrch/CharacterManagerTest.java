@@ -25,14 +25,14 @@ public class CharacterManagerTest {
     }
 
     @Test
-    public void getMurderer() throws Exception {
+    public void getMurdererTest() throws Exception {
         assertNotNull(characterManager.getMurderer());
 
         assertTrue(characterManager.getMurderer().isMurderer());
     }
 
     @Test
-    public void getVictim() throws Exception {
+    public void getVictimTest() throws Exception {
         assertNotNull(characterManager.getVictim());
 
         assertTrue(characterManager.getVictim().isVictim());
@@ -40,17 +40,17 @@ public class CharacterManagerTest {
     }
 
     @Test
-    public void getCharacterArray() throws Exception {
+    public void getCharacterArrayTest() throws Exception {
         assertNotNull(characterManager.getCharacterArray());
     }
 
     @Test
-    public void characterArrayNotContainMurderer() throws Exception {
+    public void characterArrayNotContainMurdererTest() throws Exception {
         assertFalse(characterManager.getCharacterArray().contains(characterManager.getMurderer(),true));
     }
 
     @Test
-    public void characterArrayNotContainVictim() throws Exception {
+    public void characterArrayNotContainVictimTest() throws Exception {
         assertFalse(characterManager.getCharacterArray().contains(characterManager.getVictim(), true));
 
     }

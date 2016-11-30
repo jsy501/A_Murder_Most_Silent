@@ -24,21 +24,21 @@ public class ClueManagerTest {
     }
 
     @Test
-    public void getMotiveClue() throws Exception {
+    public void getMotiveClueTest() throws Exception {
         assertNotNull(clueManager.getMotiveClue());
 
         assertTrue(clueManager.getMotiveClue().getClueType() == ClueType.Motive);
     }
 
     @Test
-    public void getWeaponClue() throws Exception {
+    public void getWeaponClueTest() throws Exception {
         assertNotNull(clueManager.getWeaponClue());
 
         assertTrue(clueManager.getWeaponClue().getClueType() == ClueType.Weapon);
     }
 
     @Test
-    public void getAppearanceClue() throws Exception {
+    public void getAppearanceClueTest() throws Exception {
         assertNotNull(clueManager.getAppearanceClue());
     }
 

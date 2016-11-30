@@ -31,32 +31,32 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void getId() throws Exception {
+    public void getIdTest() throws Exception {
         assertEquals("failure - testCharacter did not initialise with correct id", 0, testCharacter.getId());
     }
 
     @Test
-    public void getGreeting() throws Exception {
+    public void getGreetingTest() throws Exception {
         assertEquals("failure - returned greeting was not correct", "test greeting", testCharacter.getGreeting());
     }
 
     @Test
-    public void getResponse() throws Exception {
+    public void getResponseTest() throws Exception {
         assertEquals("failure - returned response was not correct", "test negative response", testCharacter.getResponse());
     }
 
     @Test
-    public void getPersonality() throws Exception {
+    public void getPersonalityTest() throws Exception {
         assertEquals("failure - returned personality was not correct", Personality.Aggressive, testCharacter.getPersonality());
     }
 
     @Test
-    public void isMurderer() throws Exception {
+    public void isMurdererTest() throws Exception {
         assertFalse(testCharacter.isMurderer());
     }
 
     @Test
-    public void setMurderer() throws Exception {
+    public void setMurdererTest() throws Exception {
         assertFalse(testCharacter.isMurderer());
 
         testCharacter.setMurderer(true);
@@ -65,12 +65,12 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void isVictim() throws Exception {
+    public void isVictimTest() throws Exception {
         assertFalse(testCharacter.isVictim());
     }
 
     @Test
-    public void setVictim() throws Exception {
+    public void setVictimTest() throws Exception {
         assertFalse(testCharacter.isVictim());
 
         testCharacter.setVictim(true);
@@ -79,12 +79,12 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void isAccused() throws Exception {
+    public void isAccusedTest() throws Exception {
         assertFalse(testCharacter.isAccused());
     }
 
     @Test
-    public void setAccused() throws Exception {
+    public void setAccusedTest() throws Exception {
         assertFalse(testCharacter.isAccused());
 
         testCharacter.setAccused(true);
@@ -93,12 +93,12 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void getName() throws Exception {
+    public void getNameTest() throws Exception {
         assertEquals("failure - returned name not correct", "test name", testCharacter.getName());
     }
 
     @Test
-    public void addItem() throws Exception {
+    public void addItemTest() throws Exception {
         assertFalse(testCharacter.getItemList().contains(testItem, true));
 
         testCharacter.addItem(testItem);
@@ -107,7 +107,7 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void addClue() throws Exception {
+    public void addClueTest() throws Exception {
         assertFalse(testCharacter.getClueList().contains(testClue, true));
 
         testCharacter.addClue(testClue);
@@ -116,12 +116,12 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void getItemList() throws Exception {
+    public void getItemListTest() throws Exception {
         assertNotNull(testCharacter.getItemList());
     }
 
     @Test
-    public void getClueList() throws Exception {
+    public void getClueListTest() throws Exception {
         assertNotNull(testCharacter.getItemList());
     }
 }

@@ -34,7 +34,7 @@ public class RoomTest {
         testItem = null;
     }
     @Test
-    public void addCharacter() throws Exception {
+    public void addCharacterTest() throws Exception {
         assertFalse(testRoom.getCharacterList().contains(testCharacter, true));
 
         testRoom.addCharacter(testCharacter);
@@ -43,13 +43,13 @@ public class RoomTest {
     }
 
     @Test
-    public void getCharacterList() throws Exception {
+    public void getCharacterListTest() throws Exception {
         assertNotNull(testRoom.getCharacterList());
 
     }
 
     @Test
-    public void addItem() throws Exception {
+    public void addItemTest() throws Exception {
         assertFalse(testRoom.getItemList().contains(testItem, true));
 
         testRoom.addItem(testItem);
@@ -59,7 +59,7 @@ public class RoomTest {
     }
 
     @Test
-    public void addClue() throws Exception {
+    public void addClueTest() throws Exception {
         assertFalse(testRoom.getClueList().contains(testClue, true));
 
         testRoom.addClue(testClue);
@@ -69,17 +69,17 @@ public class RoomTest {
     }
 
     @Test
-    public void getItemList() throws Exception {
+    public void getItemListTest() throws Exception {
         assertNotNull(testRoom.getItemList());
     }
 
     @Test
-    public void getClueList() throws Exception {
+    public void getClueListTest() throws Exception {
         assertNotNull(testRoom.getClueList());
     }
 
     @Test
-    public void removeClue() throws Exception {
+    public void removeClueTest() throws Exception {
         assertFalse(testRoom.getClueList().contains(testClue, true));
 
         testRoom.addClue(testClue);
@@ -92,7 +92,7 @@ public class RoomTest {
     }
 
     @Test
-    public void removeItem() throws Exception {
+    public void removeItemTest() throws Exception {
         assertFalse(testRoom.getItemList().contains(testItem, true));
 
         testRoom.addItem(testItem);
@@ -105,12 +105,12 @@ public class RoomTest {
     }
 
     @Test
-    public void getId() throws Exception {
+    public void getIdTest() throws Exception {
         assertEquals("failure - id is not 0", 0, testRoom.getId());
     }
 
     @Test
-    public void getName() throws Exception {
+    public void getNameTest() throws Exception {
         assertEquals("failure - name is not 'test name'", "test name", testRoom.getName());
     }
 

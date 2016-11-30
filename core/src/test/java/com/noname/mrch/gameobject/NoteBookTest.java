@@ -40,7 +40,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void addClue() throws Exception {
+    public void addClueTest() throws Exception {
         assertFalse("Failure - noteBook already contains element at initialisation", noteBook.contains(testClue));
 
         noteBook.addClue(testClue);
@@ -49,7 +49,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void addItem() throws Exception {
+    public void addItemTest() throws Exception {
         assertFalse("Failure - noteBook already contains element at initialisation", noteBook.contains(testItem));
 
         noteBook.addItem(testItem);
@@ -59,7 +59,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void getClue() throws Exception {
+    public void getClueTest() throws Exception {
         noteBook.addClue(testClue);
         assertTrue("failure - test clue not added to noteBook", noteBook.contains(testClue));
 
@@ -67,7 +67,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void getItem() throws Exception {
+    public void getItemTest() throws Exception {
         noteBook.addItem(testItem);
         assertTrue("failure - test item was not added to noteBook", noteBook.contains(testClue));
 
@@ -75,7 +75,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void contains() throws Exception {
+    public void containsClueTest() throws Exception {
         assertFalse("failure - array does not contain any elements", noteBook.contains(containsTestClue));
 
         noteBook.addClue(containsTestClue);
@@ -84,7 +84,7 @@ public class NoteBookTest {
     }
 
     @Test
-    public void contains1() throws Exception {
+    public void containsItemTest() throws Exception {
         assertFalse("failure - array does not contain any elements", noteBook.contains(containsTestItem));
 
         noteBook.addItem(containsTestItem);
@@ -94,12 +94,12 @@ public class NoteBookTest {
     }
 
     @Test
-    public void getClueList() throws Exception {
+    public void getClueListTest() throws Exception {
         assertNotNull(noteBook.getClueList());
     }
 
     @Test
-    public void getItemList() throws Exception {
+    public void getItemListTest() throws Exception {
         assertNotNull(noteBook.getClueList());
     }
 

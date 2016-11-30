@@ -26,12 +26,12 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void getItemArray() throws Exception {
+    public void getItemArrayTest() throws Exception {
         assertNotNull(itemManager.getItemArray());
     }
 
     @Test
-    public void getKey() throws Exception {
+    public void getKeyTest() throws Exception {
         assertNotNull(itemManager.getKey());
 
         assertEquals("failure - item is not a key", testKey, itemManager.getKey());
