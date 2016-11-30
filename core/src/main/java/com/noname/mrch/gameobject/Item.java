@@ -4,7 +4,7 @@ package com.noname.mrch.gameobject;
  *  Represents an item object
  */
 
-public class Item{
+public class Item implements JsonImport{
     public static final int ID_OFFSET = 200;
 
     private int id;
@@ -39,6 +39,11 @@ public class Item{
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {

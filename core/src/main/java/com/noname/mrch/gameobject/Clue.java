@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
  *  Represents a clue object
  */
 
-public class Clue {
+public class Clue implements JsonImport{
     public static final int ID_OFFSET = 100;
 
     private int id;
@@ -32,6 +32,11 @@ public class Clue {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {

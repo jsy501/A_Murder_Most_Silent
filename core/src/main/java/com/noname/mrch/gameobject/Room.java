@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
-public class Room implements ObjectContainer {
+public class Room implements JsonImport, ObjectContainer {
 
 	private int id;
 	private String name;
@@ -77,6 +77,16 @@ public class Room implements ObjectContainer {
 	@Override
 	public void removeItem(Item item) {
 		itemList.removeValue(item, false);
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
+		return name;
 	}
 }
 	

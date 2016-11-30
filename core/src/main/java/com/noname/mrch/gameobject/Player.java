@@ -10,9 +10,6 @@ public class Player {
     private int personality;
     private Room location;
 
-    private Array<Item> itemList = new Array<Item>() ;
-    private Array<Clue> clueList = new Array<Clue>() ;
-
     public Player(String playerName, int playerPersonality){
         // Constructor for initialising player
         name = playerName;
