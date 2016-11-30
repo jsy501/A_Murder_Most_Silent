@@ -69,7 +69,7 @@ public class NoteBookTest {
     @Test
     public void getItemTest() throws Exception {
         noteBook.addItem(testItem);
-        assertTrue("failure - test item was not added to noteBook", noteBook.contains(testClue));
+        assertTrue("failure - test item was not added to noteBook", noteBook.contains(testItem));
 
         assertEquals("failure - test clue was not returned", testItem , noteBook.getItem(2));
     }
