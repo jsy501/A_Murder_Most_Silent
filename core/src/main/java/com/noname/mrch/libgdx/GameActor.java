@@ -11,10 +11,9 @@ import com.noname.mrch.gameobject.GameCharacter;
  */
 public class GameActor extends Actor {
     Texture image;
-    GameCharacter gameCharacter;
 
-    public Texture getImage() {
-        image = Gdx.files.getFileHandle(gameCharacter.getName()".txt");
+    public Texture getImage(GameCharacter gameCharacter) {
+        image = new Texture(Gdx.files.internal(gameCharacter.getName()+".png"));
         return image;
     }
 
