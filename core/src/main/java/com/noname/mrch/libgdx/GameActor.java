@@ -13,7 +13,7 @@ import com.noname.mrch.gameobject.GameCharacter;
  */
 
 public class GameActor extends Actor {
-    TextureRegion image;
+    private TextureRegion image;
 
     public GameActor(){
         addListener(new ActorInputAdapter(this));

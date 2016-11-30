@@ -40,7 +40,7 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 	//	this.background.setWidth(MRCH.GAME_WIDTH);
 	//	this.background.setHeight(MRCH.GAME_HEIGHT);
 	//	addActor(this.background);
-	//}
+	//
 
 	@Override
 	public String toString() {
