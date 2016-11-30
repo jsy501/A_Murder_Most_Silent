@@ -11,15 +11,28 @@ import com.noname.mrch.gameobject.GameCharacter;
  */
 public class GameActor extends Actor {
     Texture image;
+    String itemType;
+    float w = Gdx.graphics.getWidth();
+    float h = Gdx.graphics.getHeight();
 
-    public Texture getImage(GameCharacter gameCharacter) {
-        image = new Texture(Gdx.files.internal(gameCharacter.getName()+".png"));
+
+    public void setImage(Texture texture) {
+        image = texture;
+        float imageW = image.getWidth();
+        float imageH = image.getHeight();
+        float ratio = h / imageH;
+        float iw = imageW * ratio;
+        float ih = imageH * ratio;
+        setBounds((w-iw)/2 , 0 , iw, ih );
+    }
+
+    public  Texture getImage(){
         return image;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
-
+        batch.draw(image,0,0);
     }
+
 }
