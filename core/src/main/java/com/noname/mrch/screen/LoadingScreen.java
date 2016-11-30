@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.noname.mrch.CharacterManager;
+import com.noname.mrch.RoomManager;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 
@@ -32,6 +33,7 @@ public class LoadingScreen implements Screen{
     @Override
     public void render(float delta) {
         if (assetLoader.manager.update()){
+            RoomManager.getInstance().setBackground(assetLoader);
             game.setScreen(new GamePlayScreen(game));
         }
 

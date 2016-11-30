@@ -1,4 +1,4 @@
-package com.noname.mrch.libgdx;
+package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.noname.mrch.MRCH;
 import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.libgdx.ActorInputAdapter;
 
 /**
  * Created by PPPPPP on 2016/11/30.

@@ -1,9 +1,12 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.noname.mrch.MRCH;
 
 public class Room extends Stage implements JsonImport, ObjectContainer {
 
@@ -15,7 +18,7 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
 
-	//private Image background;
+	private Image background;
 
 	public Room(int id, String name, boolean locked){
 		this.id = id;
@@ -35,12 +38,12 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 		return characterList;
 	}
 
-	//public void setBackground(Texture background){
-	//	this.background = new Image(background);
-	//	this.background.setWidth(MRCH.GAME_WIDTH);
-	//	this.background.setHeight(MRCH.GAME_HEIGHT);
-	//	addActor(this.background);
-	//
+	public void setBackground(Texture background){
+		this.background = new Image(background);
+		this.background.setWidth(MRCH.GAME_WIDTH);
+		this.background.setHeight(MRCH.GAME_HEIGHT);
+		addActor(this.background);
+	}
 
 	@Override
 	public String toString() {
