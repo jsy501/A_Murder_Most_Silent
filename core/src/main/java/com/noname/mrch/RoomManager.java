@@ -17,6 +17,7 @@ public class RoomManager {
 
     RoomManager(){
         roomArray = AssetLoader.getInstance().totalRoomClue;
+        stageStack.push(roomArray.first());
     }
     public static RoomManager getInstance(){
         return Instance;

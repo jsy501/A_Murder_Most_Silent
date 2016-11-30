@@ -1,8 +1,16 @@
 package com.noname.mrch.screen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.noname.mrch.GameWorld;
 
 public class GamePlayScreen implements Screen {
+    private GameWorld gameWorld;
+
+    public GamePlayScreen(){
+        gameWorld = new GameWorld();
+    }
+
     @Override
     public void show() {
 
@@ -10,7 +18,8 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+        gameWorld.getCurrentRoom().act();
+        gameWorld.getCurrentRoom().draw();
     }
 
     @Override

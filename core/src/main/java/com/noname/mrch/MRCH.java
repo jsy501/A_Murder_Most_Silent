@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.noname.mrch.helper.AssetLoader;
+import com.noname.mrch.screen.GamePlayScreen;
 
 public class MRCH extends Game {
 	public static float GAME_HEIGHT;
@@ -36,6 +37,8 @@ public class MRCH extends Game {
 		System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
 		System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
 		System.out.println("Room list: " + roomManager.getRoomArray());
+
+		this.setScreen(new GamePlayScreen());
 	}
 
 	@Override

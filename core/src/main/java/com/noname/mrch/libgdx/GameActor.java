@@ -15,6 +15,10 @@ import com.noname.mrch.gameobject.GameCharacter;
 public class GameActor extends Actor {
     TextureRegion image;
 
+    public GameActor(){
+        addListener(new ActorInputAdapter(this));
+    }
+
     public void setImage(TextureRegion texture) {
         image = texture;
         float ratio = MRCH.GAME_HEIGHT / image.getRegionHeight();
