@@ -27,6 +27,10 @@ public class Clue extends GameActor implements JsonImport{
         this.response = response;
     }
 
+    public Clue(int id){
+        this.id = id;
+    }
+
     public Clue(){
 
     }
