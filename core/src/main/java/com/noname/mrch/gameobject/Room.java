@@ -20,9 +20,9 @@ public class Room implements JsonImport, ObjectContainer {
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
 
-	private Image background;
-
-	private Array<Stage> stageArray;
+	private boolean isDefault = true;
+	private Stage defaultStage;
+	private Stage investigateStage;
 
 
 	public Room(int id, String name, boolean locked){
@@ -32,14 +32,13 @@ public class Room implements JsonImport, ObjectContainer {
 	}
 
 	public Room(){
-		stageArray = new Array<>(2);
-		stageArray.add(new Stage(new ScreenViewport()));
-		stageArray.add(new Stage(new ScreenViewport()));
+		defaultStage = new Stage(new ScreenViewport());
+		investigateStage = new Stage(new ScreenViewport());
 	}
 
 	public void addCharacter(GameCharacter character){
 		characterList.add(character);
-		this.getCurrentStage().addActor(character);
+		defaultStage.addActor(character);
 	}
 
 
@@ -47,12 +46,20 @@ public class Room implements JsonImport, ObjectContainer {
 		return characterList;
 	}
 
-	public void setBackground(TextureRegion background){
-		this.background = new Image(background);
-		this.background.setWidth(MRCH.GAME_WIDTH);
-		this.background.setHeight(MRCH.GAME_HEIGHT);
-		this.background.addListener(new ActorInputAdapter(this.background));
-		this.getCurrentStage().addActor(this.background);
+	public void setDefaultBackground(TextureRegion background){
+		Image image = new Image(background);
+		image.setWidth(MRCH.GAME_WIDTH);
+		image.setHeight(MRCH.GAME_HEIGHT);
+		image.addListener(new ActorInputAdapter(image));
+		defaultStage.addActor(image);
+	}
+
+	public void setInvestigateBackground(TextureRegion background){
+		Image image = new Image(background);
+		image.setWidth(MRCH.GAME_WIDTH);
+		image.setHeight(MRCH.GAME_HEIGHT);
+		image.addListener(new ActorInputAdapter(image));
+		investigateStage.addActor(image);
 	}
 
 	public boolean isLocked() {
@@ -63,17 +70,17 @@ public class Room implements JsonImport, ObjectContainer {
 		isLocked = locked;
 	}
 
-	public void setStages(GameStage mainStage, GameStage subStage){
-		this.stageArray.add(mainStage);
-		this.stageArray.add(subStage);
-	}
-
 	public void switchCurrentStage(){
-		this.stageArray.swap(0,1);
+		isDefault = !isDefault;
 	}
 
 	public Stage getCurrentStage(){
-		return stageArray.get(0);
+		if (isDefault){
+			return defaultStage;
+		}
+		else{
+			return investigateStage;
+		}
 	}
 
 	@Override
@@ -84,13 +91,13 @@ public class Room implements JsonImport, ObjectContainer {
 	@Override
 	public void addItem(Item item) {
 		itemList.add(item);
-		this.getCurrentStage().addActor(item);
+		investigateStage.addActor(item);
 	}
 
 	@Override
 	public void addClue(Clue clue) {
 		clueList.add(clue);
-		this.getCurrentStage().addActor(clue);
+		investigateStage.addActor(clue);
 	}
 
 	@Override

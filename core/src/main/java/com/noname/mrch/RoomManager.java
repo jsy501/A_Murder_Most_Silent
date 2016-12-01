@@ -1,5 +1,7 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -36,9 +38,17 @@ public class RoomManager {
 
     public void setBackground(AssetLoader assetLoader){
         TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/room_pack.pack");
+
+        //temporary background for investigate background
+        Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA4444);
+        pixmap.setColor(Color.WHITE);
+        pixmap.fill();
+        TextureRegion blank = new TextureRegion(new Texture(pixmap));
+
         for (Room room : roomArray){
             TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(room.getId())));
-            room.setBackground(image);
+            room.setDefaultBackground(image);
+            room.setInvestigateBackground(blank);
         }
     }
 
