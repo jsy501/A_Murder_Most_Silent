@@ -8,8 +8,9 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.MRCH;
 import com.noname.mrch.libgdx.ActorInputAdapter;
+import com.noname.mrch.libgdx.GameStage;
 
-public class Room extends Stage implements JsonImport, ObjectContainer {
+public class Room implements JsonImport, ObjectContainer {
 	public static final int ROOM_COUNT = 5;
 
 	private int id;
@@ -22,6 +23,9 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 
 	private Image background;
 
+	private Array<GameStage> stages;
+
+
 	public Room(int id, String name, boolean locked){
 		this.id = id;
 		this.name = name;
@@ -29,13 +33,13 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 	}
 
 	public Room(){
-		super(new ScreenViewport());
 	}
 
 	public void addCharacter(GameCharacter character){
 		characterList.add(character);
-		addActor(character);
+		this.getCurrentStage().addActor(character);
 	}
+
 
 	public Array<GameCharacter> getCharacterList(){
 		return characterList;
@@ -46,7 +50,7 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 		this.background.setWidth(MRCH.GAME_WIDTH);
 		this.background.setHeight(MRCH.GAME_HEIGHT);
 		this.background.addListener(new ActorInputAdapter(this.background));
-		addActor(this.background);
+		this.getCurrentStage().addActor(this.background);
 	}
 
 	public boolean isLocked() {
@@ -57,6 +61,19 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 		isLocked = locked;
 	}
 
+	public void setStages(GameStage mainStage, GameStage subStage){
+		this.stages.add(mainStage);
+		this.stages.add(subStage);
+	}
+
+	public void switchCurrentStage(){
+		this.stages.swap(0,1);
+	}
+
+	public GameStage getCurrentStage(){
+		return stages.get(0);
+	}
+
 	@Override
 	public String toString() {
 		return name;
@@ -65,13 +82,13 @@ public class Room extends Stage implements JsonImport, ObjectContainer {
 	@Override
 	public void addItem(Item item) {
 		itemList.add(item);
-		addActor(item);
+		this.getCurrentStage().addActor(item);
 	}
 
 	@Override
 	public void addClue(Clue clue) {
 		clueList.add(clue);
-		addActor(clue);
+		this.getCurrentStage().addActor(clue);
 	}
 
 	@Override
