@@ -1,0 +1,72 @@
+
+hub.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+400
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1
+
+island.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+401
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1
+  
+lecture_hall.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+402
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1
+
+seminar_room.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+403
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1
+
+study_room.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+404
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1  
+  
+tutor_room.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+405
+  rotate: false
+  xy: 0, 0
+  size: 1600, 900
+  orig: 1600, 900
+  offset: 0, 0
+  index: -1  
