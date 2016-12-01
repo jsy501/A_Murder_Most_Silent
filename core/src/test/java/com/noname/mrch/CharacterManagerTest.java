@@ -16,7 +16,7 @@ public class CharacterManagerTest {
     static CharacterManager characterManager;
     @BeforeClass
     public static void setUpClass() throws Exception {
-        characterManager = CharacterManager.getInstance();
+//        characterManager = CharacterManager.getInstance();
     }
 
     @Before

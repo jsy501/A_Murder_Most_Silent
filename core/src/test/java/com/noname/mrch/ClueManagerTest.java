@@ -15,7 +15,7 @@ public class ClueManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        clueManager = ClueManager.getInstance();
+//        clueManager = ClueManager.getInstance();
     }
 
     @After

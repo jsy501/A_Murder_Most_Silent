@@ -1,27 +1,37 @@
 [
   {
     "id": 300,
-    "name": "Chef",
-    "personality": "Aggressive"
+    "name": "Henri Poirot",
+    "personality": "AGGRESSIVE"
   },
   {
     "id": 301,
-    "name": "Detective",
-    "personality": "Neutral"
+    "name": "Simon Holmes",
+    "personality": "NEUTRAL"
   },
   {
     "id": 302,
     "name": "Assistant",
-    "personality": "Friendly"
+    "personality": "FRIENDLY"
   },
   {
     "id": 303,
-    "name": "Lady 1",
-    "personality": "Aggressive"
+    "name": "Jacqueline Roux",
+    "personality": "AGGRESSIVE"
   },
   {
     "id": 304,
     "name": "Lady 2",
-    "personality": "Neutral"
+    "personality": "NEUTRAL"
   }
+//  {
+//    "id": 305,
+//    "name": "Detective2",
+//    "personality": "NEUTRAL"
+//  },
+//  {
+//    "id": 306,
+//    "name": "Some guy",
+//    "personality": "NEUTRAL"
+//  }
 ]

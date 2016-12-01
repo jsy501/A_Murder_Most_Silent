@@ -1,8 +1,11 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
 
@@ -14,14 +17,12 @@ import java.util.Stack;
  */
 
 public class RoomManager {
-    private static RoomManager Instance = null;
-
     private Array<Room> roomArray; // all of the rooms EXCLUDING locked room
     private Room lockedRoom;
     private Stack<Room> roomStack = new Stack<>();
 
-    RoomManager(){
-        roomArray = AssetLoader.getInstance().totalRoomArray;
+    RoomManager(AssetLoader assetLoader){
+        roomArray = assetLoader.totalRoomArray;
         roomStack.push(roomArray.first()); //first room should always be hub
 
         // pick random room to be locked, excluding hub
@@ -29,28 +30,15 @@ public class RoomManager {
         lockedRoom.setLocked(true);
 
         roomArray.removeValue(lockedRoom, false);
-    }
 
-    static void createInstance(){
-        if (Instance == null) {
-            Instance = new RoomManager();
-        }
-    }
-
-    public static RoomManager getInstance(){
-        if (Instance != null) {
-            return Instance;
-        }
-        else{
-            createInstance();
-            return Instance;
-        }
+        setBackground(assetLoader);
     }
 
     public void setBackground(AssetLoader assetLoader){
+        TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/room_pack.pack");
         for (Room room : roomArray){
-            Texture background = assetLoader.manager.get("asset/graphics/" + String.valueOf(room.getId()) + ".png");
-            room.setBackground(background);
+            TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(room.getId())));
+            room.setBackground(image);
         }
     }
 

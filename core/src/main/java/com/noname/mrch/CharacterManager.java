@@ -14,7 +14,6 @@ import com.noname.mrch.helper.InitUtil;
  */
 
 public class CharacterManager {
-    private static CharacterManager Instance = null;
     private GameCharacter murderer;
     private GameCharacter victim;
 
@@ -25,8 +24,7 @@ public class CharacterManager {
      *  Pick n number of character from the total character roster randomly and
      *  choose murderer and victim randomly
      */
-    private CharacterManager() {
-        AssetLoader assetLoader = AssetLoader.getInstance();
+    public CharacterManager(AssetLoader assetLoader) {
 
         characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, GameCharacter.CHARACTER_COUNT);
         victim = characterArray.pop();
@@ -34,15 +32,11 @@ public class CharacterManager {
 
         murderer = characterArray.first();
         murderer.setMurderer(true);
+
+        setImage(assetLoader);
     }
 
-    static void createInstance(){
-        if (Instance == null) {
-            Instance = new CharacterManager();
-        }
-    }
-
-    public void setImage(AssetLoader assetLoader){
+    private void setImage(AssetLoader assetLoader){
         TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/character_pack.pack");
         for (GameCharacter character : characterArray){
             TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(character.getId())));
@@ -50,15 +44,6 @@ public class CharacterManager {
         }
     }
 
-    public static CharacterManager getInstance(){
-        if (Instance != null) {
-            return Instance;
-        }
-        else{
-            createInstance();
-            return Instance;
-        }
-    }
     public GameCharacter getMurderer (){
         return murderer;
     }

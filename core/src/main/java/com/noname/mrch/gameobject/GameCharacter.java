@@ -33,7 +33,6 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 		this.isAccused = isAccused;
 		this.greeting = greeting;
 		this.negativeClueResponse = negativeClueResponse;
-
 	}
 
 	public GameCharacter(){

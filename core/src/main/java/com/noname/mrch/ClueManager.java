@@ -12,45 +12,28 @@ import com.noname.mrch.helper.AssetLoader;
  */
 
 public class ClueManager {
-    private static ClueManager Instance = null;
+    private CharacterManager characterManager;
+    private AssetLoader assetLoader;
 
     private Clue motiveClue;
     private Clue weaponClue;
     private Array<Clue> appearanceClue;
 
-    private ClueManager(){
-        AssetLoader assetLoader = AssetLoader.getInstance();
+    public ClueManager(AssetLoader assetLoader, CharacterManager characterManager){
+        this.characterManager = characterManager;
+        this.assetLoader = assetLoader;
 
-        initMotiveClue(assetLoader);
-        initWeaponClue(assetLoader);
-        initAppearanceClue(assetLoader);
-    }
-
-    static void createInstance(){
-        if (Instance == null) {
-            Instance = new ClueManager();
-        }
-    }
-
-    public static ClueManager getInstance(){
-        if (Instance != null) {
-            return Instance;
-        }
-        else{
-            createInstance();
-            return Instance;
-        }
+        initMotiveClue();
+        initWeaponClue();
+        initAppearanceClue();
     }
 
     /**
      * Assign motive clue and check error
-     * @param assetLoader used for loading total motive clue array
      */
-    private void initMotiveClue(AssetLoader assetLoader){
+    private void initMotiveClue(){
 
         Array<Clue> totalClueArray = assetLoader.totalMotiveClueArray;
-
-        CharacterManager characterManager = CharacterManager.getInstance();
 
         //motive clues are unique for every character
         motiveClue = totalClueArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
@@ -65,10 +48,9 @@ public class ClueManager {
     /**
      * Choose one weapon clue randomly from a total weapon clue array and point to the murderer.
      * Check json import error
-     * @param assetLoader used for loading total weapon clue array
      */
 
-    private void initWeaponClue(AssetLoader assetLoader){
+    private void initWeaponClue(){
         Array<Clue> totalClueArray = assetLoader.totalWeaponClueArray;
 
         weaponClue = totalClueArray.random();
@@ -78,20 +60,19 @@ public class ClueManager {
             throw new RuntimeException("Invalid json format");
         }
 
-        weaponClue.getRelatedCharId().add(CharacterManager.getInstance().getMurderer().getId());
+        weaponClue.getRelatedCharId().add(characterManager.getMurderer().getId());
     }
 
     /**
      * Choose 3 appearance clues that point to the murderer from a total appearance clue array
-     * @param assetLoader used for loading total appearance clue array
      */
 
-    private void initAppearanceClue(AssetLoader assetLoader){
+    private void initAppearanceClue(){
         Array<Clue> totalClueArray = assetLoader.totalAppearanceClueArray;
 
         appearanceClue = new Array<>();
 
-        GameCharacter murderer = CharacterManager.getInstance().getMurderer();
+        GameCharacter murderer = characterManager.getMurderer();
         for (int i = 0; i < totalClueArray.size && appearanceClue.size <= 3; i++){
             if (totalClueArray.get(i).getRelatedCharId().contains(murderer.getId(), false)){
                 appearanceClue.add(totalClueArray.get(i));

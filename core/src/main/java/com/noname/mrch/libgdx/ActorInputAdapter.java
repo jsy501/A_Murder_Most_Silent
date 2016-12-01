@@ -18,7 +18,7 @@ public class ActorInputAdapter extends InputListener{
     private String toGui;
     private Interactions interactions = Interactions.getInstance();
     private int questioningStyle;
-    private RoomManager roomManager = RoomManager.getInstance();
+//    private RoomManager roomManager = RoomManager.getInstance();
 
     public ActorInputAdapter(Actor actor){
         this.actor = actor;
@@ -34,7 +34,7 @@ public class ActorInputAdapter extends InputListener{
         if (this.actor instanceof Clue) {
             //todo gui displays some info
             NoteBook.getInstance().addClue((Clue) actor);
-            room = roomManager.getCurrentRoom();
+//            room = roomManager.getCurrentRoom();
             room.removeClue((Clue) actor);
 
             System.out.println("Clue clicked");
@@ -42,7 +42,7 @@ public class ActorInputAdapter extends InputListener{
         } else if (actor instanceof Item) {
             //todo gui displays some info
             NoteBook.getInstance().addItem((Item) actor);
-            room = roomManager.getCurrentRoom();
+//            room = roomManager.getCurrentRoom();
             room.removeItem((Item) actor);
 
             System.out.println("Item clicked");

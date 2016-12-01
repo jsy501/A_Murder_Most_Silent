@@ -4,20 +4,20 @@
     "name": "weapon1",
     "description": "description1",
     "relatedCharId": [],
-    "clueType": "Weapon"
+    "clueType": "WEAPON"
   },
   {
     "id": 121,
     "name": "weapon2",
     "description": "description2",
     "relatedCharId": [],
-    "clueType": "Weapon"
+    "clueType": "WEAPON"
   },
   {
     "id": 122,
     "name": "weapon3",
     "description": "description3",
     "relatedCharId": [],
-    "clueType": "Weapon"
+    "clueType": "WEAPON"
   }
 ]

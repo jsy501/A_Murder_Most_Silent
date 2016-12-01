@@ -16,7 +16,7 @@ public class RoomManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        roomManager = RoomManager.getInstance();
+//        roomManager = RoomManager.getInstance();
 
         testStage = new Stage();
     }
@@ -36,7 +36,7 @@ public class RoomManagerTest {
     public void setCurrentStageTest() throws Exception {
         assertNotNull(roomManager.getCurrentRoom());
 
-        roomManager.setCurrentRoom(testStage);
+//        roomManager.setCurrentRoom(testStage);
 
         assertEquals("failure - returned stage is not equal to test stage", testStage, roomManager.getCurrentRoom());
     }

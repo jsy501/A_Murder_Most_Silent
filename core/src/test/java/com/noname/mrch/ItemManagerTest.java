@@ -16,7 +16,7 @@ public class ItemManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        itemManager = ItemManager.getInstance();
+//        itemManager = ItemManager.getInstance();
         testKey = new Item(500, "key", "It's a key", true);
     }
 

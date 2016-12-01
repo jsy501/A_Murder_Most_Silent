@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.noname.mrch.CharacterManager;
+import com.noname.mrch.MRCH;
 import com.noname.mrch.RoomManager;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
@@ -16,10 +17,11 @@ public class LoadingScreen implements Screen{
 
     private SpriteBatch batch;
     private BitmapFont loadingFont;
-    private AssetLoader assetLoader = AssetLoader.getInstance();
+    private AssetLoader assetLoader;
 
-    public LoadingScreen(final Game game){
+    public LoadingScreen(final MRCH game){
         this.game = game;
+        this.assetLoader = game.assetLoader;
 
         batch = new SpriteBatch();
         loadingFont = new BitmapFont();
@@ -27,14 +29,11 @@ public class LoadingScreen implements Screen{
 
     @Override
     public void show() {
-        assetLoader.loadTexture();
     }
 
     @Override
     public void render(float delta) {
         if (assetLoader.manager.update()){
-            RoomManager.getInstance().setBackground(assetLoader);
-            CharacterManager.getInstance().setImage(assetLoader);
             game.setScreen(new GamePlayScreen(game));
         }
 

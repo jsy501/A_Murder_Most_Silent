@@ -14,7 +14,8 @@ import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Room;
 
 public class AssetLoader {
-    public static AssetLoader Instance = new AssetLoader();
+    private String jsonPath;
+    private String graphicsPath;
 
     public AssetManager manager;
 
@@ -25,8 +26,9 @@ public class AssetLoader {
     public Array<Clue> totalAppearanceClueArray;
     public Array<Room> totalRoomArray;
 
-    private AssetLoader() {
+    public AssetLoader() {
         manager = new AssetManager();
+        FileHandle file = new FileHandle("assetDirectory.txt");
 
         //load json
         Json json = new Json();
@@ -37,20 +39,12 @@ public class AssetLoader {
         totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle("asset/json/appearance_clues.json"));
         totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle("asset/json/rooms.json"));
 
-    }
-
-    public static AssetLoader getInstance(){
-        return Instance;
+        loadTexture();
     }
 
     public void loadTexture(){
         //load room texture
-        manager.load("asset/graphics/400.png", Texture.class);
-        manager.load("asset/graphics/401.png", Texture.class);
-        manager.load("asset/graphics/402.png", Texture.class);
-        manager.load("asset/graphics/403.png", Texture.class);
-        manager.load("asset/graphics/404.png", Texture.class);
-        manager.load("asset/graphics/405.png", Texture.class);
+        manager.load("asset/graphics/room_pack.pack", TextureAtlas.class);
 
         //load character texture
         manager.load("asset/graphics/character_pack.pack", TextureAtlas.class);

@@ -2,15 +2,20 @@ package com.noname.mrch.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.noname.mrch.GameWorld;
+import com.noname.mrch.MRCH;
 
 public class GamePlayScreen implements Screen {
+    private MRCH game;
+
     private GameWorld gameWorld;
 
     public GamePlayScreen(Game game){
-        gameWorld = new GameWorld();
+        this.game = (MRCH) game;
+        gameWorld = new GameWorld(this.game.assetLoader);
     }
 
     @Override

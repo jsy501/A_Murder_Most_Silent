@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Room;
+import com.noname.mrch.helper.AssetLoader;
 
 /**
  * Initialises and holds all the game objects
@@ -12,12 +13,19 @@ import com.noname.mrch.gameobject.Room;
 public class GameWorld {
     private Room currentRoom;
 
-    private CharacterManager characterManager = CharacterManager.getInstance();
-    private ItemManager itemManager = ItemManager.getInstance();
-    private ClueManager clueManager = ClueManager.getInstance();
-    private RoomManager roomManager = RoomManager.getInstance();
+    private CharacterManager characterManager;
+    private ItemManager itemManager;
+    private ClueManager clueManager;
+    private RoomManager roomManager;
 
-    public GameWorld() {
+    public GameWorld(AssetLoader assetLoader) {
+        characterManager = new CharacterManager(assetLoader);
+        itemManager = new ItemManager(assetLoader, characterManager);
+        clueManager = new ClueManager(assetLoader, characterManager);
+        roomManager = new RoomManager(assetLoader);
+
+        RoomManager roomManager = new RoomManager(assetLoader);
+
         Array<Item> itemArray = itemManager.getItemArray();
         Array<GameCharacter> characterArray = characterManager.getCharacterArray();
         Array<Room> roomArray = roomManager.getRoomArray();

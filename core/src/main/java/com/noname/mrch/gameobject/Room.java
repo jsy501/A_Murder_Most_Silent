@@ -1,7 +1,6 @@
 package com.noname.mrch.gameobject;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
@@ -23,7 +22,7 @@ public class Room implements JsonImport, ObjectContainer {
 
 	private Image background;
 
-	private Array<GameStage> stages;
+	private Array<Stage> stageArray;
 
 
 	public Room(int id, String name, boolean locked){
@@ -33,6 +32,9 @@ public class Room implements JsonImport, ObjectContainer {
 	}
 
 	public Room(){
+		stageArray = new Array<>(2);
+		stageArray.add(new Stage(new ScreenViewport()));
+		stageArray.add(new Stage(new ScreenViewport()));
 	}
 
 	public void addCharacter(GameCharacter character){
@@ -45,7 +47,7 @@ public class Room implements JsonImport, ObjectContainer {
 		return characterList;
 	}
 
-	public void setBackground(Texture background){
+	public void setBackground(TextureRegion background){
 		this.background = new Image(background);
 		this.background.setWidth(MRCH.GAME_WIDTH);
 		this.background.setHeight(MRCH.GAME_HEIGHT);
@@ -62,16 +64,16 @@ public class Room implements JsonImport, ObjectContainer {
 	}
 
 	public void setStages(GameStage mainStage, GameStage subStage){
-		this.stages.add(mainStage);
-		this.stages.add(subStage);
+		this.stageArray.add(mainStage);
+		this.stageArray.add(subStage);
 	}
 
 	public void switchCurrentStage(){
-		this.stages.swap(0,1);
+		this.stageArray.swap(0,1);
 	}
 
-	public GameStage getCurrentStage(){
-		return stages.get(0);
+	public Stage getCurrentStage(){
+		return stageArray.get(0);
 	}
 
 	@Override
