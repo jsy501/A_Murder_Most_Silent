@@ -3,8 +3,17 @@ package com.noname.mrch;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.noname.mrch.GUI.GUIWidgetGroup;
+import com.noname.mrch.GUI.NoteBookButton;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 import com.noname.mrch.screen.GamePlayScreen;
@@ -24,6 +33,7 @@ public class MRCH extends Game {
 		assetLoader = new AssetLoader();
 
 		setScreen(new LoadingScreen(this));
+
 	}
 
 	@Override

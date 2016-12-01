@@ -4,7 +4,16 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.noname.mrch.GUI.GUIWidgetGroup;
+import com.noname.mrch.GUI.NoteBookButton;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MRCH;
 
@@ -12,6 +21,8 @@ public class GamePlayScreen implements Screen {
     private MRCH game;
 
     private GameWorld gameWorld;
+
+    private GUIWidgetGroup gui;
 
     public GamePlayScreen(Game game){
         this.game = (MRCH) game;
@@ -30,6 +41,8 @@ public class GamePlayScreen implements Screen {
 
         gameWorld.getCurrentRoom().getCurrentStage().act();
         gameWorld.getCurrentRoom().getCurrentStage().draw();
+//        gui.getGuiStage().act();
+//        gui.getGuiStage().draw();
     }
 
     @Override
