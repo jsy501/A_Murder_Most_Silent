@@ -4,6 +4,7 @@ import com.noname.mrch.helper.AssetLoader;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,12 +13,16 @@ import static org.junit.Assert.*;
  * Character Manager Unit Test
  */
 public class CharacterManagerTest {
-    CharacterManager characterManager;
+    static CharacterManager characterManager;
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        characterManager = CharacterManager.getInstance();
+    }
 
     @Before
     public void setUp() throws Exception {
 //        RoomManager.createInstance();
-        characterManager = CharacterManager.getInstance();
+
     }
 
     @After

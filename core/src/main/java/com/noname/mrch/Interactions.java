@@ -25,7 +25,7 @@ public class Interactions {
         if (target.isAccused() == true) {
             return "Go Away";
         } else {
-            int diff = questionStyle - target.getPersonality().getValue();
+            int diff = Math.abs(questionStyle - target.getPersonality().getValue());
             int chanceOfSuccess = ThreadLocalRandom.current().nextInt(0, 9 + 1)+(diff);
             if (chanceOfSuccess >= 5){
                 Clue clue = target.getClueList().random();
