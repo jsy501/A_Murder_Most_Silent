@@ -34,7 +34,11 @@ public class ItemManagerTest {
     public void getKeyTest() throws Exception {
         assertNotNull(itemManager.getKey());
 
+
+        //this will fail since key created in the test and the key created in item manager are two
+        //different objects
         assertEquals("failure - item is not a key", testKey, itemManager.getKey());
+
     }
 
 }
