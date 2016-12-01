@@ -16,7 +16,7 @@ public class GameCharacterTest {
 
     @Before
     public void setUp() throws Exception {
-        testCharacter = new GameCharacter(0 , "test name", Personality.Aggressive, false, false, false, "test greeting", "test negative response");
+        testCharacter = new GameCharacter(0 , "test name", Personality.AGGRESSIVE, false, false, false, "test greeting", "test negative response");
 
         testClue = new Clue();
         testItem = new Item();
@@ -47,7 +47,7 @@ public class GameCharacterTest {
 
     @Test
     public void getPersonalityTest() throws Exception {
-        assertEquals("failure - returned personality was not correct", Personality.Aggressive, testCharacter.getPersonality());
+        assertEquals("failure - returned personality was not correct", Personality.AGGRESSIVE, testCharacter.getPersonality());
     }
 
     @Test

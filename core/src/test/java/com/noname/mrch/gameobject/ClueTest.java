@@ -19,14 +19,14 @@ public class ClueTest {
 
     @Before
     public void setUp() throws Exception {
-        succesfulTarget = new GameCharacter(0,"test name", Personality.Aggressive, false, false, false, "hello test", "negative response test");
-        failingTarget = new GameCharacter(5, "test name", Personality.Aggressive, false, false, false, "hello", "negative test response");
+        succesfulTarget = new GameCharacter(0,"test name", Personality.AGGRESSIVE, false, false, false, "hello test", "negative response test");
+        failingTarget = new GameCharacter(5, "test name", Personality.AGGRESSIVE, false, false, false, "hello", "negative test response");
 
         characterRelated = new Array<>();
         characterRelated.add(0);
         characterRelated.add(1);
 
-        clue = new Clue(0,"test clue", "test description", ClueType.Motive, characterRelated, "test response");
+        clue = new Clue(0,"test clue", "test description", ClueType.MOTIVE, characterRelated, "test response");
     }
 
     @After
@@ -54,7 +54,7 @@ public class ClueTest {
 
     @Test
     public void getClueTypeTest() throws Exception {
-        assertEquals("failure - test clue type not returned", ClueType.Motive, clue.getClueType());
+        assertEquals("failure - test clue type not returned", ClueType.MOTIVE, clue.getClueType());
     }
 
     @Test

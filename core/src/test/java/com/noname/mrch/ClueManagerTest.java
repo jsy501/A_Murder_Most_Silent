@@ -27,14 +27,14 @@ public class ClueManagerTest {
     public void getMotiveClueTest() throws Exception {
         assertNotNull(clueManager.getMotiveClue());
 
-        assertTrue(clueManager.getMotiveClue().getClueType() == ClueType.Motive);
+        assertTrue(clueManager.getMotiveClue().getClueType() == ClueType.MOTIVE);
     }
 
     @Test
     public void getWeaponClueTest() throws Exception {
         assertNotNull(clueManager.getWeaponClue());
 
-        assertTrue(clueManager.getWeaponClue().getClueType() == ClueType.Weapon);
+        assertTrue(clueManager.getWeaponClue().getClueType() == ClueType.WEAPON);
     }
 
     @Test

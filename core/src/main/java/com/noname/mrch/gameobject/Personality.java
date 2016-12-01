@@ -1,7 +1,7 @@
 package com.noname.mrch.gameobject;
 
 public enum Personality {
-    Friendly(0), Neutral(1), Aggressive(2);
+    FRIENDLY(2), NEUTRAL(5), AGGRESSIVE(8);
 
     private int value;
 

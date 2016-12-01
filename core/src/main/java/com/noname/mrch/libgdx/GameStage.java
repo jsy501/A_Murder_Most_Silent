@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.gameobject.Room;
 
 /**
- * Created by User on 01/12/2016.
+ * Game stage class is stage
  */
 public class GameStage extends Stage {
     private Room room;

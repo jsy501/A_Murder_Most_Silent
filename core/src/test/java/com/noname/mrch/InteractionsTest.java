@@ -36,17 +36,17 @@ public class InteractionsTest {
         characterRelatedFail = new Array<>();
         characterRelatedFail.add(99);
 
-        murderMotive = new Clue(0, "murder motive", "murder motive description", ClueType.Motive, characterRelated, "motive response");
-        murderWeapon = new Clue(1, "murder weapon", "murder weapon description", ClueType.Weapon, characterRelated, "weapon response");
-        clueOne = new Clue(2, "clue one", "clue one description", ClueType.Appearance, characterRelated, "clue one response");
-        clueTwo = new Clue(3, "clue two", "clue two description", ClueType.Appearance, characterRelated, "clue two response");
-        clueThree = new Clue(4, "clue three", "clue three description", ClueType.Appearance, characterRelated, "clue three response");
-        failClue = new Clue(5, "clue four", "clue four description", ClueType.Appearance, characterRelatedFail, "clue four response");
+        murderMotive = new Clue(0, "murder motive", "murder motive description", ClueType.MOTIVE, characterRelated, "motive response");
+        murderWeapon = new Clue(1, "murder weapon", "murder weapon description", ClueType.WEAPON, characterRelated, "weapon response");
+        clueOne = new Clue(2, "clue one", "clue one description", ClueType.APPEARANCE, characterRelated, "clue one response");
+        clueTwo = new Clue(3, "clue two", "clue two description", ClueType.APPEARANCE, characterRelated, "clue two response");
+        clueThree = new Clue(4, "clue three", "clue three description", ClueType.APPEARANCE, characterRelated, "clue three response");
+        failClue = new Clue(5, "clue four", "clue four description", ClueType.APPEARANCE, characterRelatedFail, "clue four response");
 
         item = new Item(0, "test item", "test item description", 0, returnItem, false);
         returnItem = new Item(1, "return item", "return item description", true);
 
-        target = new GameCharacter(0,"test character", Personality.Aggressive,false, false, false, "hello", "negative test response");
+        target = new GameCharacter(0,"test character", Personality.AGGRESSIVE,false, false, false, "hello", "negative test response");
         target.addClue(murderMotive);
 
     }

@@ -1,9 +1,7 @@
 package com.noname.mrch;
 
-import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
@@ -21,7 +19,7 @@ public class RoomManager {
 
     private Array<Room> roomArray; // all of the rooms EXCLUDING locked room
     private Room lockedRoom;
-    private Stack<Stage> stageStack = new Stack<>();
+    private Stack<Room> stageStack = new Stack<>();
 
     RoomManager(){
         roomArray = AssetLoader.getInstance().totalRoomArray;
@@ -65,12 +63,12 @@ public class RoomManager {
         return roomArray;
     }
 
-    public void setCurrentStage(Stage stage){
+    public void setCurrentStage(Room stage){
         stageStack.pop();
         stageStack.push(stage);
     }
 
-    public Stage getCurrentStage(){
+    public Room getCurrentStage(){
         return stageStack.peek();
     }
 }

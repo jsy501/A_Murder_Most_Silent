@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.noname.mrch.Interactions;
+import com.noname.mrch.RoomManager;
 import com.noname.mrch.gameobject.*;
 
 /**
@@ -18,6 +19,7 @@ public class ActorInputAdapter extends InputListener{
     private String toGui;
     private Interactions interactions = Interactions.getInstance();
     private int questioningStyle;
+    private RoomManager roomManager = RoomManager.getInstance();
 
     public ActorInputAdapter(Actor actor){
         this.actor = actor;
@@ -33,7 +35,7 @@ public class ActorInputAdapter extends InputListener{
         if (this.actor instanceof Clue) {
             //todo gui displays some info
             NoteBook.getInstance().addClue((Clue) actor);
-            room =(Room) actor.getStage();
+            room = roomManager.getCurrentStage();
             room.removeClue((Clue) actor);
 
             System.out.println("Clue clicked");
@@ -41,7 +43,7 @@ public class ActorInputAdapter extends InputListener{
         } else if (actor instanceof Item) {
             //todo gui displays some info
             NoteBook.getInstance().addItem((Item) actor);
-            room = (Room) actor.getStage();
+            room = roomManager.getCurrentStage();
             room.removeItem((Item) actor);
 
             System.out.println("Item clicked");

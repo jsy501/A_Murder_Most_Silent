@@ -52,9 +52,9 @@ public class GameWorld {
         System.out.println("Murderer: " + characterManager.getMurderer());
         System.out.println("Victim: " + characterManager.getVictim());
         System.out.println("Item list: " + itemManager.getItemArray());
-        System.out.println("Motive Clue: " + clueManager.getMotiveClue());
-        System.out.println("Weapon Clue: " + clueManager.getWeaponClue());
-        System.out.println("Appearance Clues: " + clueManager.getAppearanceClue());
+        System.out.println("MOTIVE Clue: " + clueManager.getMotiveClue());
+        System.out.println("WEAPON Clue: " + clueManager.getWeaponClue());
+        System.out.println("APPEARANCE Clues: " + clueManager.getAppearanceClue());
         System.out.println("Room list: " + roomManager.getRoomArray());
 
 

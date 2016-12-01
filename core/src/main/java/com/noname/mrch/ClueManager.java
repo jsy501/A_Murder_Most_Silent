@@ -56,7 +56,7 @@ public class ClueManager {
         motiveClue = totalClueArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
 
         //json import check
-        if (motiveClue.getClueType() != ClueType.Motive ||
+        if (motiveClue.getClueType() != ClueType.MOTIVE ||
                 !motiveClue.getRelatedCharId().contains(characterManager.getMurderer().getId(), false)){
             throw new RuntimeException("Invalid json format");
         }
@@ -74,7 +74,7 @@ public class ClueManager {
         weaponClue = totalClueArray.random();
 
         //json import check
-        if (weaponClue.getClueType() != ClueType.Weapon){
+        if (weaponClue.getClueType() != ClueType.WEAPON){
             throw new RuntimeException("Invalid json format");
         }
 
@@ -98,7 +98,7 @@ public class ClueManager {
             }
 
             //json import check
-            if (totalClueArray.get(i).getClueType() != ClueType.Appearance){
+            if (totalClueArray.get(i).getClueType() != ClueType.APPEARANCE){
                 throw new RuntimeException("Invalid json format");
             }
         }
