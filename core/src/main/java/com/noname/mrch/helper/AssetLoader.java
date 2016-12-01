@@ -30,7 +30,7 @@ public class AssetLoader {
     public AssetLoader() {
         manager = new AssetManager();
 
-        FileHandle file = Gdx.files.local("assets.properties");
+        FileHandle file = new FileHandle("assets.properties");
         Properties properties = new Properties();
         try {
             properties.load(file.read());
