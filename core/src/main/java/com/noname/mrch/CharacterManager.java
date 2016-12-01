@@ -14,13 +14,11 @@ import com.noname.mrch.helper.InitUtil;
  */
 
 public class CharacterManager {
-    private final int CHARACTER_COUNT = 5;
-
     private static CharacterManager Instance = null;
     private GameCharacter murderer;
     private GameCharacter victim;
 
-    private Array<GameCharacter> characterArray = new Array<>(); //character array excluding victim
+    private Array<GameCharacter> characterArray = new Array<>(); //character array EXCLUDING victim
 
 
     /**
@@ -30,7 +28,7 @@ public class CharacterManager {
     private CharacterManager() {
         AssetLoader assetLoader = AssetLoader.getInstance();
 
-        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
+        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, GameCharacter.CHARACTER_COUNT);
         victim = characterArray.pop();
         victim.setVictim(true);
 

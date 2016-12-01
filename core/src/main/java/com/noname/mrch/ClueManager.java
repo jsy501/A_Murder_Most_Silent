@@ -7,7 +7,7 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 
 /**
- *  Initialises and manages clues
+ *  Initialises and manages clues that point to the murderer
  *  Dependent on CharacterManager
  */
 
@@ -92,7 +92,7 @@ public class ClueManager {
         appearanceClue = new Array<>();
 
         GameCharacter murderer = CharacterManager.getInstance().getMurderer();
-        for (int i = 0; i < totalClueArray.size; i++){
+        for (int i = 0; i < totalClueArray.size && appearanceClue.size <= 3; i++){
             if (totalClueArray.get(i).getRelatedCharId().contains(murderer.getId(), false)){
                 appearanceClue.add(totalClueArray.get(i));
             }

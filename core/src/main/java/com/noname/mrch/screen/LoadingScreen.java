@@ -34,6 +34,7 @@ public class LoadingScreen implements Screen{
     public void render(float delta) {
         if (assetLoader.manager.update()){
             RoomManager.getInstance().setBackground(assetLoader);
+            CharacterManager.getInstance().setImage(assetLoader);
             game.setScreen(new GamePlayScreen(game));
         }
 

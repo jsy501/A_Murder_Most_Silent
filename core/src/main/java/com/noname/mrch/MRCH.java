@@ -21,6 +21,11 @@ public class MRCH extends Game {
 		GAME_HEIGHT = Gdx.graphics.getHeight();
 		GAME_WIDTH = Gdx.graphics.getWidth();
 
+		CharacterManager.createInstance();
+		ItemManager.createInstance();
+		ClueManager.createInstance();
+		RoomManager.createInstance();
+
 		setScreen(new LoadingScreen(this));
 	}
 

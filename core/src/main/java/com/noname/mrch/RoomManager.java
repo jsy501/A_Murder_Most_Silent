@@ -2,6 +2,7 @@ package com.noname.mrch;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.Room;
@@ -12,17 +13,25 @@ import java.util.Stack;
 /**
  *  Initialises and manages rooms
  *  Responsible for swapping rendering stage
+ *  Dependent on all of the other managers
  */
 
 public class RoomManager {
     private static RoomManager Instance = null;
 
-    private Array<Room> roomArray;
+    private Array<Room> roomArray; // all of the rooms EXCLUDING locked room
+    private Room lockedRoom;
     private Stack<Stage> stageStack = new Stack<>();
 
     RoomManager(){
         roomArray = AssetLoader.getInstance().totalRoomArray;
         stageStack.push(roomArray.first()); //first room should always be hub
+
+        // pick random room to be locked, excluding hub
+        lockedRoom = roomArray.get(MathUtils.random(1,roomArray.size-1));
+        lockedRoom.setLocked(true);
+
+        roomArray.removeValue(lockedRoom, false);
     }
 
     static void createInstance(){
@@ -46,6 +55,10 @@ public class RoomManager {
             Texture background = assetLoader.manager.get("asset/graphics/" + String.valueOf(room.getId()) + ".png");
             room.setBackground(background);
         }
+    }
+
+    public Room getLockedRoom(){
+        return lockedRoom;
     }
 
     public Array<Room> getRoomArray(){

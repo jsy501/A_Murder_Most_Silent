@@ -16,6 +16,7 @@ public class CharacterManagerTest {
 
     @Before
     public void setUp() throws Exception {
+//        RoomManager.createInstance();
         characterManager = CharacterManager.getInstance();
     }
 
@@ -45,13 +46,13 @@ public class CharacterManagerTest {
     }
 
     @Test
-    public void characterArrayNotContainMurdererTest() throws Exception {
-        assertFalse(characterManager.getCharacterArray().contains(characterManager.getMurderer(),true));
+    public void characterArrayContainMurdererTest() throws Exception {
+        assertTrue(characterManager.getCharacterArray().contains(characterManager.getMurderer(),false));
     }
 
     @Test
     public void characterArrayNotContainVictimTest() throws Exception {
-        assertFalse(characterManager.getCharacterArray().contains(characterManager.getVictim(), true));
+        assertFalse(characterManager.getCharacterArray().contains(characterManager.getVictim(), false));
 
     }
 

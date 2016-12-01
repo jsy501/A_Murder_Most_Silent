@@ -15,7 +15,7 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void show() {
-
+        Gdx.input.setInputProcessor(gameWorld.getCurrentRoom());
     }
 
     @Override

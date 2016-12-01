@@ -1,12 +1,15 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.MRCH;
 
 /**
  * Represents a gameCharacter object
  */
 
 public class GameCharacter extends GameActor implements ObjectContainer, JsonImport {
+	public static final int CHARACTER_COUNT = 5;
 	public static final int ID_OFFSET = 300;
 
 	private Array<Item> itemList = new Array<Item>() ;
@@ -34,7 +37,6 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 	}
 
 	public GameCharacter(){
-		
 	}
 
 	public String getGreeting() {
