@@ -10,7 +10,6 @@ import java.util.Stack;
 
 /**
  *  Initialises and manages rooms
- *  Responsible for swapping rendering stage
  *  Dependent on all of the other managers
  */
 
@@ -19,11 +18,11 @@ public class RoomManager {
 
     private Array<Room> roomArray; // all of the rooms EXCLUDING locked room
     private Room lockedRoom;
-    private Stack<Room> stageStack = new Stack<>();
+    private Stack<Room> roomStack = new Stack<>();
 
     RoomManager(){
         roomArray = AssetLoader.getInstance().totalRoomArray;
-        stageStack.push(roomArray.first()); //first room should always be hub
+        roomStack.push(roomArray.first()); //first room should always be hub
 
         // pick random room to be locked, excluding hub
         lockedRoom = roomArray.get(MathUtils.random(1,roomArray.size-1));
@@ -63,12 +62,12 @@ public class RoomManager {
         return roomArray;
     }
 
-    public void setCurrentStage(Room stage){
-        stageStack.pop();
-        stageStack.push(stage);
+    public void setCurrentRoom(Room room){
+        roomStack.pop();
+        roomStack.push(room);
     }
 
-    public Room getCurrentStage(){
-        return stageStack.peek();
+    public Room getCurrentRoom(){
+        return roomStack.peek();
     }
 }

@@ -1,8 +1,6 @@
 package com.noname.mrch;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Room;
@@ -12,7 +10,7 @@ import com.noname.mrch.gameobject.Room;
  */
 
 public class GameWorld {
-    private Stage currentRoom;
+    private Room currentRoom;
 
     private CharacterManager characterManager = CharacterManager.getInstance();
     private ItemManager itemManager = ItemManager.getInstance();
@@ -58,10 +56,10 @@ public class GameWorld {
         System.out.println("Room list: " + roomManager.getRoomArray());
 
 
-        currentRoom = roomManager.getCurrentStage();
+        currentRoom = roomManager.getCurrentRoom();
     }
 
-    public Stage getCurrentRoom(){
+    public Room getCurrentRoom(){
         return currentRoom;
     }
 }

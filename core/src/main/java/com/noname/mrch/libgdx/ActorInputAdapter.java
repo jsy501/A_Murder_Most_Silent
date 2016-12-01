@@ -1,6 +1,5 @@
 package com.noname.mrch.libgdx;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -35,7 +34,7 @@ public class ActorInputAdapter extends InputListener{
         if (this.actor instanceof Clue) {
             //todo gui displays some info
             NoteBook.getInstance().addClue((Clue) actor);
-            room = roomManager.getCurrentStage();
+            room = roomManager.getCurrentRoom();
             room.removeClue((Clue) actor);
 
             System.out.println("Clue clicked");
@@ -43,7 +42,7 @@ public class ActorInputAdapter extends InputListener{
         } else if (actor instanceof Item) {
             //todo gui displays some info
             NoteBook.getInstance().addItem((Item) actor);
-            room = roomManager.getCurrentStage();
+            room = roomManager.getCurrentRoom();
             room.removeItem((Item) actor);
 
             System.out.println("Item clicked");

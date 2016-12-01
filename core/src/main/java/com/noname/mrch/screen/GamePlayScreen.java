@@ -15,7 +15,7 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(gameWorld.getCurrentRoom());
+        Gdx.input.setInputProcessor(gameWorld.getCurrentRoom().getCurrentStage());
     }
 
     @Override
@@ -23,8 +23,8 @@ public class GamePlayScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        gameWorld.getCurrentRoom().act();
-        gameWorld.getCurrentRoom().draw();
+        gameWorld.getCurrentRoom().getCurrentStage().act();
+        gameWorld.getCurrentRoom().getCurrentStage().draw();
     }
 
     @Override
