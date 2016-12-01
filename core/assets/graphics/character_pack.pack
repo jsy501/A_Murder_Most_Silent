@@ -5,41 +5,48 @@ filter: Nearest,Linear
 repeat: none
 300
   rotate: false
-  xy: 1, 1
-  size: 900, 1742
-  orig: 900, 1742
-  offset: 0, 0
+  xy: 1, 953
+  size: 606, 1046
+  orig: 744, 1049
+  offset: 104, 0
   index: -1
 301
   rotate: false
-  xy: 903, 79
-  size: 805, 1664
-  orig: 805, 1664
-  offset: 0, 0
-  index: 1
+  xy: 1, 1
+  size: 507, 950
+  orig: 744, 1049
+  offset: 117, 0
+  index: -1
+302
+  rotate: false
+  xy: 609, 1089
+  size: 387, 910
+  orig: 744, 1049
+  offset: 181, 0
+  index: -1
+303
+  rotate: false
+  xy: 510, 74
+  size: 403, 877
+  orig: 744, 1049
+  offset: 178, 0
+  index: -1
 
 character_pack2.png
 format: RGBA8888
 filter: Nearest,Linear
 repeat: none
-302
-  rotate: false
-  xy: 1, 1
-  size: 643, 1516
-  orig: 643, 1516
-  offset: 0, 0
-  index: -1
-303
-  rotate: false
-  xy: 646, 56
-  size: 670, 1461
-  orig: 670, 1461
-  offset: 0, 0
-  index: 2
 304
   rotate: false
-  xy: 1318, 93
-  size: 519, 1424
-  orig: 519, 1424
-  offset: 0, 0
+  xy: 1, 1
+  size: 519, 898
+  orig: 744, 1049
+  offset: 118, 0
+  index: -1
+305
+  rotate: false
+  xy: 522, 44
+  size: 312, 855
+  orig: 744, 1049
+  offset: 214, 0
   index: -1

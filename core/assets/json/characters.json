@@ -7,31 +7,26 @@
   {
     "id": 301,
     "name": "Simon Holmes",
-    "personality": "NEUTRAL"
-  },
-  {
-    "id": 302,
-    "name": "Assistant",
     "personality": "FRIENDLY"
   },
   {
-    "id": 303,
-    "name": "Jacqueline Roux",
+    "id": 302,
+    "name": "Jack Watson",
     "personality": "AGGRESSIVE"
   },
   {
+    "id": 303,
+    "name": "Selina",
+    "personality": "NEUTRAL"
+  },
+  {
     "id": 304,
-    "name": "Lady 2",
+    "name": "William",
+    "personality": "NEUTRAL"
+  },
+  {
+    "id": 305,
+    "name": "Jacqueline Roux",
     "personality": "NEUTRAL"
   }
-//  {
-//    "id": 305,
-//    "name": "Detective2",
-//    "personality": "NEUTRAL"
-//  },
-//  {
-//    "id": 306,
-//    "name": "Some guy",
-//    "personality": "NEUTRAL"
-//  }
 ]
