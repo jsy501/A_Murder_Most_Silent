@@ -70,4 +70,8 @@ public class GameWorld {
     public Room getCurrentRoom(){
         return currentRoom;
     }
+
+    public void dispose(){
+        roomManager.dispose();
+    }
 }

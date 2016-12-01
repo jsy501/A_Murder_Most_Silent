@@ -83,6 +83,11 @@ public class Room implements JsonImport, ObjectContainer {
 		}
 	}
 
+	public void dispose(){
+		defaultStage.dispose();
+		investigateStage.dispose();
+	}
+
 	@Override
 	public String toString() {
 		return name;

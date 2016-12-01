@@ -18,7 +18,6 @@ public class ActorInputAdapter extends InputListener{
     private String toGui;
     private Interactions interactions = Interactions.getInstance();
     private int questioningStyle;
-//    private RoomManager roomManager = RoomManager.getInstance();
 
     public ActorInputAdapter(Actor actor){
         this.actor = actor;

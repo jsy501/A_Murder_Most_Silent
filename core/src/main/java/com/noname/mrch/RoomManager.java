@@ -68,4 +68,11 @@ public class RoomManager {
     public Room getCurrentRoom(){
         return roomStack.peek();
     }
+
+    public void dispose(){
+        for (Room room: roomArray){
+            room.dispose();
+        }
+        lockedRoom.dispose();
+    }
 }
