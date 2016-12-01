@@ -1,10 +1,8 @@
 package com.noname.mrch.helper;
 
-import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
@@ -13,10 +11,10 @@ import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Room;
 
-public class AssetLoader {
-    private String jsonPath;
-    private String graphicsPath;
+import java.io.IOException;
+import java.util.Properties;
 
+public class AssetLoader {
     public AssetManager manager;
 
     public Array<GameCharacter> totalCharacterArray;
@@ -26,28 +24,47 @@ public class AssetLoader {
     public Array<Clue> totalAppearanceClueArray;
     public Array<Room> totalRoomArray;
 
+    public String characterTexturePath;
+    public String roomTexturePath;
+
     public AssetLoader() {
         manager = new AssetManager();
-        FileHandle file = new FileHandle("assetDirectory.txt");
+
+        FileHandle file = Gdx.files.local("assets.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(file.read());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String characterJsonPath = properties.getProperty("characterJsonPath");
+        String itemJsonPath = properties.getProperty("itemJsonPath");
+        String motiveClueJsonPath = properties.getProperty("motiveClueJsonPath");
+        String weaponClueJsonPath = properties.getProperty("weaponClueJsonPath");
+        String appearanceClueJsonPath = properties.getProperty("appearanceClueJsonPath");
+        String roomJsonPath = properties.getProperty("roomJsonPath");
+
+        characterTexturePath = properties.getProperty("characterTexturePath");
+        roomTexturePath = properties.getProperty("roomTexturePath");
 
         //load json
         Json json = new Json();
-        totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, new FileHandle("asset/json/characters.json"));
-        totalItemClueArray = json.fromJson(Array.class, Item.class, new FileHandle("asset/json/items.json"));
-        totalMotiveClueArray = json.fromJson(Array.class, Clue.class, new FileHandle("asset/json/motive_clues.json"));
-        totalWeaponClueArray = json.fromJson(Array.class, Clue.class, new FileHandle("asset/json/weapon_clues.json"));
-        totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle("asset/json/appearance_clues.json"));
-        totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle("asset/json/rooms.json"));
+        totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, new FileHandle(characterJsonPath));
+        totalItemClueArray = json.fromJson(Array.class, Item.class, new FileHandle(itemJsonPath));
+        totalMotiveClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(motiveClueJsonPath));
+        totalWeaponClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(weaponClueJsonPath));
+        totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(appearanceClueJsonPath));
+        totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle(roomJsonPath));
 
         loadTexture();
     }
 
     public void loadTexture(){
         //load room texture
-        manager.load("asset/graphics/room_pack.pack", TextureAtlas.class);
+        manager.load(roomTexturePath, TextureAtlas.class);
 
         //load character texture
-        manager.load("asset/graphics/character_pack.pack", TextureAtlas.class);
+        manager.load(characterTexturePath, TextureAtlas.class);
     }
 
     public void dispose(){

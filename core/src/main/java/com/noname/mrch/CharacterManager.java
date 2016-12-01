@@ -37,7 +37,7 @@ public class CharacterManager {
     }
 
     private void setImage(AssetLoader assetLoader){
-        TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/character_pack.pack");
+        TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.characterTexturePath);
         for (GameCharacter character : characterArray){
             TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(character.getId())));
             character.setImage(image);

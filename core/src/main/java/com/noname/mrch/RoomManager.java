@@ -37,7 +37,7 @@ public class RoomManager {
     }
 
     public void setBackground(AssetLoader assetLoader){
-        TextureAtlas textureAtlas = assetLoader.manager.get("asset/graphics/room_pack.pack");
+        TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.roomTexturePath);
 
         //temporary background for investigate background
         Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA4444);
