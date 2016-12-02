@@ -36,7 +36,7 @@ public class Gui {
 
     private boolean isTouched = false;
 
-    public Gui(AssetLoader assetLoader, GameWorld gameWorld){
+    public Gui(AssetLoader assetLoader, final GameWorld gameWorld){
         this.gameWorld = gameWorld;
 
         skin = assetLoader.skin;
