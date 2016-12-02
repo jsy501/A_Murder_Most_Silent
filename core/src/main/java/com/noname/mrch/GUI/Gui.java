@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -51,6 +50,16 @@ public class Gui {
 
         //notebook button
         notebookWindow = new Dialog("NOTEBOOK", skin){
+            @Override
+            public float getPrefWidth() {
+                return 1500;
+            }
+
+            @Override
+            public float getPrefHeight() {
+                return 700;
+            }
+
             @Override
             protected void result(Object object) {
                 if (object.equals(true)){
