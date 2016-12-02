@@ -1,16 +1,18 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.MRCH;
 import com.noname.mrch.libgdx.ActorInputAdapter;
-import com.noname.mrch.libgdx.GameStage;
 
 public class Room implements JsonImport, ObjectContainer {
-	public static final int ROOM_COUNT = 5;
+	public static final int ROOM_COUNT = 6;
 
 	private int id;
 	private String name;
@@ -32,8 +34,9 @@ public class Room implements JsonImport, ObjectContainer {
 	}
 
 	public Room(){
-		defaultStage = new Stage(new ScreenViewport());
-		investigateStage = new Stage(new ScreenViewport());
+		SpriteBatch batch = new SpriteBatch();
+		defaultStage = new Stage(new ScreenViewport(), batch);
+		investigateStage = new Stage(new ScreenViewport(), batch);
 	}
 
 	public void addCharacter(GameCharacter character){
@@ -46,20 +49,16 @@ public class Room implements JsonImport, ObjectContainer {
 		return characterList;
 	}
 
-	public void setDefaultBackground(TextureRegion background){
-		Image image = new Image(background);
-		image.setWidth(MRCH.GAME_WIDTH);
-		image.setHeight(MRCH.GAME_HEIGHT);
-		image.addListener(new ActorInputAdapter(image));
-		defaultStage.addActor(image);
+	public void setDefaultBackground(TextureRegion textureRegion){
+		GameActor background = new GameActor();
+		background.setImage(textureRegion);
+		defaultStage.addActor(background);
 	}
 
-	public void setInvestigateBackground(TextureRegion background){
-		Image image = new Image(background);
-		image.setWidth(MRCH.GAME_WIDTH);
-		image.setHeight(MRCH.GAME_HEIGHT);
-		image.addListener(new ActorInputAdapter(image));
-		investigateStage.addActor(image);
+	public void setInvestigateBackground(TextureRegion textureRegion){
+		GameActor background = new GameActor();
+		background.setImage(textureRegion);
+		investigateStage.addActor(background);
 	}
 
 	public boolean isLocked() {
@@ -68,6 +67,14 @@ public class Room implements JsonImport, ObjectContainer {
 
 	public void setLocked(boolean locked) {
 		isLocked = locked;
+	}
+
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean aDefault) {
+		isDefault = aDefault;
 	}
 
 	public void switchCurrentStage(){

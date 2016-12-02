@@ -19,7 +19,7 @@ public class NoteBookTest {
 
     @Before
     public void setUp() throws Exception {
-        noteBook = NoteBook.getInstance();
+        noteBook = new NoteBook();
 
         testClue = new Clue(0);
         containsTestClue = new Clue(1);

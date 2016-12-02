@@ -32,18 +32,4 @@ public class RoomManagerTest {
         assertNotNull(roomManager.getRoomArray());
     }
 
-    @Test
-    public void setCurrentStageTest() throws Exception {
-        assertNotNull(roomManager.getCurrentRoom());
-
-//        roomManager.setCurrentRoom(testStage);
-
-        assertEquals("failure - returned stage is not equal to test stage", testStage, roomManager.getCurrentRoom());
-    }
-
-    @Test
-    public void getCurrentStageTest() throws Exception {
-        assertNotNull(roomManager.getCurrentRoom());
-    }
-
 }

@@ -7,16 +7,12 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public class NoteBook {
-    private static NoteBook INSTANCE = new NoteBook();
+    private Array<Clue> clueList;
+    private Array<Item> itemList;
 
-    private static Array<Clue> clueList = new Array<Clue>();
-    private static Array<Item> itemList = new Array<Item>();
-
-    private NoteBook(){
-    }
-
-    public static NoteBook getInstance(){
-        return INSTANCE;
+    public NoteBook(){
+        clueList = new Array<>();
+        itemList = new Array<>();
     }
 
     public void addClue(Clue clue){

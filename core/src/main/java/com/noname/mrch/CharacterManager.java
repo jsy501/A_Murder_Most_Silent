@@ -10,7 +10,7 @@ import com.noname.mrch.helper.InitUtil;
 
 /**
  *  Initialises and manages characters
- *  Must be initialised first among the other managers
+ *  Must be initialised earlier than clue manager and item manager
  */
 
 public class CharacterManager {

@@ -34,5 +34,12 @@
     "description": "description5",
     "relatedCharId": [304],
     "clueType": "MOTIVE"
+  },
+  {
+    "id": 105,
+    "name": "motive6",
+    "description": "description6",
+    "relatedCharId": [305],
+    "clueType": "MOTIVE"
   }
 ]
