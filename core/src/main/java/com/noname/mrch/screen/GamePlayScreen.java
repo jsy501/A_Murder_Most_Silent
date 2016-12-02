@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.noname.mrch.GUI.GUIWidgetGroup;
+import com.noname.mrch.GUI.Gui;
 import com.noname.mrch.GUI.NoteBookButton;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MRCH;
@@ -21,17 +22,20 @@ public class GamePlayScreen implements Screen {
     private MRCH game;
 
     private GameWorld gameWorld;
-
-    private GUIWidgetGroup gui;
+    private Gui gui;
 
     public GamePlayScreen(Game game){
         this.game = (MRCH) game;
         gameWorld = new GameWorld(this.game.assetLoader);
+        gui = new Gui(this.game.assetLoader, gameWorld);
+
+        gameWorld.setGui(gui);
     }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(gameWorld.getCurrentRoom().getCurrentStage());
+        InputMultiplexer multiplexer = new InputMultiplexer(gui.getStage(), gameWorld.getCurrentRoom().getCurrentStage());
+        Gdx.input.setInputProcessor(multiplexer);
     }
 
     @Override
@@ -40,9 +44,14 @@ public class GamePlayScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         gameWorld.getCurrentRoom().getCurrentStage().act();
+        gameWorld.update(delta);
+
+        gui.getStage().act();
+
+
         gameWorld.getCurrentRoom().getCurrentStage().draw();
-//        gui.getGuiStage().act();
-//        gui.getGuiStage().draw();
+        gui.getStage().draw();
+
     }
 
     @Override

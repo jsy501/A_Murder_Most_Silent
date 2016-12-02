@@ -15,17 +15,14 @@ import java.util.Stack;
 
 /**
  *  Initialises and manages rooms
- *  Dependent on all of the other managers
  */
 
 public class RoomManager {
     private Array<Room> roomArray; // all of the rooms EXCLUDING locked room
     private Room lockedRoom;
-    private Stack<Room> roomStack = new Stack<>();
 
     RoomManager(AssetLoader assetLoader){
         roomArray = assetLoader.totalRoomArray;
-        roomStack.push(roomArray.first()); //first room should always be hub
 
         // pick random room to be locked, excluding hub
         lockedRoom = roomArray.get(MathUtils.random(1,roomArray.size-1));
@@ -52,21 +49,26 @@ public class RoomManager {
         }
     }
 
+    public Room getRoom(int id){
+        if (lockedRoom.getId() == id){
+            return lockedRoom;
+        }
+
+        for (Room room : roomArray){
+            if (room.getId() == id){
+                return room;
+            }
+        }
+
+        throw new RuntimeException("Invalid id");
+    }
+
     public Room getLockedRoom(){
         return lockedRoom;
     }
 
     public Array<Room> getRoomArray(){
         return roomArray;
-    }
-
-    public void setCurrentRoom(Room room){
-        roomStack.pop();
-        roomStack.push(room);
-    }
-
-    public Room getCurrentRoom(){
-        return roomStack.peek();
     }
 
     public void dispose(){

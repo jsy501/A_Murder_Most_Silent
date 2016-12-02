@@ -32,7 +32,7 @@ public class ActorInputAdapter extends InputListener{
     public void touchUp (InputEvent event, float x, float y, int pointer, int button){
         if (this.actor instanceof Clue) {
             //todo gui displays some info
-            NoteBook.getInstance().addClue((Clue) actor);
+//            NoteBook.getInstance().addClue((Clue) actor);
 //            room = roomManager.getCurrentRoom();
             room.removeClue((Clue) actor);
 
@@ -40,14 +40,15 @@ public class ActorInputAdapter extends InputListener{
 
         } else if (actor instanceof Item) {
             //todo gui displays some info
-            NoteBook.getInstance().addItem((Item) actor);
+//            NoteBook.getInstance().addItem((Item) actor);
 //            room = roomManager.getCurrentRoom();
             room.removeItem((Item) actor);
 
             System.out.println("Item clicked");
 
         } else if (this.actor instanceof GameCharacter) {
-            //todo gui displays options
+
+
 //            selectedOption = "question"; //this is set by the gui option
 //            questioningStyle = 1; // provided by gui option
 //

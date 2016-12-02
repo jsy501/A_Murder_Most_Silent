@@ -1,5 +1,6 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
@@ -26,11 +27,11 @@ public class Interactions {
             return "Go Away";
         } else {
             int diff = Math.abs(questionStyle - target.getPersonality().getValue());
-            int chanceOfSuccess = ThreadLocalRandom.current().nextInt(0, 9 + 1)+(diff);
+            int chanceOfSuccess = MathUtils.random(1, 9)+(diff);
             if (chanceOfSuccess >= 5){
                 Clue clue = target.getClueList().random();
                 target.removeClue(clue);
-                NoteBook.getInstance().addClue(clue);
+//                NoteBook.getInstance().addClue(clue);
                 return clue.getResponse();
             } else {
                 return target.getResponse();

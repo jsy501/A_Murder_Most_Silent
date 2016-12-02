@@ -9,7 +9,7 @@ import com.noname.mrch.MRCH;
  */
 
 public class GameCharacter extends GameActor implements ObjectContainer, JsonImport {
-	public static final int CHARACTER_COUNT = 5;
+	public static final int CHARACTER_COUNT = 6;
 	public static final int ID_OFFSET = 300;
 
 	private Array<Item> itemList = new Array<Item>() ;

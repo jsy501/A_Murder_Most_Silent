@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
@@ -26,6 +27,8 @@ public class AssetLoader {
 
     public String characterTexturePath;
     public String roomTexturePath;
+
+    public Skin skin;
 
     public AssetLoader() {
         manager = new AssetManager();
@@ -55,6 +58,8 @@ public class AssetLoader {
         totalWeaponClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(weaponClueJsonPath));
         totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(appearanceClueJsonPath));
         totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle(roomJsonPath));
+
+        skin = new Skin(Gdx.files.internal("assets/uiskin.json"));
 
         loadTexture();
     }

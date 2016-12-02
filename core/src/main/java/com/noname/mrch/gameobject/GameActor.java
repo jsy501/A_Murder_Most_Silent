@@ -1,14 +1,13 @@
 package com.noname.mrch.gameobject;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.noname.mrch.GameWorld;
 import com.noname.mrch.MRCH;
-import com.noname.mrch.gameobject.GameCharacter;
-import com.noname.mrch.libgdx.ActorInputAdapter;
 
 /**
  * Created by PPPPPP on 2016/11/30.
@@ -16,9 +15,16 @@ import com.noname.mrch.libgdx.ActorInputAdapter;
 
 public class GameActor extends Actor {
     private TextureRegion image;
+    private boolean isTouched = false;
 
     public GameActor(){
-        addListener(new ActorInputAdapter(this));
+        addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                GameWorld.touchedActor = (GameActor) event.getListenerActor();
+                isTouched = true;
+            }
+        });
     }
 
     public void setImage(TextureRegion texture) {
@@ -33,6 +39,14 @@ public class GameActor extends Actor {
 
     public  TextureRegion getImage(){
         return image;
+    }
+
+    public void setTouched(boolean touched){
+        isTouched = touched;
+    }
+
+    public boolean isTouched(){
+        return isTouched;
     }
 
     @Override
