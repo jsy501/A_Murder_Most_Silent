@@ -15,15 +15,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * the player and the characters.
  */
 public class Interactions {
-    private static Interactions INSTANCE = new Interactions();
 
-
-    public static Interactions getInstance(){
-        return INSTANCE;
-    }
-
-    public String question(int questionStyle, GameCharacter target) {
-        if (target.isAccused() == true) {
+    public static String question(int questionStyle, GameCharacter target) {
+        if (target.isAccused()) {
             return "Go Away";
         } else {
             int diff = Math.abs(questionStyle - target.getPersonality().getValue());
@@ -31,7 +25,7 @@ public class Interactions {
             if (chanceOfSuccess >= 5){
                 Clue clue = target.getClueList().random();
                 target.removeClue(clue);
-//                NoteBook.getInstance().addClue(clue);
+
                 return clue.getResponse();
             } else {
                 return target.getResponse();
@@ -39,8 +33,8 @@ public class Interactions {
         }
     }
 
-    public String give(Item item, GameCharacter target){
-        if (target.isAccused() == true){
+    public static String give(Item item, GameCharacter target){
+        if (target.isAccused()){
             return "Go Away!";
         } else {
             //todo change some stuff m
@@ -48,8 +42,8 @@ public class Interactions {
         return null;
     }
 
-    public String accuse(GameCharacter target, Clue murderMotive, Clue murderWeapon, Clue clueOne, Clue clueTwo, Clue clueThree){
-        if (murderMotive.checkId(target) == true && murderWeapon.checkId(target) == true && clueOne.checkId(target) == true && clueTwo.checkId(target) == true && clueThree.checkId(target) == true){
+    public static String accuse(GameCharacter target, Clue murderMotive, Clue murderWeapon, Clue clueOne, Clue clueTwo, Clue clueThree){
+        if (murderMotive.checkId(target) && murderWeapon.checkId(target) && clueOne.checkId(target) && clueTwo.checkId(target) && clueThree.checkId(target)){
             return "You have accused the correct person congratulations you win!"; //placeholder
         } else {
             target.setAccused(true);

@@ -1,8 +1,6 @@
 package com.noname.mrch.gameobject;
 
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.MRCH;
 
 /**
  * Represents a gameCharacter object

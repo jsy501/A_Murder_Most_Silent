@@ -2,14 +2,9 @@ package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.noname.mrch.MRCH;
-import com.noname.mrch.libgdx.ActorInputAdapter;
 
 public class Room implements JsonImport, ObjectContainer {
 	public static final int ROOM_COUNT = 6;

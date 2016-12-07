@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.noname.mrch.GameWorld;
-import com.noname.mrch.MRCH;
+import com.noname.mrch.MurderSilentGame;
 
 /**
  * Created by PPPPPP on 2016/11/30.
@@ -29,11 +29,11 @@ public class GameActor extends Actor {
 
     public void setImage(TextureRegion texture) {
         image = texture;
-        float ratio = MRCH.GAME_HEIGHT / image.getRegionHeight();
+        float ratio = MurderSilentGame.GAME_HEIGHT / image.getRegionHeight();
         setWidth(image.getRegionWidth() * ratio);
         setHeight(image.getRegionHeight() * ratio);
         setOrigin(getWidth()/2, getHeight()/2);
-        setPosition(MRCH.GAME_WIDTH / 2, 0, Align.bottom);
+        setPosition(MurderSilentGame.GAME_WIDTH / 2, 0, Align.bottom);
 //        setBounds(0, 0, imageWidth, imageHeight);
     }
 

@@ -16,7 +16,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "Murder-In-RCH"
+        appName = "A_Murder_Most_Silent"
         gdxVersion = '1.9.4'
         roboVMVersion = '2.2.0'
         box2DLightsVersion = '1.4'

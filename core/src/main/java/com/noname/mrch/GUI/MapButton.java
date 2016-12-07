@@ -20,7 +20,6 @@ public class MapButton extends Button{
     }
     private Skin skin = new Skin();
     private Table table;
-    private GUIWidgetGroup guistage;
     private RoomButton roombutton;
     final Dialog map = new Dialog("MAP",skin);
 
@@ -31,7 +30,6 @@ public class MapButton extends Button{
         public void clicked(InputEvent event, float x, float y) {
             map.add(roombutton);//should show buttons for different rooms.
             map.align(Align.center);
-            map.show(guistage.getGuiStage());
         }
     });
         table = new Table();
@@ -40,7 +38,6 @@ public class MapButton extends Button{
         table.align(Align.bottomRight);
         table.setPosition(0,0);
         table.add(button);
-        guistage.addWidget(table);
     }
 
 

@@ -7,13 +7,13 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Player {
     private String name;
-    private int personality;
     private Room location;
+    private Array<QuestioningStyle> questionSet;
 
-    public Player(String playerName, int playerPersonality){
+    public Player(String playerName){
         // Constructor for initialising player
         name = playerName;
-        personality = playerPersonality;
+        questionSet = new Array<>(3);
     }
 
     public void setLocation(Room room){
@@ -24,10 +24,6 @@ public class Player {
 
     public String getName(){
         return name;
-    }
-
-    public int getPersonality(){
-        return personality;
     }
 
     public Room getLocation(){

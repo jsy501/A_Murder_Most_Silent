@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.GameWorld;
-import com.noname.mrch.MRCH;
+import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.gameobject.GameActor;
 import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
@@ -190,7 +190,7 @@ public class Gui {
 
     public void showInteractionUI(){
         hideBottomUI();
-        table.add(interactionBox).size(MRCH.GAME_WIDTH, MRCH.GAME_HEIGHT / 3);
+        table.add(interactionBox).size(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT / 3);
     }
 
     public Stage getStage(){

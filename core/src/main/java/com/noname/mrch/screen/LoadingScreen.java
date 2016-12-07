@@ -6,10 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.noname.mrch.CharacterManager;
-import com.noname.mrch.MRCH;
-import com.noname.mrch.RoomManager;
-import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.helper.AssetLoader;
 
 public class LoadingScreen implements Screen{
@@ -19,7 +16,7 @@ public class LoadingScreen implements Screen{
     private BitmapFont loadingFont;
     private AssetLoader assetLoader;
 
-    public LoadingScreen(final MRCH game){
+    public LoadingScreen(final MurderSilentGame game){
         this.game = game;
         this.assetLoader = game.assetLoader;
 
