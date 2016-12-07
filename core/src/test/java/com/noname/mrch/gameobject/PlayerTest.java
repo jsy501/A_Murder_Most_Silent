@@ -16,7 +16,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
-        player = new Player("test name", 0);
+        player = new Player("test name");
     }
 
     @After
@@ -43,11 +43,6 @@ public class PlayerTest {
         assertEquals("failure - player name not correct", "test name", player.getName());
     }
 
-    @Test
-    public void getPersonalityTest() throws Exception {
-        assertEquals("failure - players personality is not correct", 0, player.getPersonality());
-
-    }
 
     @Test
     public void getLocationTest() throws Exception {

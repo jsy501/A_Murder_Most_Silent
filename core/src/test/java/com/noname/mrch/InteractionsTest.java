@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
  * Interactions unit test's
  */
 public class InteractionsTest {
-    Interactions interactions;
     GameCharacter target;
     Clue murderMotive;
     Clue murderWeapon;
@@ -28,8 +27,6 @@ public class InteractionsTest {
 
     @Before
     public void setUp() throws Exception {
-        interactions = Interactions.getInstance();
-
         characterRelated = new Array<>();
         characterRelated.add(0);
 
@@ -53,7 +50,6 @@ public class InteractionsTest {
 
     @After
     public void tearDown() throws Exception {
-        interactions = null;
         target = null;
         characterRelated = null;
         characterRelatedFail = null;
@@ -72,15 +68,15 @@ public class InteractionsTest {
         assertEquals("failure - target accuse not initialised to false", false, target.isAccused());
         target.setAccused(true);
 
-        assertEquals("failure - go away was not returned", "Go Away", interactions.question(1, target));
+        assertEquals("failure - go away was not returned", "Go Away", Interactions.question(1, target));
     }
 
     @Test
     public void questionIfNotAlreadyAccusedTest() throws Exception {
 //        currently fails due to code in GameCharacter.
-        assertEquals("failure - clue response not returned", "motive response", interactions.question(9, target));
+        assertEquals("failure - clue response not returned", "motive response", Interactions.question(9, target));
 
-        assertEquals("failure - target response not returned", "negative test response", interactions.question(-9, target));
+        assertEquals("failure - target response not returned", "negative test response", Interactions.question(-9, target));
 
     }
 
@@ -91,14 +87,14 @@ public class InteractionsTest {
 
     @Test
     public void accuseFailTest() throws Exception {
-        assertEquals("failure - returned statement is not correct", "you have accused the wrong person", interactions.accuse(target,murderMotive,murderWeapon,clueOne,clueTwo, failClue));
+        assertEquals("failure - returned statement is not correct", "you have accused the wrong person", Interactions.accuse(target,murderMotive,murderWeapon,clueOne,clueTwo, failClue));
         assertTrue("failure - accused status was not set to true", target.isAccused());
 
     }
 
     @Test
     public void accuseSuccesTest() throws Exception {
-        assertEquals("failure - returned statement is not correct", "You have accused the correct person congratulations you win!", interactions.accuse(target, murderMotive, murderWeapon, clueOne, clueTwo, clueThree));
+        assertEquals("failure - returned statement is not correct", "You have accused the correct person congratulations you win!", Interactions.accuse(target, murderMotive, murderWeapon, clueOne, clueTwo, clueThree));
     }
 
     @Test

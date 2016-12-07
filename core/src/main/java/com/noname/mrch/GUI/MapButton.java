@@ -11,35 +11,10 @@ import com.noname.mrch.gameobject.Room;
 /**
  * Mapbutton
  */
-public class MapButton extends Button{
-    private Button.ButtonStyle buttonStyle= new Button.ButtonStyle();
 
-    public MapButton(Skin skin, ButtonStyle buttonStyle) {
+public class MapButton extends GuiButton{
+    public MapButton(Skin skin) {
         super(skin);
-        this.buttonStyle = buttonStyle;
     }
-    private Skin skin = new Skin();
-    private Table table;
-    private RoomButton roombutton;
-    final Dialog map = new Dialog("MAP",skin);
-
-    public MapButton(Skin skin, ImageButton button) {
-
-        addListener(new ClickListener(){
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            map.add(roombutton);//should show buttons for different rooms.
-            map.align(Align.center);
-        }
-    });
-        table = new Table();
-        table.setWidth(200);
-        table.setHeight(200);
-        table.align(Align.bottomRight);
-        table.setPosition(0,0);
-        table.add(button);
-    }
-
-
 }
 

@@ -16,30 +16,26 @@ import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
 
 public class Gui {
+    public static GuiButton touchedActor = null;
+
     private GameWorld gameWorld;
 
     private Stage stage;
     private Table table;
 
-    private Skin skin;
+    private GuiButton notebookButton;
+    private GuiButton investigateButton;
+    private GuiButton mapButton;
 
-    private ImageButton notebookButton;
-    private ImageButton investigateButton;
-    private ImageButton mapButton;
-
-    private Dialog notebookWindow;
-    private Dialog mapWindow;
-
-    private Dialog infoWindow;
+    private GuiWindow notebookWindow;
+    private GuiWindow mapWindow;
+    private GuiWindow infoWindow;
 
     private Table interactionBox;
 
-    private boolean isTouched = false;
-
     public Gui(AssetLoader assetLoader, final GameWorld gameWorld){
         this.gameWorld = gameWorld;
-
-        skin = assetLoader.skin;
+        Skin skin = assetLoader.skin;
 
         stage = new Stage(new ScreenViewport());
         table = new Table(skin);
@@ -48,121 +44,41 @@ public class Gui {
         table.align(Align.bottom);
 
 
-        //notebook button
-        notebookWindow = new Dialog("NOTEBOOK", skin){
-            @Override
-            public float getPrefWidth() {
-                return 1500;
-            }
+        //notebook UI init
+        notebookWindow = new NoteBookWindow(skin, gameWorld);
+        notebookButton = new NoteBookButton(skin);
 
-            @Override
-            public float getPrefHeight() {
-                return 700;
-            }
+        //investigate UI init
+        investigateButton = new InvestigateButton(skin);
 
-            @Override
-            protected void result(Object object) {
-                if (object.equals(true)){
-                    hide();
-                }
-            }
-        };
-        notebookWindow.button("OK", true);
+        //map UI init
+        mapWindow = new MapWindow(skin, gameWorld);
+        mapButton = new GuiButton(skin);
 
-        notebookWindow.setMovable(false);
-        notebookWindow.setModal(true);
+        //info window init
+        infoWindow = new InfoWindow(skin, gameWorld);
 
-        notebookButton = new ImageButton(skin);
-        notebookButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                isTouched = true;
-                notebookWindow.show(stage);
-            }
-        });
-
-        //investigate button
-        investigateButton = new ImageButton(skin);
-        investigateButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                isTouched = true;
-                gameWorld.getCurrentRoom().switchCurrentStage();
-            }
-        });
-
-        //map button
-        mapWindow = new Dialog("MAP", skin){
-            @Override
-            protected void result(Object object) {
-                if (object.equals(true)){
-                    hide();
-                }
-                else if (object.equals(0)){
-                    gameWorld.moveRoom(400);
-                }
-                else if (object.equals(1)){
-                    gameWorld.moveRoom(401);
-                }
-                else if (object.equals(2)){
-                    gameWorld.moveRoom(402);
-                }
-                else if (object.equals(3)){
-                    gameWorld.moveRoom(403);
-                }
-                else if (object.equals(4)){
-                    gameWorld.moveRoom(404);
-                }
-                else{
-                    gameWorld.moveRoom(405);
-                }
-            }
-        };
-
-        mapWindow.button("HUB", 0);
-        mapWindow.button("ISLAND", 1);
-        mapWindow.button("LECTURE HALL", 2);
-        mapWindow.button("SEMINAR ROOM", 3);
-        mapWindow.button("STUDY ROOM", 4);
-        mapWindow.button("TUTOR ROOM", 5);
-
-        mapWindow.getButtonTable().row().colspan(Room.ROOM_COUNT);
-        mapWindow.button("CANCEL", true);
-
-        mapWindow.getTitleLabel().setAlignment(Align.center);
-        mapWindow.setMovable(false);
-        mapWindow.setModal(true);
-
-        mapButton = new ImageButton(skin);
-        mapButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                isTouched = true;
-                mapWindow.show(stage);
-            }
-        });
-
-        showBottomUI();
-
-        stage.addActor(table);
-
-
-        infoWindow = new Dialog("NEW INFO!", skin){
-            @Override
-            protected void result(Object object) {
-                if (object.equals(true)){
-                    hide();
-                }
-            }
-        };
-        infoWindow.button("OK", true);
-        infoWindow.setMovable(false);
-        infoWindow.setModal(true);
-
-
+        //interaction box init
         interactionBox = new Table(skin);
         interactionBox.background(skin.getDrawable("default-round"));
 
+
+        stage.addActor(table);
+
+        showBottomUI();
+    }
+
+    public void update(float delta){
+        //input handle
+        if (notebookButton.isTouched()){
+            notebookWindow.show(stage);
+        }
+        else if (investigateButton.isTouched()){
+            gameWorld.getCurrentRoom().switchCurrentStage();
+        }
+        else if (mapButton.isTouched()){
+            mapWindow.show(stage);
+        }
     }
 
     public void displayInfo(GameActor actor, String info){
@@ -195,13 +111,5 @@ public class Gui {
 
     public Stage getStage(){
         return stage;
-    }
-
-    public boolean isTouched() {
-        return isTouched;
-    }
-
-    public void setTouched(boolean touched) {
-        isTouched = touched;
     }
 }

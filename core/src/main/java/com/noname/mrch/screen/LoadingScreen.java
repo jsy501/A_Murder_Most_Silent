@@ -10,7 +10,7 @@ import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.helper.AssetLoader;
 
 public class LoadingScreen implements Screen{
-    private Game game;
+    private MurderSilentGame game;
 
     private SpriteBatch batch;
     private BitmapFont loadingFont;
