@@ -15,7 +15,7 @@ public class Clue extends GameActor implements JsonImport{
     private ClueType clueType;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
-    private String response;
+    private String response = "Clue response";
 
     public Clue(int id, String name, String description, ClueType clueType, Array<Integer> relatedCharId, String response){
         this.id = id;

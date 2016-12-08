@@ -42,7 +42,7 @@ public class GameCharacterTest {
 
     @Test
     public void getResponseTest() throws Exception {
-        assertEquals("failure - returned response was not correct", "test negative response", testCharacter.getResponse());
+        assertEquals("failure - returned response was not correct", "test negative response", testCharacter.getQuestionFailResponse());
     }
 
     @Test

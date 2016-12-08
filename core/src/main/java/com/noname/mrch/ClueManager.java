@@ -64,7 +64,7 @@ public class ClueManager {
     }
 
     /**
-     * Choose 3 appearance clues that point to the murderer from a total appearance clue array
+     * Choose appearance clues that point to the murderer from a total appearance clue array
      */
 
     private void initAppearanceClue(){
@@ -73,7 +73,7 @@ public class ClueManager {
         appearanceClue = new Array<>();
 
         GameCharacter murderer = characterManager.getMurderer();
-        for (int i = 0; i < totalClueArray.size && appearanceClue.size <= 3; i++){
+        for (int i = 0; i < totalClueArray.size; i++){
             if (totalClueArray.get(i).getRelatedCharId().contains(murderer.getId(), false)){
                 appearanceClue.add(totalClueArray.get(i));
             }

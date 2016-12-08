@@ -29,7 +29,7 @@ public class Interactions {
 
                 return clue.getResponse();
             } else {
-                return target.getResponse();
+                return target.getQuestionFailResponse();
             }
         }
     }

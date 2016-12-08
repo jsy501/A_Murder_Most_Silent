@@ -45,10 +45,14 @@ public class GameWorld {
 
         // clue distribution
         roomManager.getLockedRoom().addClue(clueManager.getMotiveClue());
+        roomManager.getRoomArray().random().addClue(clueManager.getWeaponClue());
+        for (int i = 0; i < characterArray.size; i++){
+            characterArray.get(i).addClue(assetLoader.totalAppearanceClueArray.get(i));
+        }
 
         // item distribution
         itemArray.add(itemManager.getKey());
-        for (int i = 0; i < characterManager.getCharacterArray().size; i++) {
+        for (int i = 0; i < characterArray.size; i++) {
             //assign every item but the first one to every character
             //the first item is to be found in a room
             characterManager.getCharacterArray().get(i).addItem(itemManager.getItemArray().get(i+1));

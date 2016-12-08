@@ -19,10 +19,10 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 	private boolean isMurderer = false;
 	private boolean isVictim = false;
 	private boolean isAccused = false;
-	private String greeting = "HI";
-	private String negativeClueResponse;
+	private String greeting = "Greetings";
+	private String questionFailResponse = "Question Fail";
 
-	public GameCharacter(int id, String name, Personality personality, boolean isMurderer, boolean isVictim, boolean isAccused, String greeting, String negativeClueResponse){
+	public GameCharacter(int id, String name, Personality personality, boolean isMurderer, boolean isVictim, boolean isAccused, String greeting, String questionFailResponse){
 		this.id = id;
 		this.name = name;
 		this.personality = personality;
@@ -30,7 +30,7 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 		this.isVictim = isVictim;
 		this.isAccused = isAccused;
 		this.greeting = greeting;
-		this.negativeClueResponse = negativeClueResponse;
+		this.questionFailResponse = questionFailResponse;
 	}
 
 	public GameCharacter(){
@@ -40,8 +40,8 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 		return greeting;
 	}
 
-	public String getResponse() {
-		return negativeClueResponse;
+	public String getQuestionFailResponse() {
+		return questionFailResponse;
 	}
 
 	public Personality getPersonality() {

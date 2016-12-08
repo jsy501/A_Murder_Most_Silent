@@ -17,35 +17,63 @@
     "id": 132,
     "name": "appearance3",
     "description": "description3",
-    "relatedCharId": [300, 304],
+    "relatedCharId": [304, 305],
     "clueType": "APPEARANCE"
   },
   {
     "id": 133,
     "name": "appearance4",
     "description": "description4",
-    "relatedCharId": [300, 304],
+    "relatedCharId": [300, 302],
     "clueType": "APPEARANCE"
   },
   {
     "id": 134,
     "name": "appearance5",
     "description": "description5",
-    "relatedCharId": [300, 304],
+    "relatedCharId": [301, 303],
     "clueType": "APPEARANCE"
   },
   {
     "id": 135,
     "name": "appearance6",
     "description": "description6",
-    "relatedCharId": [300, 304],
+    "relatedCharId": [302, 304],
     "clueType": "APPEARANCE"
   },
   {
     "id": 136,
     "name": "appearance7",
     "description": "description7",
-    "relatedCharId": [302, 304],
+    "relatedCharId": [303, 305],
+    "clueType": "APPEARANCE"
+  },
+  {
+    "id": 137,
+    "name": "appearance8",
+    "description": "description8",
+    "relatedCharId": [300, 303],
+    "clueType": "APPEARANCE"
+  },
+  {
+    "id": 138,
+    "name": "appearance9",
+    "description": "description9",
+    "relatedCharId": [301, 304],
+    "clueType": "APPEARANCE"
+  },
+  {
+    "id": 139,
+    "name": "appearance10",
+    "description": "description10",
+    "relatedCharId": [302, 305],
+    "clueType": "APPEARANCE"
+  },
+  {
+    "id": 140,
+    "name": "appearance11",
+    "description": "description11",
+    "relatedCharId": [300, 304],
     "clueType": "APPEARANCE"
   }
 ]
