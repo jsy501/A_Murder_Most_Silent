@@ -19,7 +19,7 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 	private boolean isMurderer = false;
 	private boolean isVictim = false;
 	private boolean isAccused = false;
-	private String greeting;
+	private String greeting = "HI";
 	private String negativeClueResponse;
 
 	public GameCharacter(int id, String name, Personality personality, boolean isMurderer, boolean isVictim, boolean isAccused, String greeting, String negativeClueResponse){

@@ -14,6 +14,7 @@ public class Player {
         // Constructor for initialising player
         name = playerName;
         questionSet = new Array<>(3);
+        questionSet.addAll(QuestioningStyle.Q1, QuestioningStyle.Q5, QuestioningStyle.Q8);
     }
 
     public void setLocation(Room room){
@@ -28,6 +29,10 @@ public class Player {
 
     public Room getLocation(){
         return location;
+    }
+
+    public Array<QuestioningStyle> getQuestionSet() {
+        return questionSet;
     }
 
     @Override

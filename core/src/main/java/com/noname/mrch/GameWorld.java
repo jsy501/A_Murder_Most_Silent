@@ -3,16 +3,15 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.utils.Array;
-import com.noname.mrch.GUI.Gui;
+import com.noname.mrch.gui.Gui;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameActor;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.NoteBook;
+import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
-
-import java.util.Iterator;
 
 /**
  * Initialises and holds all the game objects
@@ -21,6 +20,7 @@ import java.util.Iterator;
 public class GameWorld {
     public static GameActor touchedActor = null;
 
+    private Player player;
     private NoteBook notebook;
 
     private Room currentRoom;
@@ -32,6 +32,8 @@ public class GameWorld {
     private RoomManager roomManager;
 
     public GameWorld(AssetLoader assetLoader) {
+        player = new Player("John");
+
         characterManager = new CharacterManager(assetLoader);
         itemManager = new ItemManager(assetLoader, characterManager);
         clueManager = new ClueManager(assetLoader, characterManager);
@@ -124,7 +126,7 @@ public class GameWorld {
             System.out.println("Item clicked");
 
         } else if (actor instanceof GameCharacter) {
-            gui.showInteractionUI();
+            gui.startInteraction((GameCharacter)actor);
 
             System.out.println("Character clicked");
 
@@ -140,6 +142,7 @@ public class GameWorld {
     public void setCurrentRoom(Room targetRoom){
         currentRoom.setLocked(false);
         currentRoom.setDefault(true);
+        gui.haltInteraction();
 
         currentRoom = targetRoom;
         Gdx.input.setInputProcessor(new InputMultiplexer(gui.getStage(), currentRoom.getCurrentStage()));
@@ -165,6 +168,14 @@ public class GameWorld {
         else{
             return false;
         }
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public NoteBook getNotebook() {
+        return notebook;
     }
 
     public void dispose(){

@@ -5,6 +5,7 @@ import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.NoteBook;
+import com.noname.mrch.gameobject.QuestioningStyle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -16,11 +17,11 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Interactions {
 
-    public static String question(int questionStyle, GameCharacter target) {
+    public static String question(QuestioningStyle questionStyle, GameCharacter target) {
         if (target.isAccused()) {
             return "Go Away";
         } else {
-            int diff = Math.abs(questionStyle - target.getPersonality().getValue());
+            int diff = Math.abs(questionStyle.getValue() - target.getPersonality().getValue());
             int chanceOfSuccess = MathUtils.random(1, 9)+(diff);
             if (chanceOfSuccess >= 5){
                 Clue clue = target.getClueList().random();
