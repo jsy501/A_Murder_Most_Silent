@@ -1,18 +1,18 @@
-package com.noname.mrch.GUI;
+package com.noname.mrch.gui;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.gameobject.GameActor;
-import com.noname.mrch.gameobject.Room;
+import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 
 public class Gui {
@@ -21,8 +21,9 @@ public class Gui {
     private GameWorld gameWorld;
 
     private Stage stage;
-    private Table table;
+    private Stack lowerScreenStack;
 
+    private Table lowerGuiGroup;
     private GuiButton notebookButton;
     private GuiButton investigateButton;
     private GuiButton mapButton;
@@ -31,53 +32,68 @@ public class Gui {
     private GuiWindow mapWindow;
     private GuiWindow infoWindow;
 
-    private Table interactionBox;
+    private InteractionBox interactionBox;
 
     public Gui(AssetLoader assetLoader, final GameWorld gameWorld){
         this.gameWorld = gameWorld;
         Skin skin = assetLoader.skin;
 
         stage = new Stage(new ScreenViewport());
-        table = new Table(skin);
+        lowerScreenStack = new Stack();
 
-        table.setFillParent(true);
-        table.align(Align.bottom);
+        lowerScreenStack.setSize(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT / 4);
 
 
         //notebook UI init
-        notebookWindow = new NoteBookWindow(skin, gameWorld);
+        notebookWindow = new NoteBookWindow(skin, this, gameWorld);
         notebookButton = new NoteBookButton(skin);
 
         //investigate UI init
         investigateButton = new InvestigateButton(skin);
 
         //map UI init
-        mapWindow = new MapWindow(skin, gameWorld);
-        mapButton = new GuiButton(skin);
+        mapWindow = new MapWindow(skin, this, gameWorld);
+        mapButton = new MapButton(skin);
+
+        lowerGuiGroup = new Table();
+        lowerGuiGroup.align(Align.bottom);
+        lowerGuiGroup.add(notebookButton);
+        lowerGuiGroup.add(investigateButton).expandX();
+        lowerGuiGroup.add(mapButton);
 
         //info window init
-        infoWindow = new InfoWindow(skin, gameWorld);
+        infoWindow = new InfoWindow(skin, this, gameWorld);
 
         //interaction box init
-        interactionBox = new Table(skin);
+        interactionBox = new InteractionBox(skin, this, gameWorld);
         interactionBox.background(skin.getDrawable("default-round"));
+        interactionBox.setVisible(false);
 
 
-        stage.addActor(table);
-
-        showBottomUI();
+        lowerScreenStack.add(lowerGuiGroup);
+        lowerScreenStack.add(interactionBox);
+        stage.addActor(lowerScreenStack);
     }
 
     public void update(float delta){
         //input handle
-        if (notebookButton.isTouched()){
-            notebookWindow.show(stage);
-        }
-        else if (investigateButton.isTouched()){
-            gameWorld.getCurrentRoom().switchCurrentStage();
-        }
-        else if (mapButton.isTouched()){
-            mapWindow.show(stage);
+        if (touchedActor != null) {
+            touchedActor = null;
+
+            if (notebookButton.isTouched()) {
+                notebookWindow.show(stage);
+                notebookButton.setTouched(false);
+            } else if (investigateButton.isTouched()) {
+                gameWorld.getCurrentRoom().switchCurrentStage();
+
+                //set input processor as the switched stage
+                Gdx.input.setInputProcessor(new InputMultiplexer(getStage(), gameWorld.getCurrentRoom().getCurrentStage()));
+
+                investigateButton.setTouched(false);
+            } else if (mapButton.isTouched()) {
+                mapWindow.show(stage);
+                mapButton.setTouched(false);
+            }
         }
     }
 
@@ -88,25 +104,15 @@ public class Gui {
         infoWindow.show(stage);
     }
 
-    private void hideBottomUI(){
-        notebookButton.remove();
-        investigateButton.remove();
-        mapButton.remove();
+    public void haltInteraction(){
+        interactionBox.setVisible(false);
+        lowerGuiGroup.setTouchable(Touchable.enabled);
     }
 
-    private void showBottomUI(){
-        table.add(notebookButton);
-        table.add(investigateButton).expandX();
-        table.add(mapButton);
-    }
-
-    public void hideInteractionUI(){
-        interactionBox.remove();
-    }
-
-    public void showInteractionUI(){
-        hideBottomUI();
-        table.add(interactionBox).size(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT / 3);
+    public void startInteraction(GameCharacter character){
+        interactionBox.setInteractingCharacter(character);
+        interactionBox.setVisible(true);
+        lowerGuiGroup.setTouchable(Touchable.disabled);
     }
 
     public Stage getStage(){

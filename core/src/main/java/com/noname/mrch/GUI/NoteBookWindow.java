@@ -1,11 +1,11 @@
-package com.noname.mrch.GUI;
+package com.noname.mrch.gui;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.noname.mrch.GameWorld;
 
 public class NoteBookWindow extends GuiWindow {
-    public NoteBookWindow(Skin skin, GameWorld gameWorld) {
-        super("NOTEBOOK", skin, gameWorld);
+    public NoteBookWindow(Skin skin, Gui gui, GameWorld gameWorld) {
+        super("NOTEBOOK", skin, gui, gameWorld);
 
         button("OK", true);
 
