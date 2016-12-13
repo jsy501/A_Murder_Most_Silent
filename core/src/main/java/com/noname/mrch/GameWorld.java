@@ -33,6 +33,7 @@ public class GameWorld {
 
     public GameWorld(AssetLoader assetLoader) {
         player = new Player("John");
+        notebook = new NoteBook();
 
         characterManager = new CharacterManager(assetLoader);
         itemManager = new ItemManager(assetLoader, characterManager);
@@ -62,6 +63,7 @@ public class GameWorld {
         }
         itemArray.removeValue(itemManager.getKey(), false);
         roomArray.random().addItem(itemArray.get(0));
+        notebook.addItem(itemArray.get(0));
 
 
         // character distribution
@@ -85,9 +87,6 @@ public class GameWorld {
         System.out.println("WEAPON Clue: " + clueManager.getWeaponClue());
         System.out.println("APPEARANCE Clues: " + clueManager.getAppearanceClue());
         System.out.println("Room list: " + roomManager.getRoomArray());
-
-
-        notebook = new NoteBook();
 
         currentRoom = roomManager.getRoomArray().first();
     }

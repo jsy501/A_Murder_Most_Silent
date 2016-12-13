@@ -54,7 +54,7 @@ public class Item extends GameActor implements JsonImport{
         return description;
     }
 
-    public int getLinkedPerson() {
+    public int getLinkedPersonId() {
         return linkedPersonId;
     }
 

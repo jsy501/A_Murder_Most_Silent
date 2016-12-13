@@ -37,7 +37,7 @@ public class ItemTest {
 
     @Test
     public void getLinkedPersonTest() throws Exception {
-        assertEquals("failure - item not initialised with test linked person", 100, item.getLinkedPerson());
+        assertEquals("failure - item not initialised with test linked person", 100, item.getLinkedPersonId());
 
     }
 
