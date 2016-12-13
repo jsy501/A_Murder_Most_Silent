@@ -107,12 +107,16 @@ public class Gui {
     public void haltInteraction(){
         interactionBox.setVisible(false);
         lowerGuiGroup.setTouchable(Touchable.enabled);
+
+        interactionBox.getInteractingCharacter().setTouchable(Touchable.enabled);
     }
 
     public void startInteraction(GameCharacter character){
         interactionBox.setInteractingCharacter(character);
         interactionBox.setVisible(true);
         lowerGuiGroup.setTouchable(Touchable.disabled);
+
+        character.setTouchable(Touchable.disabled);
     }
 
     public Stage getStage(){

@@ -47,6 +47,9 @@ public class RoomManager {
             room.setDefaultBackground(image);
             room.setInvestigateBackground(blank);
         }
+
+        lockedRoom.setDefaultBackground(new TextureRegion(textureAtlas.findRegion(String.valueOf(lockedRoom.getId()))));
+        lockedRoom.setInvestigateBackground(blank);
     }
 
     public Room getRoom(int id){
