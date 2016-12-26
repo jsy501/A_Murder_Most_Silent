@@ -33,11 +33,11 @@ public class RoomManager {
         setBackground(assetLoader);
     }
 
-    public void setBackground(AssetLoader assetLoader){
+    private void setBackground(AssetLoader assetLoader){
         TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.roomTexturePath);
 
         //temporary background for investigate background
-        Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA4444);
+        Pixmap pixmap = new Pixmap(2,1, Pixmap.Format.RGBA4444);
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
         TextureRegion blank = new TextureRegion(new Texture(pixmap));

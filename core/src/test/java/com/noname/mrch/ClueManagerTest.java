@@ -39,7 +39,7 @@ public class ClueManagerTest {
 
     @Test
     public void getAppearanceClueTest() throws Exception {
-        assertNotNull(clueManager.getAppearanceClue());
+        assertNotNull(clueManager.getAppearanceClueArray());
     }
 
 }

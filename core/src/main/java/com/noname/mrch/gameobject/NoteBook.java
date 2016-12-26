@@ -1,6 +1,7 @@
 package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gui.Gui;
 
 /**
  * Holds items and clues found by the player
@@ -13,7 +14,7 @@ public class NoteBook {
     public NoteBook(){
         clueList = new Array<>();
         itemList = new Array<>();
-
+//
 //        Item testItem1 = new Item(1, "item1", "", false);
 //        Item testItem2 = new Item(1, "item2", "", false);
 //        Item testItem3 = new Item(1, "item3", "", false);

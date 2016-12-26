@@ -2,16 +2,12 @@ package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
-
-/**
- * Created by PPPPPP on 2016/11/30.
- */
 
 public class GameActor extends Actor {
     private TextureRegion image;
@@ -29,12 +25,13 @@ public class GameActor extends Actor {
 
     public void setImage(TextureRegion texture) {
         image = texture;
-        float ratio = MurderSilentGame.GAME_HEIGHT / image.getRegionHeight();
+        float ratio = 1;
+        if (this instanceof GameCharacter) {
+            ratio = MurderSilentGame.GAME_HEIGHT / image.getRegionHeight();
+        }
         setWidth(image.getRegionWidth() * ratio);
         setHeight(image.getRegionHeight() * ratio);
         setOrigin(getWidth()/2, getHeight()/2);
-        setPosition(MurderSilentGame.GAME_WIDTH / 2, 0, Align.bottom);
-//        setBounds(0, 0, imageWidth, imageHeight);
     }
 
     public  TextureRegion getImage(){

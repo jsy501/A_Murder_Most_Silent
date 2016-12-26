@@ -15,6 +15,7 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 
 	private int id;
 	private String name;
+	private String description;
 	private Personality personality;
 	private boolean isMurderer = false;
 	private boolean isVictim = false;
@@ -80,6 +81,11 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getDescription() {
+		return description;
 	}
 
 	@Override

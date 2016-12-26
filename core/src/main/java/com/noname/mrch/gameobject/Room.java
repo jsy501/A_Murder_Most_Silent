@@ -4,15 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.noname.mrch.MurderSilentGame;
 
 public class Room implements JsonImport, ObjectContainer {
 	public static final int ROOM_COUNT = 6;
 
 	private int id;
 	private String name;
+	private String description;
 	private boolean isLocked;
 
 	private Array<GameCharacter> characterList = new Array<>();
@@ -39,6 +43,9 @@ public class Room implements JsonImport, ObjectContainer {
 	public void addCharacter(GameCharacter character){
 		characterList.add(character);
 		defaultStage.addActor(character);
+
+		//this assumes that there is only one character in the room
+		character.setPosition(MurderSilentGame.GAME_WIDTH / 2, 0, Align.bottom);
 	}
 
 
@@ -84,6 +91,23 @@ public class Room implements JsonImport, ObjectContainer {
 		}
 		else{
 			return investigateStage;
+		}
+	}
+
+	public void randomiseActorPos(){
+		Array<GameActor> actorArray = new Array<>();
+		actorArray.addAll(clueList);
+		actorArray.addAll(itemList);
+
+		int count = 0;
+		while(count < actorArray.size){
+			float horizontalPos = MathUtils.random(200, MurderSilentGame.GAME_WIDTH - 200);
+			float verticalPos = MathUtils.random(200, MurderSilentGame.GAME_HEIGHT - 200);
+
+			if (investigateStage.hit(horizontalPos, verticalPos, true) == null){
+				actorArray.get(count).setPosition(horizontalPos, verticalPos);
+				count++;
+			}
 		}
 	}
 
@@ -139,6 +163,11 @@ public class Room implements JsonImport, ObjectContainer {
 	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getDescription() {
+		return description;
 	}
 }
 	

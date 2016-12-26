@@ -3,6 +3,7 @@ package com.noname.mrch.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
@@ -27,6 +28,8 @@ public class AssetLoader {
 
     public String characterTexturePath;
     public String roomTexturePath;
+    public String itemTexturePath;
+    public String clueTexturePath;
 
     public Skin skin;
 
@@ -49,6 +52,8 @@ public class AssetLoader {
 
         characterTexturePath = properties.getProperty("characterTexturePath");
         roomTexturePath = properties.getProperty("roomTexturePath");
+        itemTexturePath = properties.getProperty("itemTexturePath");
+        clueTexturePath = properties.getProperty("clueTexturePath");
 
         //load json
         Json json = new Json();
@@ -70,6 +75,12 @@ public class AssetLoader {
 
         //load character texture
         manager.load(characterTexturePath, TextureAtlas.class);
+
+        //load item texture
+        manager.load(itemTexturePath, TextureAtlas.class);
+
+        //load clue texture
+        manager.load(clueTexturePath, TextureAtlas.class);
     }
 
     public void dispose(){

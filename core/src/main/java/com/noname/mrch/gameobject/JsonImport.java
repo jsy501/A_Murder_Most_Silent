@@ -1,6 +1,7 @@
 package com.noname.mrch.gameobject;
 
-interface JsonImport {
-    public int getId();
-    public String getName();
+public interface JsonImport {
+    int getId();
+    String getName();
+    String getDescription();
 }

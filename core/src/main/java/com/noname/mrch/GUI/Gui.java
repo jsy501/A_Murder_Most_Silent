@@ -28,7 +28,7 @@ public class Gui {
     private GuiButton investigateButton;
     private GuiButton mapButton;
 
-    private GuiWindow notebookWindow;
+    private NoteBookWindow notebookWindow;
     private GuiWindow mapWindow;
     private GuiWindow infoWindow;
 
@@ -81,6 +81,7 @@ public class Gui {
             touchedActor = null;
 
             if (notebookButton.isTouched()) {
+                notebookWindow.refresh();
                 notebookWindow.show(stage);
                 notebookButton.setTouched(false);
             } else if (investigateButton.isTouched()) {
@@ -99,7 +100,7 @@ public class Gui {
 
     public void displayInfo(GameActor actor, String info){
         infoWindow.getContentTable().clearChildren();
-        infoWindow.getContentTable().add(actor);
+        infoWindow.getContentTable().add(actor).row();
         infoWindow.text(info);
         infoWindow.show(stage);
     }
@@ -108,7 +109,9 @@ public class Gui {
         interactionBox.setVisible(false);
         lowerGuiGroup.setTouchable(Touchable.enabled);
 
-        interactionBox.getInteractingCharacter().setTouchable(Touchable.enabled);
+        if (interactionBox.getInteractingCharacter() != null) {
+            interactionBox.getInteractingCharacter().setTouchable(Touchable.enabled);
+        }
     }
 
     public void startInteraction(GameCharacter character){

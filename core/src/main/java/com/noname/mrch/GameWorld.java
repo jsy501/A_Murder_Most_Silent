@@ -3,6 +3,7 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gameobject.ObjectContainer;
 import com.noname.mrch.gui.Gui;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameActor;
@@ -15,6 +16,7 @@ import com.noname.mrch.helper.AssetLoader;
 
 /**
  * Initialises and holds all the game objects
+ * Handles inputs for in-game objects such as characters, items and clues
  */
 
 public class GameWorld {
@@ -40,18 +42,53 @@ public class GameWorld {
         clueManager = new ClueManager(assetLoader, characterManager);
         roomManager = new RoomManager(assetLoader);
 
+        distributeClue();
+        distributeItem();
+        distributeCharacter();
+
+        //clues and items position randomisation
+        for (Room room: roomManager.getRoomArray()) {
+            room.randomiseActorPos();
+        }
+        roomManager.getLockedRoom().randomiseActorPos();
+
+
+        System.out.println("Character list: " + characterManager.getCharacterArray());
+        System.out.println("Murderer: " + characterManager.getMurderer());
+        System.out.println("Victim: " + characterManager.getVictim());
+        System.out.println("Item list: " + itemManager.getItemArray());
+        System.out.println("MOTIVE Clue: " + clueManager.getMotiveClue());
+        System.out.println("WEAPON Clue: " + clueManager.getWeaponClue());
+        System.out.println("APPEARANCE Clues: " + clueManager.getAppearanceClueArray());
+        System.out.println("Room list: " + roomManager.getRoomArray());
+
+        currentRoom = roomManager.getRoomArray().first();
+    }
+
+    private void distributeClue(){
+        Array<GameCharacter> characterArray = characterManager.getCharacterArray();
+        Array<Room> roomArray = roomManager.getRoomArray();
+
+        roomManager.getLockedRoom().addClue(clueManager.getWeaponClue());
+        characterArray.random().addClue(clueManager.getMotiveClue());
+
+        // array of potential clue holders
+        Array<ObjectContainer> clueHolderArray = new Array<>();
+        clueHolderArray.addAll(roomArray);
+        clueHolderArray.addAll(characterArray);
+        clueHolderArray.shuffle();
+
+        // add every appearance clue to a random clue holder
+        for (int i = 0; i < clueManager.getAppearanceClueArray().size; i++){
+            clueHolderArray.pop().addClue(clueManager.getAppearanceClueArray().get(i));
+        }
+    }
+
+    private void distributeItem(){
         Array<Item> itemArray = itemManager.getItemArray();
         Array<GameCharacter> characterArray = characterManager.getCharacterArray();
         Array<Room> roomArray = roomManager.getRoomArray();
 
-        // clue distribution
-        roomManager.getLockedRoom().addClue(clueManager.getMotiveClue());
-        roomManager.getRoomArray().random().addClue(clueManager.getWeaponClue());
-        for (int i = 0; i < characterArray.size; i++){
-            characterArray.get(i).addClue(assetLoader.totalAppearanceClueArray.get(i));
-        }
-
-        // item distribution
         itemArray.add(itemManager.getKey());
         for (int i = 0; i < characterArray.size; i++) {
             //assign every item but the first one to every character
@@ -62,9 +99,14 @@ public class GameWorld {
             itemManager.getItemArray().get(i).setReturnItem(itemManager.getItemArray().get(i+1));
         }
         itemArray.removeValue(itemManager.getKey(), false);
-        roomArray.random().addItem(itemArray.get(0));
-        notebook.addItem(itemArray.get(0));
 
+        //the first item is assigned to a random room
+        roomArray.random().addItem(itemArray.get(0));
+    }
+
+    private void distributeCharacter(){
+        Array<GameCharacter> characterArray = characterManager.getCharacterArray();
+        Array<Room> roomArray = roomManager.getRoomArray();
 
         // character distribution
         characterArray.shuffle();
@@ -77,18 +119,6 @@ public class GameWorld {
             }
             cnt++;
         }
-
-
-        System.out.println("Character list: " + characterManager.getCharacterArray());
-        System.out.println("Murderer: " + characterManager.getMurderer());
-        System.out.println("Victim: " + characterManager.getVictim());
-        System.out.println("Item list: " + itemManager.getItemArray());
-        System.out.println("MOTIVE Clue: " + clueManager.getMotiveClue());
-        System.out.println("WEAPON Clue: " + clueManager.getWeaponClue());
-        System.out.println("APPEARANCE Clues: " + clueManager.getAppearanceClue());
-        System.out.println("Room list: " + roomManager.getRoomArray());
-
-        currentRoom = roomManager.getRoomArray().first();
     }
 
     public void setGui(Gui gui){

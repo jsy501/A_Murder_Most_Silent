@@ -21,6 +21,7 @@ public class MapWindow extends GuiWindow{
 
     @Override
     protected void result(Object object) {
+        // roomId remains 0 if cancel button is pressed
         int roomId = 0;
 
         if (object.equals(true)){
@@ -45,8 +46,8 @@ public class MapWindow extends GuiWindow{
             roomId = 405;
         }
 
-        //if the room is locked and the move fails
-        if (!gameWorld.moveRoom(roomId)){
+        //if cancel button is not pressed and the room is locked and the move fails
+        if (roomId != 0 && !gameWorld.moveRoom(roomId)){
             gui.displayInfo(null, "The room is locked");
         }
     }

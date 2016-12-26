@@ -1,5 +1,6 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.ClueType;
@@ -17,11 +18,15 @@ public class ClueManager {
 
     private Clue motiveClue;
     private Clue weaponClue;
-    private Array<Clue> appearanceClue;
+    private Array<Clue> appearanceClueArray;
+
+    private TextureAtlas textureAtlas;
 
     public ClueManager(AssetLoader assetLoader, CharacterManager characterManager){
         this.characterManager = characterManager;
         this.assetLoader = assetLoader;
+
+        textureAtlas = assetLoader.manager.get(assetLoader.clueTexturePath);
 
         initMotiveClue();
         initWeaponClue();
@@ -37,6 +42,7 @@ public class ClueManager {
 
         //motive clues are unique for every character
         motiveClue = totalClueArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
+        motiveClue.setImage(textureAtlas.findRegion(String.valueOf(motiveClue.getId())));
 
         //json import check
         if (motiveClue.getClueType() != ClueType.MOTIVE ||
@@ -61,21 +67,24 @@ public class ClueManager {
         }
 
         weaponClue.getRelatedCharId().add(characterManager.getMurderer().getId());
+        weaponClue.setImage(textureAtlas.findRegion(String.valueOf(weaponClue.getId())));
     }
 
     /**
-     * Choose appearance clues that point to the murderer from a total appearance clue array
+     * Choose appearance clues that point to the murderer from a total appearance clue array.
+     * Check json import error
      */
 
     private void initAppearanceClue(){
         Array<Clue> totalClueArray = assetLoader.totalAppearanceClueArray;
 
-        appearanceClue = new Array<>();
+        appearanceClueArray = new Array<>();
 
         GameCharacter murderer = characterManager.getMurderer();
         for (int i = 0; i < totalClueArray.size; i++){
             if (totalClueArray.get(i).getRelatedCharId().contains(murderer.getId(), false)){
-                appearanceClue.add(totalClueArray.get(i));
+                appearanceClueArray.add(totalClueArray.get(i));
+                appearanceClueArray.peek().setImage(textureAtlas.findRegion(String.valueOf(appearanceClueArray.peek().getId())));
             }
 
             //json import check
@@ -93,7 +102,7 @@ public class ClueManager {
         return weaponClue;
     }
 
-    public Array<Clue> getAppearanceClue() {
-        return appearanceClue;
+    public Array<Clue> getAppearanceClueArray() {
+        return appearanceClueArray;
     }
 }

@@ -1,5 +1,6 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
@@ -22,10 +23,14 @@ public class ItemManager {
         Array<Item> totalItemList = assetLoader.totalItemClueArray;
         Array<GameCharacter> characterArray = characterManager.getCharacterArray();
 
+        TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.itemTexturePath);
+
         //pick items that are relevant to the characters in the game
         for (int i = 0; i < characterArray.size; i++) {
             int index = characterArray.get(i).getId() - GameCharacter.ID_OFFSET;
-            itemArray.add(totalItemList.get(index));
+            Item item = totalItemList.get(index);
+            itemArray.add(item);
+            item.setImage(textureAtlas.findRegion(String.valueOf(item.getId())));
         }
 
         key = new Item(500, "key", "It's a key", true); // the final item to be given
