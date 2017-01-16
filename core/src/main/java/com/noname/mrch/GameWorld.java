@@ -33,8 +33,8 @@ public class GameWorld {
     private ClueManager clueManager;
     private RoomManager roomManager;
 
-    public GameWorld(AssetLoader assetLoader) {
-        player = new Player("John");
+    public GameWorld(Player player, AssetLoader assetLoader) {
+        this.player = player;
         notebook = new NoteBook();
 
         characterManager = new CharacterManager(assetLoader);

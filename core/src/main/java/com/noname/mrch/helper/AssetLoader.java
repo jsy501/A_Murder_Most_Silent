@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.gameobject.Item;
+import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.gameobject.Room;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.Properties;
 public class AssetLoader {
     public AssetManager manager;
 
+    public Array<Player> totalPlayerArray;
     public Array<GameCharacter> totalCharacterArray;
     public Array<Item> totalItemClueArray;
     public Array<Clue> totalMotiveClueArray;
@@ -46,6 +48,7 @@ public class AssetLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String playerJsonPath = properties.getProperty("playerJsonPath");
         String characterJsonPath = properties.getProperty("characterJsonPath");
         String itemJsonPath = properties.getProperty("itemJsonPath");
         String motiveClueJsonPath = properties.getProperty("motiveClueJsonPath");
@@ -60,6 +63,7 @@ public class AssetLoader {
 
         //load json
         Json json = new Json();
+        totalPlayerArray = json.fromJson(Array.class, Player.class, new FileHandle(playerJsonPath));
         totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, new FileHandle(characterJsonPath));
         totalItemClueArray = json.fromJson(Array.class, Item.class, new FileHandle(itemJsonPath));
         totalMotiveClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(motiveClueJsonPath));

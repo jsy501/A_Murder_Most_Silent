@@ -7,28 +7,20 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Player {
     private String name;
-    private Room location;
     private Array<QuestioningStyle> questionSet;
 
-    public Player(String playerName){
-        // Constructor for initialising player
-        name = playerName;
-        questionSet = new Array<>(3);
-        questionSet.addAll(QuestioningStyle.Q1, QuestioningStyle.Q5, QuestioningStyle.Q8);
+    public Player(String name){
+        this.name = name;
+        questionSet = new Array<>();
+        questionSet.addAll(QuestioningStyle.Q1, QuestioningStyle.Q2, QuestioningStyle.Q3);
     }
 
-    public void setLocation(Room room){
-        // Will be called everytime the player moves to a new
-        // location such as changing rooms
-        location = room;
+    public Player(){
+
     }
 
     public String getName(){
         return name;
-    }
-
-    public Room getLocation(){
-        return location;
     }
 
     public Array<QuestioningStyle> getQuestionSet() {

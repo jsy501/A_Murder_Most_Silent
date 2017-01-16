@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.gui.Gui;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
@@ -14,9 +15,9 @@ public class GamePlayScreen implements Screen {
     private GameWorld gameWorld;
     private Gui gui;
 
-    public GamePlayScreen(MurderSilentGame game){
+    public GamePlayScreen(MurderSilentGame game, Player selectedPlayer){
         this.game = game;
-        gameWorld = new GameWorld(this.game.assetLoader);
+        gameWorld = new GameWorld(selectedPlayer, this.game.assetLoader);
         gui = new Gui(this.game.assetLoader, gameWorld);
 
         gameWorld.setGui(gui);

@@ -2,65 +2,51 @@ package com.noname.mrch.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.noname.mrch.MurderSilentGame;
+import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.helper.AssetLoader;
 
-public class MainMenuScreen implements Screen {
+public class PlayerSelectionScreen implements Screen {
     private MurderSilentGame game;
     private AssetLoader assetLoader;
 
     private Stage stage;
     private Table table;
 
-    public MainMenuScreen(final MurderSilentGame game){
+    public PlayerSelectionScreen(final MurderSilentGame game){
         this.game = game;
         assetLoader = game.assetLoader;
 
         stage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT));
         table = new Table(assetLoader.skin);
         table.setFillParent(true);
-
-//        stage.setDebugAll(true);
     }
 
     @Override
     public void show() {
-        Label.LabelStyle style = new Label.LabelStyle(assetLoader.titleFont, Color.WHITE);
-        Label title = new Label("A\nMURDER\nMOST\nSILENT", style);
-        title.setAlignment(Align.center);
+        table.add("CHOOSE YOUR DETECTIVE TO PLAY").padBottom(50).row();
 
-        table.add(title).padTop(80).padBottom(120).row();
-        TextButton newGame = new TextButton("NEW GAME", assetLoader.skin);
-        newGame.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new PlayerSelectionScreen(game));
-            }
-        });
-
-        TextButton quit = new TextButton("QUIT", assetLoader.skin);
-        quit.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
-            }
-        });
-
-        table.add(newGame).padBottom(10).row();
-        table.add(quit).top().expandY();
-
+        Table selectionTable = new Table(assetLoader.skin);
+        Array<Player> playerRoster = assetLoader.totalPlayerArray;
+        for (Player player: playerRoster) {
+            TextButton button = new TextButton(player.getName(), assetLoader.skin);
+            button.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    game.setScreen(new GamePlayScreen(game, player));
+                }
+            });
+            selectionTable.add(button).size(200, 500);
+        }
+        table.add(selectionTable);
         stage.addActor(table);
         Gdx.input.setInputProcessor(stage);
     }
