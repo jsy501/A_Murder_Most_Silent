@@ -34,10 +34,6 @@ public class GameActor extends Actor {
         setOrigin(getWidth()/2, getHeight()/2);
     }
 
-    public  TextureRegion getImage(){
-        return image;
-    }
-
     public void setTouched(boolean touched){
         isTouched = touched;
     }

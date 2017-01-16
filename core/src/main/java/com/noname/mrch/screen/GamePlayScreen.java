@@ -33,16 +33,12 @@ public class GamePlayScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        gui.update(delta);
-        gui.getStage().act();
-
         gameWorld.update(delta);
-
         gameWorld.getCurrentRoom().getCurrentStage().act();
-//        gameWorld.getCurrentRoom().getCurrentStage().getViewport().apply();
         gameWorld.getCurrentRoom().getCurrentStage().draw();
 
-//        gui.getStage().getViewport().apply();
+        gui.update(delta);
+        gui.getStage().act();
         gui.getStage().draw();
 
     }
@@ -70,6 +66,6 @@ public class GamePlayScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        gameWorld.dispose();
     }
 }

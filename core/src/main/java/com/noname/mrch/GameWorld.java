@@ -229,6 +229,10 @@ public class GameWorld {
         return notebook;
     }
 
+    public ClueManager getClueManager() {
+        return clueManager;
+    }
+
     public void dispose(){
         roomManager.dispose();
     }

@@ -28,7 +28,6 @@ public class AccuseWindow extends GuiWindow {
 
     public AccuseWindow(Skin skin, Gui gui, GameWorld gameWorld) {
         super("ACCUSE", skin, gui, gameWorld);
-        debugAll();
 
         sourceClueArray = new Array<>();
         targetClueArray = new Array<>();
@@ -101,7 +100,7 @@ public class AccuseWindow extends GuiWindow {
     @Override
     protected void result(Object object) {
         if (object.equals(true)){
-            gui.getInteractionBox().accuse();
+            gui.getInteractionBox().getInteraction().accuse(targetClueArray);
         }
         else if (object.equals(false)){
             hide();

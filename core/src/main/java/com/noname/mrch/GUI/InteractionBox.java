@@ -1,12 +1,9 @@
 package com.noname.mrch.gui;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -15,18 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.GameWorld;
-import com.noname.mrch.gameobject.Clue;
-import com.noname.mrch.gameobject.ClueType;
-import com.noname.mrch.gameobject.GameCharacter;
+import com.noname.mrch.gameobject.Interaction;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Player;
-import com.noname.mrch.gameobject.QuestioningStyle;
 
 public class InteractionBox extends Table{
+    private Interaction interaction;
     private GameWorld gameWorld;
     private Gui gui;
-
-    private GameCharacter interactingCharacter;
 
     private Skin skin;
 
@@ -48,10 +41,12 @@ public class InteractionBox extends Table{
         this.gui = gui;
         this.skin = skin;
 
+        interaction = new Interaction(this);
+
         align(Align.left);
 
         initChoiceTable();
-        add(choiceTable).size(Value.percentWidth(0.2f, this), Value.percentHeight(1f, this));
+        add(choiceTable).size(Value.percentWidth(0.2f, this), Value.percentHeight(1f, this)).left();
 
         initQuestionTable();
 
@@ -68,10 +63,7 @@ public class InteractionBox extends Table{
         add(dialogueBox).size(Value.percentWidth(0.6f, this), Value.percentHeight(1f, this));
     }
 
-    public void setInteractingCharacter(GameCharacter interactingCharacter) {
-        this.interactingCharacter = interactingCharacter;
-        setDialogue(interactingCharacter.getGreeting());
-    }
+
 
     private void initChoiceTable(){
         TextButton question = new TextButton("QUESTION", skin);
@@ -126,7 +118,7 @@ public class InteractionBox extends Table{
         questionStyle_1.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                question(player.getQuestionSet().get(0));
+                interaction.question(player.getQuestionSet().get(0));
             }
         });
 
@@ -134,7 +126,7 @@ public class InteractionBox extends Table{
         questionStyle_2.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                question(player.getQuestionSet().get(1));
+                interaction.question(player.getQuestionSet().get(1));
             }
         });
 
@@ -142,7 +134,7 @@ public class InteractionBox extends Table{
         questionStyle_3.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                question(player.getQuestionSet().get(2));
+                interaction.question(player.getQuestionSet().get(2));
             }
         });
 
@@ -170,45 +162,7 @@ public class InteractionBox extends Table{
         questionTable.setVisible(true);
     }
 
-    private void question(QuestioningStyle questionStyle) {
-        if (interactingCharacter.isAccused()) {
-            setDialogue("Go Away");
-        }
-
-        else if (interactingCharacter.getClueList().size == 0){
-            setDialogue("I have no clue");
-        }
-
-        // when the only clue the character has is the motive clue and the player had found less than 3 clues
-        else if (interactingCharacter.getClueList().size == 1 &&
-                interactingCharacter.getClueList().peek().getClueType() == ClueType.MOTIVE &&
-                gameWorld.getNotebook().getClueList().size < 3) {
-            setDialogue("I'll tell you something later");
-        }
-
-        else{
-            int diff = Math.abs(questionStyle.getValue() - interactingCharacter.getPersonality().getValue());
-            int chanceOfSuccess = MathUtils.random(1, 9)+ diff;
-
-            if (chanceOfSuccess >= 5){
-                // motive clue is always added first so the last index clue will always be an appearance clue
-                Clue clue = interactingCharacter.getClueList().pop();
-
-                gameWorld.getNotebook().addClue(clue);
-
-                gui.displayInfo(clue, clue.getDescription());
-
-                setDialogue(clue.getResponse());
-
-            } else {
-                setDialogue(interactingCharacter.getQuestionFailResponse());
-            }
-        }
-
-        haltQuestion();
-    }
-
-    private void haltQuestion(){
+    public void haltQuestion(){
         choiceTable.setTouchable(Touchable.enabled);
         questionTable.setVisible(false);
     }
@@ -235,7 +189,7 @@ public class InteractionBox extends Table{
             itemChoice.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    give(item);
+                    interaction.give(item);
                 }
             });
 
@@ -253,25 +207,7 @@ public class InteractionBox extends Table{
         giveTable.add(cancel);
     }
 
-    private void give(Item givenItem){
-        if (givenItem.getLinkedPersonId() == interactingCharacter.getId()){
-            setDialogue("giveSuccessDialogue");
-            gameWorld.getNotebook().removeItem(givenItem);
-
-            Item returnItem = interactingCharacter.getItemList().get(0);
-            gameWorld.getNotebook().addItem(returnItem);
-            interactingCharacter.removeItem(returnItem);
-
-            gui.displayInfo(returnItem, returnItem.getDescription());
-        }
-
-        else{
-            setDialogue("giveFailDialogue");
-        }
-        haltGive();
-    }
-
-    private void haltGive(){
+    public void haltGive(){
         choiceTable.setTouchable(Touchable.enabled);
         giveScrollPane.setVisible(false);
     }
@@ -285,15 +221,19 @@ public class InteractionBox extends Table{
         accuseWindow.show(gui.getStage());
     }
 
-    void accuse(){
-
-    }
-
-    private void setDialogue(String dialogue){
+    public void setDialogue(String dialogue){
         dialogueBox.setText(dialogue);
     }
 
-    public GameCharacter getInteractingCharacter() {
-        return interactingCharacter;
+    public GameWorld getGameWorld() {
+        return gameWorld;
+    }
+
+    public Gui getGui() {
+        return gui;
+    }
+
+    public Interaction getInteraction() {
+        return interaction;
     }
 }

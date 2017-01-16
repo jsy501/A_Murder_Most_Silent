@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
@@ -38,7 +40,8 @@ public class Gui {
         this.gameWorld = gameWorld;
         Skin skin = assetLoader.skin;
 
-        stage = new Stage(new ScreenViewport());
+        stage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT));
+
         lowerScreenStack = new Stack();
 
         lowerScreenStack.setSize(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT / 4);
@@ -72,6 +75,7 @@ public class Gui {
 
         lowerScreenStack.add(lowerGuiGroup);
         lowerScreenStack.add(interactionBox);
+
         stage.addActor(lowerScreenStack);
     }
 
@@ -109,13 +113,13 @@ public class Gui {
         interactionBox.setVisible(false);
         lowerGuiGroup.setTouchable(Touchable.enabled);
 
-        if (interactionBox.getInteractingCharacter() != null) {
-            interactionBox.getInteractingCharacter().setTouchable(Touchable.enabled);
+        if (interactionBox.getInteraction().getInteractingCharacter() != null) {
+            interactionBox.getInteraction().getInteractingCharacter().setTouchable(Touchable.enabled);
         }
     }
 
     public void startInteraction(GameCharacter character){
-        interactionBox.setInteractingCharacter(character);
+        interactionBox.getInteraction().setInteractingCharacter(character);
         interactionBox.setVisible(true);
         lowerGuiGroup.setTouchable(Touchable.disabled);
 
