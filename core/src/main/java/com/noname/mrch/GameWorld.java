@@ -214,6 +214,13 @@ public class GameWorld {
         }
     }
 
+    public void resize(int width, int height){
+        for (Room room : roomManager.getRoomArray()) {
+            room.resize(width, height);
+        }
+        roomManager.getLockedRoom().resize(width, height);
+    }
+
     public Player getPlayer() {
         return player;
     }

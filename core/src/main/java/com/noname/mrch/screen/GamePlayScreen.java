@@ -37,16 +37,20 @@ public class GamePlayScreen implements Screen {
         gui.getStage().act();
 
         gameWorld.update(delta);
-        gameWorld.getCurrentRoom().getCurrentStage().act();
 
+        gameWorld.getCurrentRoom().getCurrentStage().act();
+//        gameWorld.getCurrentRoom().getCurrentStage().getViewport().apply();
         gameWorld.getCurrentRoom().getCurrentStage().draw();
+
+//        gui.getStage().getViewport().apply();
         gui.getStage().draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
-
+        gameWorld.resize(width, height);
+        gui.getStage().getViewport().update(width, height, true);
     }
 
     @Override

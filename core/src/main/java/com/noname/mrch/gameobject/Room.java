@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.MurderSilentGame;
 
@@ -36,8 +37,8 @@ public class Room implements JsonImport, ObjectContainer {
 
 	public Room(){
 		SpriteBatch batch = new SpriteBatch();
-		defaultStage = new Stage(new ScreenViewport(), batch);
-		investigateStage = new Stage(new ScreenViewport(), batch);
+		defaultStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
+		investigateStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
 	}
 
 	public void addCharacter(GameCharacter character){
@@ -111,10 +112,16 @@ public class Room implements JsonImport, ObjectContainer {
 		}
 	}
 
+	public void resize(int width, int height){
+		defaultStage.getViewport().update(width, height, false);
+		investigateStage.getViewport().update(width, height, false);
+	}
+
 	public void dispose(){
 		defaultStage.dispose();
 		investigateStage.dispose();
 	}
+
 
 	@Override
 	public String toString() {
