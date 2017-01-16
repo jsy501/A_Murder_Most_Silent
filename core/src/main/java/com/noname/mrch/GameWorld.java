@@ -78,9 +78,20 @@ public class GameWorld {
         clueHolderArray.addAll(characterArray);
         clueHolderArray.shuffle();
 
-        // add every appearance clue to a random clue holder
+        // add every relevant appearance clue to a random clue holder
         for (int i = 0; i < clueManager.getAppearanceClueArray().size; i++){
             clueHolderArray.pop().addClue(clueManager.getAppearanceClueArray().get(i));
+        }
+
+        /*
+        add irrelevant clues to every clue holder that doesn't have a clue
+        the number of irrelevant clues should be less than or equal to half of relevant appearance
+        clues + motive clue + weapon clue
+        */
+        int irrelevantClueCount = (clueManager.getAppearanceClueArray().size + 2) / 2;
+        while(irrelevantClueCount > 0){
+            clueHolderArray.pop().addClue(clueManager.getIrrelevantClueArray().pop());
+            irrelevantClueCount--;
         }
     }
 

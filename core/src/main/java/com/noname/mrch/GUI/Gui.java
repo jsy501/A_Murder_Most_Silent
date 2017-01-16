@@ -125,4 +125,8 @@ public class Gui {
     public Stage getStage(){
         return stage;
     }
+
+    public InteractionBox getInteractionBox(){
+        return interactionBox;
+    }
 }

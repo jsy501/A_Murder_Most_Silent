@@ -16,9 +16,13 @@ public class ClueManager {
     private CharacterManager characterManager;
     private AssetLoader assetLoader;
 
+    // clues linked to the murderer
     private Clue motiveClue;
     private Clue weaponClue;
     private Array<Clue> appearanceClueArray;
+
+    // appearance clues not linked to the murderer
+    private Array<Clue> irrelevantClueArray;
 
     private TextureAtlas textureAtlas;
 
@@ -55,7 +59,6 @@ public class ClueManager {
      * Choose one weapon clue randomly from a total weapon clue array and point to the murderer.
      * Check json import error
      */
-
     private void initWeaponClue(){
         Array<Clue> totalClueArray = assetLoader.totalWeaponClueArray;
 
@@ -74,21 +77,28 @@ public class ClueManager {
      * Choose appearance clues that point to the murderer from a total appearance clue array.
      * Check json import error
      */
-
     private void initAppearanceClue(){
-        Array<Clue> totalClueArray = assetLoader.totalAppearanceClueArray;
+        Array<Clue> totalAppearanceClueArray = new Array<>(assetLoader.totalAppearanceClueArray);
 
+        irrelevantClueArray = new Array<>();
         appearanceClueArray = new Array<>();
 
         GameCharacter murderer = characterManager.getMurderer();
-        for (int i = 0; i < totalClueArray.size; i++){
-            if (totalClueArray.get(i).getRelatedCharId().contains(murderer.getId(), false)){
-                appearanceClueArray.add(totalClueArray.get(i));
-                appearanceClueArray.peek().setImage(textureAtlas.findRegion(String.valueOf(appearanceClueArray.peek().getId())));
+        for (int i = 0; i <totalAppearanceClueArray.size ; i++){
+            Clue clue = totalAppearanceClueArray.get(i);
+            clue.setImage(textureAtlas.findRegion(String.valueOf(clue.getId())));
+
+            // if the clue is linked to the murderer move it to relevant clue array
+            if (clue.getRelatedCharId().contains(murderer.getId(), false)){
+                appearanceClueArray.add(clue);
+            }
+            // if not, move it to irrelevant clue array
+            else{
+                irrelevantClueArray.add(clue);
             }
 
             //json import check
-            if (totalClueArray.get(i).getClueType() != ClueType.APPEARANCE){
+            if (clue.getClueType() != ClueType.APPEARANCE){
                 throw new RuntimeException("Invalid json format");
             }
         }
@@ -104,5 +114,9 @@ public class ClueManager {
 
     public Array<Clue> getAppearanceClueArray() {
         return appearanceClueArray;
+    }
+
+    public Array<Clue> getIrrelevantClueArray() {
+        return irrelevantClueArray;
     }
 }

@@ -3,8 +3,10 @@ package com.noname.mrch.gui;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.SplitPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -35,6 +37,8 @@ public class InteractionBox extends Table{
     private Table giveTable;
     private ScrollPane giveScrollPane;
 
+    private AccuseWindow accuseWindow;
+
     private TextButton dialogueBox;
 
     public InteractionBox(Skin skin, Gui gui, GameWorld gameWorld){
@@ -52,6 +56,8 @@ public class InteractionBox extends Table{
         initQuestionTable();
 
         initGiveTable();
+
+        initAccuseWindow();
 
         secondColumnStack = new Stack();
         add(secondColumnStack).size(Value.percentWidth(0.2f, this), Value.percentHeight(1f, this));
@@ -75,6 +81,7 @@ public class InteractionBox extends Table{
                 startQuestion();
             }
         });
+
         TextButton give = new TextButton("GIVE", skin);
         give.addListener(new ChangeListener() {
             @Override
@@ -82,7 +89,15 @@ public class InteractionBox extends Table{
                 startGive();
             }
         });
+
         TextButton accuse = new TextButton("ACCUSE", skin);
+        accuse.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                startAccuse();
+            }
+        });
+
         TextButton ignore = new TextButton("IGNORE", skin);
         ignore.addListener(new ChangeListener() {
             @Override
@@ -150,6 +165,11 @@ public class InteractionBox extends Table{
         questionTable.setVisible(false);
     }
 
+    private void startQuestion(){
+        choiceTable.setTouchable(Touchable.disabled);
+        questionTable.setVisible(true);
+    }
+
     private void question(QuestioningStyle questionStyle) {
         if (interactingCharacter.isAccused()) {
             setDialogue("Go Away");
@@ -186,6 +206,11 @@ public class InteractionBox extends Table{
         }
 
         haltQuestion();
+    }
+
+    private void haltQuestion(){
+        choiceTable.setTouchable(Touchable.enabled);
+        questionTable.setVisible(false);
     }
 
     private void initGiveTable() {
@@ -251,14 +276,17 @@ public class InteractionBox extends Table{
         giveScrollPane.setVisible(false);
     }
 
-    private void startQuestion(){
-        choiceTable.setTouchable(Touchable.disabled);
-        questionTable.setVisible(true);
+    private void initAccuseWindow(){
+        accuseWindow = new AccuseWindow(skin, gui, gameWorld);
     }
 
-    private void haltQuestion(){
-        choiceTable.setTouchable(Touchable.enabled);
-        questionTable.setVisible(false);
+    private void startAccuse(){
+        accuseWindow.initialize();
+        accuseWindow.show(gui.getStage());
+    }
+
+    void accuse(){
+
     }
 
     private void setDialogue(String dialogue){
