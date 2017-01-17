@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 public class GuiButton extends ImageButton {
     private boolean isTouched = false;
 
-    public GuiButton(Skin skin) {
-        super(skin);
+    public GuiButton(Skin skin, String styleName) {
+        super(skin, styleName);
 
         addListener(new ChangeListener() {
             @Override

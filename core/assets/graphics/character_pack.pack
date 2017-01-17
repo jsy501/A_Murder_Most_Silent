@@ -6,30 +6,30 @@ repeat: none
 300
   rotate: false
   xy: 1, 953
-  size: 606, 1046
-  orig: 744, 1049
-  offset: 104, 0
+  size: 533, 1046
+  orig: 533, 1046
+  offset: 0, 0
   index: -1
 301
   rotate: false
   xy: 1, 1
   size: 507, 950
-  orig: 744, 1049
-  offset: 117, 0
+  orig: 507, 950
+  offset: 0, 0
   index: -1
-302
-  rotate: false
-  xy: 609, 1089
-  size: 387, 910
-  orig: 744, 1049
-  offset: 181, 0
-  index: -1
-303
+305
   rotate: false
   xy: 510, 74
   size: 403, 877
-  orig: 744, 1049
-  offset: 178, 0
+  orig: 403, 877
+  offset: 0, 0
+  index: -1
+302
+  rotate: false
+  xy: 536, 1089
+  size: 387, 910
+  orig: 387, 910
+  offset: 0, 0
   index: -1
 
 character_pack2.png
@@ -40,13 +40,13 @@ repeat: none
   rotate: false
   xy: 1, 1
   size: 519, 898
-  orig: 744, 1049
-  offset: 118, 0
+  orig: 519, 898
+  offset: 0, 0
   index: -1
-305
+303
   rotate: false
-  xy: 522, 44
-  size: 312, 855
-  orig: 744, 1049
-  offset: 214, 0
+  xy: 522, 18
+  size: 312, 881
+  orig: 312, 881
+  offset: 0, 0
   index: -1

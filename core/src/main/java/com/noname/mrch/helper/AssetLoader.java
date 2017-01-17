@@ -2,6 +2,7 @@ package com.noname.mrch.helper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -16,11 +17,22 @@ import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.gameobject.Room;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
 public class AssetLoader {
     public AssetManager manager;
+
+    private String skinPath;
+    private String titleFontPath;
+    private String playerJsonPath;
+    private String characterJsonPath;
+    private String itemJsonPath;
+    private String motiveClueJsonPath;
+    private String weaponClueJsonPath;
+    private String appearanceClueJsonPath;
+    private String roomJsonPath;
 
     public Array<Player> totalPlayerArray;
     public Array<GameCharacter> totalCharacterArray;
@@ -41,6 +53,15 @@ public class AssetLoader {
     public AssetLoader() {
         manager = new AssetManager();
 
+        getAssetPath();
+
+        skin = new Skin(new FileHandle(skinPath));
+        loadFonts();
+        loadJson();
+        loadTexture();
+    }
+
+    private void getAssetPath(){
         FileHandle file = new FileHandle("assets.properties");
         Properties properties = new Properties();
         try {
@@ -48,35 +69,28 @@ public class AssetLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String playerJsonPath = properties.getProperty("playerJsonPath");
-        String characterJsonPath = properties.getProperty("characterJsonPath");
-        String itemJsonPath = properties.getProperty("itemJsonPath");
-        String motiveClueJsonPath = properties.getProperty("motiveClueJsonPath");
-        String weaponClueJsonPath = properties.getProperty("weaponClueJsonPath");
-        String appearanceClueJsonPath = properties.getProperty("appearanceClueJsonPath");
-        String roomJsonPath = properties.getProperty("roomJsonPath");
+
+        skinPath = properties.getProperty("skinPath");
+
+        titleFontPath = properties.getProperty("titleFontPath");
+
+        playerJsonPath = properties.getProperty("playerJsonPath");
+        characterJsonPath = properties.getProperty("characterJsonPath");
+        itemJsonPath = properties.getProperty("itemJsonPath");
+        motiveClueJsonPath = properties.getProperty("motiveClueJsonPath");
+        weaponClueJsonPath = properties.getProperty("weaponClueJsonPath");
+        appearanceClueJsonPath = properties.getProperty("appearanceClueJsonPath");
+        roomJsonPath = properties.getProperty("roomJsonPath");
 
         characterTexturePath = properties.getProperty("characterTexturePath");
         roomTexturePath = properties.getProperty("roomTexturePath");
         itemTexturePath = properties.getProperty("itemTexturePath");
         clueTexturePath = properties.getProperty("clueTexturePath");
+    }
 
-        //load json
-        Json json = new Json();
-        totalPlayerArray = json.fromJson(Array.class, Player.class, new FileHandle(playerJsonPath));
-        totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, new FileHandle(characterJsonPath));
-        totalItemClueArray = json.fromJson(Array.class, Item.class, new FileHandle(itemJsonPath));
-        totalMotiveClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(motiveClueJsonPath));
-        totalWeaponClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(weaponClueJsonPath));
-        totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(appearanceClueJsonPath));
-        totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle(roomJsonPath));
-
-        // TODO: 16/01/2017 skin path in properties
-        skin = new Skin(Gdx.files.internal("assets/uiskin.json"));
-
-        // TODO: 16/01/2017 font path in properties
+    private void loadFonts(){
         //freetype font generation for title
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("assets/fonts/Lato-Regular.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(new FileHandle(titleFontPath));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         parameter.size = 100;
@@ -84,13 +98,21 @@ public class AssetLoader {
 
         titleFont = generator.generateFont(parameter);
         generator.dispose();
-
-
-
-        loadTexture();
     }
 
-    public void loadTexture(){
+    private void loadJson(){
+        Json json = new Json();
+
+        totalPlayerArray = json.fromJson(Array.class, Player.class, new FileHandle(playerJsonPath));
+        totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, new FileHandle(characterJsonPath));
+        totalItemClueArray = json.fromJson(Array.class, Item.class, new FileHandle(itemJsonPath));
+        totalMotiveClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(motiveClueJsonPath));
+        totalWeaponClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(weaponClueJsonPath));
+        totalAppearanceClueArray = json.fromJson(Array.class, Clue.class, new FileHandle(appearanceClueJsonPath));
+        totalRoomArray = json.fromJson(Array.class, Room.class, new FileHandle(roomJsonPath));
+    }
+
+    private void loadTexture(){
         //load room texture
         manager.load(roomTexturePath, TextureAtlas.class);
 

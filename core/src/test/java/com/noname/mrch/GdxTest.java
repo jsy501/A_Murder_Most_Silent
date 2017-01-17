@@ -26,9 +26,6 @@ public class GdxTest extends BlockJUnit4ClassRunner implements ApplicationListen
 
         HeadlessApplicationConfiguration conf = new HeadlessApplicationConfiguration();
 
-        Gdx.gl = mock(GL20.class);
-        Gdx.gl20 = mock(GL20.class);
-
         new HeadlessApplication(this, conf);
     }
 

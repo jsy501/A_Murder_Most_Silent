@@ -103,6 +103,7 @@ public class Interaction{
 
     /**
      * Logic for accuse interaction
+     * Checks whether the selected clues relate to the murderer.
      * @param selectedClueArray Array of clues that is presented by the player
      */
 

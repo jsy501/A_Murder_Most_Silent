@@ -7,22 +7,22 @@
   {
     "id": 301,
     "name": "Simon Holmes",
-    "personality": "FRIENDLY"
+    "personality": "NEUTRAL"
   },
   {
     "id": 302,
     "name": "Jack Watson",
-    "personality": "AGGRESSIVE"
+    "personality": "FRIENDLY"
   },
   {
     "id": 303,
     "name": "Selina",
-    "personality": "NEUTRAL"
+    "personality": "FRIENDLY"
   },
   {
     "id": 304,
     "name": "William",
-    "personality": "NEUTRAL"
+    "personality": "AGGRESSIVE"
   },
   {
     "id": 305,

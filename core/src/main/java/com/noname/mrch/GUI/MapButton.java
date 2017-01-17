@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 public class MapButton extends GuiButton{
     public MapButton(Skin skin) {
-        super(skin);
+        super(skin, "map");
     }
 }
 
