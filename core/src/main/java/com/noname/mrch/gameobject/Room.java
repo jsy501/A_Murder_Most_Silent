@@ -2,6 +2,7 @@ package com.noname.mrch.gameobject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -29,11 +30,13 @@ public class Room implements JsonImport, ObjectContainer {
 	private Stage investigateStage;
 
 
-	public Room(int id, String name, boolean locked){
+	public Room(int id, String name, boolean locked, Batch batch){
 		this.id = id;
 		this.name = name;
 		this.isLocked = locked;
 
+		defaultStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
+		investigateStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
 	}
 
 	public Room(){

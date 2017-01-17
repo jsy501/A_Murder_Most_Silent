@@ -1,15 +1,24 @@
 package com.noname.mrch.gameobject;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.noname.mrch.GdxTest;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 
 /**
  * Room Unit tests
  */
-public class RoomTest {
+
+@RunWith(GdxTest.class)
+public class RoomTest{
     Room testRoom;
     GameCharacter testCharacter;
     Clue testClue;
@@ -18,7 +27,10 @@ public class RoomTest {
 
     @Before
     public void setUp() throws Exception {
-        testRoom = new Room(0, "test room", false);
+        ShaderProgram program = Mockito.mock(ShaderProgram.class);
+        SpriteBatch batch = new SpriteBatch(100, program);
+
+        testRoom = new Room(0, "test room", false, batch);
 
         testCharacter = new GameCharacter();
         testClue = new Clue();
