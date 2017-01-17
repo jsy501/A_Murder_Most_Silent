@@ -7,9 +7,33 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public class GameCharacter extends GameActor implements ObjectContainer, JsonImport {
+	/**
+	 * The CHARACTER_COUNT value defines the number of
+	 * game characters that will be added into the game.
+	 */
 	public static final int CHARACTER_COUNT = 6;
+
+	/**
+	 * The ID_OFFSET variable is used in order to differentiate between
+	 * types of objects independent of everything else the id offset
+	 * is added to the id of the object imported via json.
+	 */
 	public static final int ID_OFFSET = 300;
 
+	/**
+	 * Use of each variable:
+	 * itemList contains a single item that the character will give to the player
+     * clueList contains the clues a character may give when questioned
+     * id contains the id of the object as imported via json with the ID_OFFSET value added
+     * name contains the name of the object as displayed in game
+     * description contains the description of the gameCharacter as given in game
+     * personality can be any of the values defined by the personality enum and is used during questioning
+     * isMurderer contains a boolean value that defines whether the character is the murderer or not
+     * isVictim contains a boolean value that defines whether the character is the victim
+     * isAccused contains a boolean value that defines whether the character has been falsely accused or not
+     * greeting contains the generic greeting string as shown in game
+     * questionFailResponse contains the generic questioning failure string as shown in game
+	 */
 	private Array<Item> itemList = new Array<Item>() ;
 	private Array<Clue> clueList = new Array<Clue>() ;
 
@@ -23,6 +47,9 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 	private String greeting = "Greetings";
 	private String questionFailResponse = "Question Fail";
 
+    /**
+     * Constructor used for testing only
+     */
 	public GameCharacter(int id, String name, Personality personality, boolean isMurderer, boolean isVictim, boolean isAccused, String greeting, String questionFailResponse){
 		this.id = id;
 		this.name = name;
@@ -34,6 +61,9 @@ public class GameCharacter extends GameActor implements ObjectContainer, JsonImp
 		this.questionFailResponse = questionFailResponse;
 	}
 
+    /**
+     * Non-argument constructor for json import
+     */
 	public GameCharacter(){
 	}
 

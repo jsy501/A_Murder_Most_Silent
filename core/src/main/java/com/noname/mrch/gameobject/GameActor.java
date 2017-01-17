@@ -9,10 +9,25 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
 
+/**
+ * GameActor is a class that is used by graphical items
+ * it handles  rendering for the object and then the data
+ * classes extend this.
+ */
+
 public class GameActor extends Actor {
+    /**
+     * isTouched is used for checking whether
+     * the actor has been clicked on by the player
+     */
     private TextureRegion image;
     private boolean isTouched = false;
 
+    /**
+     * Constructor method that sets up the event listener
+     * for the actor and defines what happens when the actor
+     * is clicked on
+     */
     public GameActor(){
         addListener(new ClickListener(){
             @Override
@@ -23,6 +38,10 @@ public class GameActor extends Actor {
         });
     }
 
+    /**
+     * Set's the texture for the actor
+     * @param texture texture for graphical representation of object
+     */
     public void setImage(TextureRegion texture) {
         image = texture;
         float ratio = 1;
@@ -42,6 +61,12 @@ public class GameActor extends Actor {
         return isTouched;
     }
 
+    /**
+     * Checks if the image has been set then draws the given batch
+     * to screen
+     * @param batch Batch of image updates to the actor to be rendered
+     * @param parentAlpha Alpha colour to fill background of image hitbox
+     */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (image != null) {
