@@ -33,6 +33,7 @@ public class Room implements JsonImport, ObjectContainer {
 		this.id = id;
 		this.name = name;
 		this.isLocked = locked;
+
 	}
 
 	public Room(){

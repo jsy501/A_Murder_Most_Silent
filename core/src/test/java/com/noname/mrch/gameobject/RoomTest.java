@@ -111,7 +111,7 @@ public class RoomTest {
 
     @Test
     public void getNameTest() throws Exception {
-        assertEquals("failure - name is not 'test name'", "test name", testRoom.getName());
+        assertEquals("failure - name is not 'test name'", "test room", testRoom.getName());
     }
 
 }

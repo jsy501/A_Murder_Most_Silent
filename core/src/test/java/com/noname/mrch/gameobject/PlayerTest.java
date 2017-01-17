@@ -16,6 +16,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
+        player = new Player("test name");
     }
 
     @After
