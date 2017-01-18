@@ -20,6 +20,7 @@ public class CharacterManager {
      */
     private final int CHARACTER_COUNT = 6;
 
+
     private GameCharacter murderer;
     private GameCharacter victim;
 

@@ -5,6 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.noname.mrch.helper.AssetLoader;
 import com.noname.mrch.screen.LoadingScreen;
 
+/**
+ * Contains the functions and parameters needed for rendering and initialising the game screen
+ */
+
 public class MurderSilentGame extends Game {
 	public static float GAME_HEIGHT;
 	public static float GAME_WIDTH;
