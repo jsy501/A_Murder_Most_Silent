@@ -9,12 +9,26 @@ import com.noname.mrch.gui.Gui;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.MurderSilentGame;
 
+/**
+ * Contains the functions needed to render the game play screen
+ */
+
 public class GamePlayScreen implements Screen {
+    /**
+     * game contains parameters and functions needed for setting the screen size and rendering
+     * gameWorld contains an object containing all in game objects and logic to be referenced
+     * gui contains gui items to be used and displayed
+     */
     private MurderSilentGame game;
 
     private GameWorld gameWorld;
     private Gui gui;
 
+    /**
+     * Constructor for initialising the game once the player chooses a detective to play as
+     * @param game game object containing functions required for rendering the screen
+     * @param selectedPlayer selectedPlayer is the detective the player selects before the game starts
+     */
     public GamePlayScreen(MurderSilentGame game, Player selectedPlayer){
         this.game = game;
         gameWorld = new GameWorld(selectedPlayer, this.game.assetLoader);
@@ -23,6 +37,9 @@ public class GamePlayScreen implements Screen {
         gameWorld.setGui(gui);
     }
 
+    /**
+     * Initialises and sets the input multiplexer to the stage for the current room
+     */
     @Override
     public void show() {
         InputMultiplexer multiplexer = new InputMultiplexer(gui.getStage(), gameWorld.getCurrentRoom().getCurrentStage());
@@ -44,6 +61,11 @@ public class GamePlayScreen implements Screen {
 
     }
 
+    /**
+     * allows the player to resize the game screen
+     * @param width new width of the screen
+     * @param height new height of the screen
+     */
     @Override
     public void resize(int width, int height) {
         gameWorld.resize(width, height);

@@ -9,13 +9,26 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.helper.AssetLoader;
 
+/**
+ * contains the functions needed to render the loading screen
+ */
+
 public class LoadingScreen implements Screen{
+    /**
+     * game contains parameters and functions needed for setting the screen size and rendering
+     * batch contains image sprites to be rendered
+     * loadingFont contains the font for the loading text
+     * assetLoader contains a pointer to the game asset loader
+     */
     private MurderSilentGame game;
 
     private SpriteBatch batch;
     private BitmapFont loadingFont;
     private AssetLoader assetLoader;
-
+    /**
+     * constructor for initialising the loading screen
+     * @param game game object containing functions required for rendering the screen
+     */
     public LoadingScreen(final MurderSilentGame game){
         this.game = game;
         this.assetLoader = game.assetLoader;
@@ -27,6 +40,7 @@ public class LoadingScreen implements Screen{
     @Override
     public void show() {
     }
+
 
     @Override
     public void render(float delta) {

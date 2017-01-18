@@ -14,13 +14,26 @@ import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.helper.AssetLoader;
 
+/**
+ * contains the functions needed to render the player selection screen
+ */
 public class PlayerSelectionScreen implements Screen {
+    /**
+     * game contains parameters and functions needed for setting the screen size and rendering
+     * assetLoader contains a pointer to the game asset loader
+     * stage contains the stage used to display menu options
+     * table contains the sub table which is populated and used by ui elements
+     */
     private MurderSilentGame game;
     private AssetLoader assetLoader;
 
     private Stage stage;
     private Table table;
 
+    /**
+     * Constructor that initialises the player selection screen
+     * @param game game object containing functions required for rendering the screen
+     */
     public PlayerSelectionScreen(final MurderSilentGame game){
         this.game = game;
         assetLoader = game.assetLoader;
@@ -30,6 +43,9 @@ public class PlayerSelectionScreen implements Screen {
         table.setFillParent(true);
     }
 
+    /**
+     * Adds buttons to the gui table to be rendered and sets the input processor to the correct stage
+     */
     @Override
     public void show() {
         table.add("CHOOSE YOUR DETECTIVE TO PLAY").padBottom(50).row();

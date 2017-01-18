@@ -16,14 +16,27 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.noname.mrch.MurderSilentGame;
 import com.noname.mrch.helper.AssetLoader;
-
+/**
+ * contains the functions needed to render the main menu screen
+ */
 public class MainMenuScreen implements Screen {
+    /**
+     * game contains parameters and functions needed for setting the screen size and rendering
+     * assetLoader contains a pointer to the asset loader
+     *
+     * stage contains the stage used to display menu buttons
+     * table contains the sub table which is populated and used by ui elements
+     */
     private MurderSilentGame game;
     private AssetLoader assetLoader;
 
     private Stage stage;
     private Table table;
 
+    /**
+     * Constructor that initialises the main menu
+     * @param game game object containing functions required for rendering the screen
+     */
     public MainMenuScreen(final MurderSilentGame game){
         this.game = game;
         assetLoader = game.assetLoader;
@@ -35,6 +48,9 @@ public class MainMenuScreen implements Screen {
 //        stage.setDebugAll(true);
     }
 
+    /**
+     * populates the gui table with ui elements and sets the input processor to the stage
+     */
     @Override
     public void show() {
         Label.LabelStyle style = new Label.LabelStyle(assetLoader.titleFont, Color.WHITE);
