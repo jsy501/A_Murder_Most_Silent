@@ -8,9 +8,16 @@ import com.noname.mrch.gui.Gui;
  */
 
 public class NoteBook {
+    /**
+     * Clue list holds all the collected clues
+     * Item list holds all the collected items
+     */
     private Array<Clue> clueList;
     private Array<Item> itemList;
 
+    /**
+     * Non-argument constructor used at initialisation of the notebook
+     */
     public NoteBook(){
         clueList = new Array<>();
         itemList = new Array<>();
@@ -29,6 +36,11 @@ public class NoteBook {
 //        itemList.addAll(testItem1, testItem2, testItem3, testItem4, testItem5, testItem6, testItem7, testItem8, testItem9, testItem10);
     }
 
+    /**
+     * Adds the clue to the notebook throwing an exception if the clueList already
+     * contains the clue
+     * @param clue clue to be added to the notebook
+     */
     public void addClue(Clue clue){
         if (clueList.contains(clue, false)){
             throw new RuntimeException("Clue already in notebook");
@@ -36,6 +48,11 @@ public class NoteBook {
         clueList.add(clue);
     }
 
+    /**
+     * Adds the item to the notebook throwing an exception if the itemList already
+     * contains the item
+     * @param item item to be added to the notebook
+     */
     public void addItem(Item item){
         if (itemList.contains(item, false)){
             throw new RuntimeException("Item already in notebook");
@@ -43,6 +60,12 @@ public class NoteBook {
         itemList.add(item);
     }
 
+    /**
+     * searches through the clueList using the clue's unique id to find it
+     * throws an exception if the clue cannot be found
+     * @param id id of clue to be found
+     * @return returns the clue once found
+     */
     public Clue getClue(int id) {
         for (int i =0; i < clueList.size; i++){
             if (clueList.get(i).getId() == id){
@@ -52,7 +75,12 @@ public class NoteBook {
         throw new RuntimeException("Clue not in notebook");
     }
 
-
+    /**
+     * searches through the itemList using the item's unique id to find it
+     * throws an exception if the item cannot be found
+     * @param id if of item to be found
+     * @return returns the item once found
+     */
     public Item getItem(int id){
         for (int i =0; i < itemList.size; i++){
             if (itemList.get(i).getId() == id){
