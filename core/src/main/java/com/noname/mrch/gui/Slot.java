@@ -18,7 +18,7 @@ public class Slot extends Button {
         super(skin);
 
         this.gameActor = gameActor;
-        add(gameActor).row();
+        add(gameActor).size(100,100).row();
         add(gameActor.getName()).row();
 
         addListener(new ChangeListener() {

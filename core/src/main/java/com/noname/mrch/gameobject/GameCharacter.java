@@ -8,12 +8,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class GameCharacter extends GameActor implements ObjectContainer, JsonImport {
 	/**
-	 * The CHARACTER_COUNT value defines the number of
-	 * game characters that will be added into the game.
-	 */
-	public static final int CHARACTER_COUNT = 6;
-
-	/**
 	 * The ID_OFFSET variable is used in order to differentiate between
 	 * types of objects independent of everything else the id offset
 	 * is added to the id of the object imported via json.

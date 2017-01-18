@@ -14,6 +14,12 @@ import com.noname.mrch.helper.InitUtil;
  */
 
 public class CharacterManager {
+    /**
+     * The CHARACTER_COUNT value defines the number of
+     * game characters that will be added into the game.
+     */
+    private final int CHARACTER_COUNT = 6;
+
     private GameCharacter murderer;
     private GameCharacter victim;
 
@@ -26,11 +32,11 @@ public class CharacterManager {
      */
     public CharacterManager(AssetLoader assetLoader) {
 
-        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, GameCharacter.CHARACTER_COUNT);
+        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
         victim = characterArray.pop();
         victim.setVictim(true);
 
-        murderer = characterArray.first();
+        murderer = characterArray.random();
         murderer.setMurderer(true);
 
         setImage(assetLoader);

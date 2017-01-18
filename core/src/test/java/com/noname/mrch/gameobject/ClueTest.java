@@ -26,7 +26,7 @@ public class ClueTest {
         characterRelated.add(0);
         characterRelated.add(1);
 
-        clue = new Clue(0,"test clue", "test description", ClueType.MOTIVE, characterRelated, "test response");
+        clue = new Clue(0,"test clue", "test description", ClueType.MOTIVE, ClueTag.PHYSICAL, characterRelated, "test response");
     }
 
     @After

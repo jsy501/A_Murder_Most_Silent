@@ -20,13 +20,13 @@ public class Clue extends GameActor implements JsonImport{
      * id contains the id of the object as imported via json with the ID_OFFSET value added
      * name contains the name of the object as displayed in game
      * description contains the description of the clue as displayed in game
-     * clueType can be any value defined by the ClueType enum and is used to tell the game what type the clue is
      * relatedCharId contains the id's of all characters that any particular clue can point to mainly used for accusations
      */
     private int id;
     private String name;
     private String description;
     private ClueType clueType;
+    private ClueTag clueTag;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
     // TODO: 16/01/2017 clue type implementation
@@ -41,11 +41,12 @@ public class Clue extends GameActor implements JsonImport{
     /**
      * Constructor for testing only
      */
-    public Clue(int id, String name, String description, ClueType clueType, Array<Integer> relatedCharId, String response){
+    public Clue(int id, String name, String description, ClueType clueType, ClueTag clueTag, Array<Integer> relatedCharId, String response){
         this.id = id;
         this.name = name;
         this.description = description;
         this.clueType = clueType;
+        this.clueTag = clueTag;
         this.relatedCharId = relatedCharId;
         this.response = response;
     }
@@ -85,6 +86,10 @@ public class Clue extends GameActor implements JsonImport{
 
     public ClueType getClueType() {
         return clueType;
+    }
+
+    public ClueTag getClueTag() {
+        return clueTag;
     }
 
     @Override

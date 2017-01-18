@@ -3,143 +3,190 @@ clue_pack.png
 format: RGBA8888
 filter: Nearest,Linear
 repeat: none
+156
+  rotate: false
+  xy: 1, 712
+  size: 300, 311
+  orig: 300, 311
+  offset: 0, 0
+  index: -1
+153
+  rotate: false
+  xy: 1, 409
+  size: 300, 301
+  orig: 300, 301
+  offset: 0, 0
+  index: -1
+142
+  rotate: false
+  xy: 303, 723
+  size: 297, 300
+  orig: 300, 300
+  offset: 3, 0
+  index: -1
+143
+  rotate: false
+  xy: 1, 107
+  size: 297, 300
+  orig: 300, 300
+  offset: 3, 0
+  index: -1
+155
+  rotate: false
+  xy: 303, 421
+  size: 294, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+154
+  rotate: false
+  xy: 602, 743
+  size: 300, 280
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+150
+  rotate: false
+  xy: 602, 469
+  size: 300, 272
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+151
+  rotate: false
+  xy: 599, 195
+  size: 300, 272
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+144
+  rotate: false
+  xy: 303, 236
+  size: 292, 183
+  orig: 300, 300
+  offset: 8, 65
+  index: -1
+152
+  rotate: false
+  xy: 300, 1
+  size: 235, 233
+  orig: 235, 233
+  offset: 0, 0
+  index: -1
+145
+  rotate: false
+  xy: 537, 10
+  size: 292, 183
+  orig: 300, 300
+  offset: 8, 65
+  index: -1
 100
   rotate: false
-  xy: 1, 103
+  xy: 904, 923
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 101
   rotate: false
-  xy: 1, 1
+  xy: 1, 5
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 102
   rotate: false
-  xy: 103, 103
+  xy: 904, 821
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 103
   rotate: false
-  xy: 103, 1
+  xy: 103, 5
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 104
   rotate: false
-  xy: 205, 103
+  xy: 904, 719
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 105
   rotate: false
-  xy: 205, 1
+  xy: 904, 617
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 120
   rotate: false
-  xy: 307, 103
+  xy: 904, 515
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 121
   rotate: false
-  xy: 307, 1
+  xy: 831, 93
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 122
   rotate: false
-  xy: 409, 103
+  xy: 904, 413
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
+
+clue_pack2.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
 140
   rotate: false
-  xy: 409, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 1, 605
+  size: 235, 300
+  orig: 300, 300
+  offset: 33, 0
   index: -1
 141
   rotate: false
-  xy: 511, 103
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-142
-  rotate: false
-  xy: 511, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-143
-  rotate: false
-  xy: 613, 103
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-144
-  rotate: false
-  xy: 613, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-145
-  rotate: false
-  xy: 715, 103
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 1, 303
+  size: 235, 300
+  orig: 300, 300
+  offset: 33, 0
   index: -1
 146
   rotate: false
-  xy: 715, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 238, 605
+  size: 235, 300
+  orig: 300, 300
+  offset: 33, 0
   index: -1
 147
   rotate: false
-  xy: 817, 103
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 1, 1
+  size: 227, 300
+  orig: 300, 300
+  offset: 33, 0
   index: -1
 148
   rotate: false
-  xy: 817, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 238, 303
+  size: 206, 300
+  orig: 300, 300
+  offset: 46, 0
   index: -1
 149
   rotate: false
-  xy: 919, 103
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-150
-  rotate: false
-  xy: 919, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
+  xy: 230, 1
+  size: 206, 300
+  orig: 300, 300
+  offset: 46, 0
   index: -1

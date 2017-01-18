@@ -15,7 +15,7 @@ public class MapWindow extends GuiWindow{
         button("STUDY ROOM", 4);
         button("TUTOR ROOM", 5);
 
-        getButtonTable().row().colspan(Room.ROOM_COUNT);
+        getButtonTable().row().colspan(gameWorld.getRoomManager().getRoomArray().size+1);
         button("CANCEL", true);
     }
 

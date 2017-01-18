@@ -1,43 +1,43 @@
 [
   {
     "id": 200,
-    "name": "300's item",
-    "description": "description1",
+    "name": "Wallet",
+    "description": "It's a leather wallet.",
     "linkedPersonId": 300,
     "isKey": false
   },
   {
     "id": 201,
-    "name": "301's item",
-    "description": "description2",
+    "name": "Watch",
+    "description": "It's an old watch.",
     "linkedPersonId": 301,
     "isKey": false
   },
   {
     "id": 202,
-    "name": "302's item",
-    "description": "description3",
+    "name": "Pen",
+    "description": "It's a fountain pen.",
     "linkedPersonId": 302,
     "isKey": false
   },
   {
     "id": 203,
-    "name": "303's item",
-    "description": "description4",
+    "name": "Lipstick",
+    "description": "It's a red lipstick",
     "linkedPersonId": 303,
     "isKey": false
   },
   {
     "id": 204,
-    "name": "304's item",
-    "description": "description5",
+    "name": "Handkerchief",
+    "description": "It's a fancy looking handkerchief",
     "linkedPersonId": 304,
     "isKey": false
   },
   {
     "id": 205,
-    "name": "305's item",
-    "description": "description6",
+    "name": "Novel",
+    "description": "It's a fantasy novel",
     "linkedPersonId": 305,
     "isKey": false
   }

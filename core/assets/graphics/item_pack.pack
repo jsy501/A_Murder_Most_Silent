@@ -3,45 +3,45 @@ item_pack.png
 format: RGBA8888
 filter: Nearest,Linear
 repeat: none
-200
-  rotate: false
-  xy: 1, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-201
-  rotate: false
-  xy: 103, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
 202
   rotate: false
-  xy: 205, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-203
-  rotate: false
-  xy: 307, 1
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-204
-  rotate: false
-  xy: 409, 1
-  size: 100, 100
-  orig: 100, 100
+  xy: 1, 542
+  size: 319, 326
+  orig: 319, 326
   offset: 0, 0
   index: -1
 205
   rotate: false
-  xy: 511, 1
-  size: 100, 100
-  orig: 100, 100
+  xy: 1, 279
+  size: 299, 261
+  orig: 300, 264
+  offset: 1, 1
+  index: -1
+200
+  rotate: false
+  xy: 322, 624
+  size: 295, 244
+  orig: 300, 248
+  offset: 3, 1
+  index: -1
+204
+  rotate: false
+  xy: 619, 663
+  size: 300, 205
+  orig: 300, 205
+  offset: 0, 0
+  index: -1
+201
+  rotate: false
+  xy: 1, 1
+  size: 171, 276
+  orig: 310, 310
+  offset: 71, 18
+  index: -1
+203
+  rotate: false
+  xy: 174, 59
+  size: 208, 218
+  orig: 208, 218
   offset: 0, 0
   index: -1

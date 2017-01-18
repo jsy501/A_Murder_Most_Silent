@@ -14,16 +14,14 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.MurderSilentGame;
 
 public class Room implements JsonImport, ObjectContainer {
-	public static final int ROOM_COUNT = 6;
-
 	private int id;
 	private String name;
 	private String description;
 	private boolean isLocked;
 
 	private Array<GameCharacter> characterList = new Array<>();
-	private Array<Item> itemList = new Array<Item>() ;
-	private Array<Clue> clueList = new Array<Clue>() ;
+	private Array<Item> itemList = new Array<>() ;
+	private Array<Clue> clueList = new Array<>() ;
 
 	private boolean isDefault = true;
 	private Stage defaultStage;

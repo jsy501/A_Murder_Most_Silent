@@ -3,6 +3,7 @@ package com.noname.mrch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.utils.Array;
+import com.noname.mrch.gameobject.ClueTag;
 import com.noname.mrch.gameobject.ObjectContainer;
 import com.noname.mrch.gui.Gui;
 import com.noname.mrch.gameobject.Clue;
@@ -72,26 +73,59 @@ public class GameWorld {
         roomManager.getLockedRoom().addClue(clueManager.getWeaponClue());
         characterArray.random().addClue(clueManager.getMotiveClue());
 
-        // array of potential clue holders
-        Array<ObjectContainer> clueHolderArray = new Array<>();
-        clueHolderArray.addAll(roomArray);
-        clueHolderArray.addAll(characterArray);
-        clueHolderArray.shuffle();
+        Array<Room> tempRoomArray = new Array<>();
+        tempRoomArray.addAll(roomArray);
+        tempRoomArray.shuffle();
 
-        // add every relevant appearance clue to a random clue holder
-        for (int i = 0; i < clueManager.getAppearanceClueArray().size; i++){
-            clueHolderArray.pop().addClue(clueManager.getAppearanceClueArray().get(i));
+        Array<GameCharacter> tempCharArray = new Array<>();
+        tempCharArray.addAll(characterArray);
+        tempCharArray.shuffle();
+
+        Array<Clue> tempRelevantClueArray = new Array<>();
+        tempRelevantClueArray.addAll(clueManager.getAppearanceClueArray());
+        tempRelevantClueArray.shuffle();
+
+        // add relevant appearance clues to either a room or a character depending on the clue tag
+        // the max number of relevant clue is limited to 3/4 of number of clue holders so the other 1/4
+        // get irrelevant clues
+
+        int maxRelevantClueNum = (int) ((roomArray.size + characterArray.size) * 0.75);
+
+        int relevantClueCount = 0;
+        while (relevantClueCount < maxRelevantClueNum && tempRelevantClueArray.size > 0){
+            Clue clueToAssign = tempRelevantClueArray.pop();
+            if (clueToAssign.getClueTag() == ClueTag.PHYSICAL && tempRoomArray.size > 0){
+                tempRoomArray.pop().addClue(clueToAssign);
+                relevantClueCount++;
+            }
+            else if (clueToAssign.getClueTag() == ClueTag.VERBAL&& tempCharArray.size > 0){
+                tempCharArray.pop().addClue(clueToAssign);
+                relevantClueCount++;
+            }
         }
+
+
+        Array<Clue> tempIrrelevantClueArray = new Array<>();
+        tempIrrelevantClueArray.addAll(clueManager.getIrrelevantClueArray());
+        tempIrrelevantClueArray.shuffle();
 
         /*
         add irrelevant clues to every clue holder that doesn't have a clue
-        the number of irrelevant clues should be less than or equal to half of relevant appearance
+        the max number of irrelevant clues should be less than or equal to half of relevant appearance
         clues + motive clue + weapon clue
         */
-        int irrelevantClueCount = (clueManager.getAppearanceClueArray().size + 2) / 2;
-        while(irrelevantClueCount > 0){
-            clueHolderArray.pop().addClue(clueManager.getIrrelevantClueArray().pop());
-            irrelevantClueCount--;
+        int maxIrrelevantClueNum = (relevantClueCount + 2) / 2;
+        int irrelevantClueCount = 0;
+        while(irrelevantClueCount < maxIrrelevantClueNum && tempIrrelevantClueArray.size > 0){
+            Clue clueToAssign = tempIrrelevantClueArray.pop();
+            if (clueToAssign.getClueTag() == ClueTag.PHYSICAL && tempRoomArray.size > 0){
+                tempRoomArray.pop().addClue(clueToAssign);
+                irrelevantClueCount++;
+            }
+            else if (clueToAssign.getClueTag() == ClueTag.VERBAL && tempCharArray.size > 0){
+                tempCharArray.pop().addClue(clueToAssign);
+                maxRelevantClueNum++;
+            }
         }
     }
 
@@ -124,7 +158,7 @@ public class GameWorld {
         int cnt = 0;
         Array.ArrayIterator<GameCharacter> iterator = new Array.ArrayIterator<>(characterArray);
         while(iterator.hasNext()){
-            int roomIndex = cnt % (Room.ROOM_COUNT-1);
+            int roomIndex = cnt % (roomArray.size+1); //+1 for the locked room
             if (!roomArray.get(roomIndex).isLocked()){
                 roomArray.get(roomIndex).addCharacter(iterator.next());
             }
@@ -231,6 +265,10 @@ public class GameWorld {
 
     public ClueManager getClueManager() {
         return clueManager;
+    }
+
+    public RoomManager getRoomManager(){
+        return roomManager;
     }
 
     public void dispose(){

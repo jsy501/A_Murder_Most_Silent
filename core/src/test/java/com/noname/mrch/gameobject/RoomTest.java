@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -28,9 +29,7 @@ public class RoomTest{
 
     @Before
     public void setUp() throws Exception {
-        Gdx.gl = mock(GL20.class);
-        Gdx.gl20 = mock(GL20.class);
-        SpriteBatch batch = new SpriteBatch(100, mock(ShaderProgram.class));
+        SpriteBatch batch = Mockito.mock(SpriteBatch.class);
 
         testRoom = new Room(0, "test room", false, batch);
 

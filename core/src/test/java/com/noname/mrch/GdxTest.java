@@ -24,6 +24,9 @@ public class GdxTest extends BlockJUnit4ClassRunner implements ApplicationListen
     public GdxTest(Class<?> klass) throws InitializationError {
         super(klass);
 
+        Gdx.gl = mock(GL20.class);
+        Gdx.gl20 = mock(GL20.class);
+
         HeadlessApplicationConfiguration conf = new HeadlessApplicationConfiguration();
 
         new HeadlessApplication(this, conf);
