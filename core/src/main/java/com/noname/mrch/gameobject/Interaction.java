@@ -11,20 +11,41 @@ import com.noname.mrch.gui.InteractionBox;
  */
 
 public class Interaction{
+    /**
+     * MINIMUM_APPEARANCE_CLUE_COUNT
+     */
     private final int MINIMUM_APPEARANCE_CLUE_COUNT = 2;
 
+    /**
+     * interactionBox is used for the interaction box gui
+     * gameWorld is a manager that holds all objects
+     * gui is the gui it is needed for sending results of interaction to display
+     */
     private InteractionBox interactionBox;
     private GameWorld gameWorld;
     private Gui gui;
 
+    /**
+     * interactingCharacter is the target of the interaction
+     */
     private GameCharacter interactingCharacter;
 
+    /**
+     * Constructor that initialises the interaction class for use to be run at game start
+     * @param interactionBox Needs to be passed to the class so that it can reference the rest of the game
+     */
     public Interaction(InteractionBox interactionBox){
         this.interactionBox = interactionBox;
         gameWorld = interactionBox.getGameWorld();
         gui = interactionBox.getGui();
     }
 
+    /**
+     * Run at the start of an interaction event this sets the interacting character parameter
+     * and then displays the characters greeting dialogue on screen using the interaction box
+     * defined at initialisation
+     * @param interactingCharacter required for other functions
+     */
     public void setInteractingCharacter(GameCharacter interactingCharacter) {
         this.interactingCharacter = interactingCharacter;
         interactionBox.setDialogue(interactingCharacter.getGreeting());
@@ -36,6 +57,24 @@ public class Interaction{
 
     /**
      * Logic for question interaction
+     *
+     * The method checks whether the target character has been accused first displaying the appropriate output if so
+     *
+     * then it checks if the target character has any clues to give if so it displays the "I have no clue" string on the display
+     *
+     * next it checks if the target character has the motive clue, the player has found less than 3 clues and the target character only haas 1 cluep
+     * if all these conditions are true then the character will reply to the player with "i'll tell you something later
+     *
+     * finally if none of the above conditions are satisfied a simple algorithm is used to calculate whether the interaction was a success and if a clue should
+     * be returned or not below are the steps explained in english:
+     *
+     * The player chooses a questioning style this relates to an integer from 1 to 9
+     * the target character also has a personality value, the absolute difference between
+     * the two is calculated and then added together with a random number in the range of 1 to 9
+     * to calculate the chance of success
+     * if the chance of success is greater than or equal to 5 then the questioning was a success and a clue will be given to the player
+     * if it is less than 5 then the characters fail response will be displayed on screen
+     *
      * @param questionStyle question style selected by the player
      */
 
@@ -79,6 +118,14 @@ public class Interaction{
 
     /**
      * Logic for give interaction
+     *
+     * Works via a give and take system when a player finds an item they can then
+     * give it to a character if the target character is elated to the item
+     * a new item is given back.
+     *
+     * Once all return items are exhausted a key is returned which can be used
+     * to open the locked room
+     *
      * @param givenItem item given to the character by the player
      */
 
@@ -104,6 +151,8 @@ public class Interaction{
     /**
      * Logic for accuse interaction
      * Checks whether the selected clues relate to the murderer.
+     * If they all do and 1 weapon clue, 1 motive clue and the MINIMUM_APPEARANCE_CLUE_COUNT
+     * or more appearance clues are presented the accusation is a success
      * @param selectedClueArray Array of clues that is presented by the player
      */
 

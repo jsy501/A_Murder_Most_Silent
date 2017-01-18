@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Array;
 /**
  * Clue Unit test
  */
-public class ClueTest {
+public class ClueTest{
     Clue clue;
     Array<Integer> characterRelated;
     GameCharacter succesfulTarget;
