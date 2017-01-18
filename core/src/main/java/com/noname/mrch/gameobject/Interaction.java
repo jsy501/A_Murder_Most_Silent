@@ -12,7 +12,8 @@ import com.noname.mrch.gui.InteractionBox;
 
 public class Interaction{
     /**
-     * MINIMUM_APPEARANCE_CLUE_COUNT
+     * MINIMUM_APPEARANCE_CLUE_COUNT contains an integer that defines the minimum number of appearance clues needed for
+     * a successful accusation to take place
      */
     private final int MINIMUM_APPEARANCE_CLUE_COUNT = 2;
 
