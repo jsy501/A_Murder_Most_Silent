@@ -25,6 +25,7 @@ public class ClueManagerTest {
     @Before
     public void setUp() throws Exception {
         assetLoader = new AssetLoader();
+
         characterManager = new CharacterManager(assetLoader);
         clueManager = new ClueManager(assetLoader, characterManager);
     }

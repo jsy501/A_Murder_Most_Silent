@@ -25,6 +25,7 @@ public class RoomManager {
         roomArray = assetLoader.totalRoomArray;
 
         // pick random room to be locked, excluding hub
+        // hub is the first entry for room array, so start from index 1
         lockedRoom = roomArray.get(MathUtils.random(1,roomArray.size-1));
         lockedRoom.setLocked(true);
 
