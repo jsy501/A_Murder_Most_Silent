@@ -17,7 +17,12 @@ import com.noname.mrch.gameobject.GameActor;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
 
+/**
+ * Contains all the gui elements. Requires a game world to interact with.
+ */
+
 public class Gui {
+    //gui actor that's been touched current frame.
     public static GuiButton touchedActor = null;
 
     private GameWorld gameWorld;
@@ -36,14 +41,15 @@ public class Gui {
 
     private InteractionBox interactionBox;
 
+
     public Gui(AssetLoader assetLoader, final GameWorld gameWorld){
         this.gameWorld = gameWorld;
         Skin skin = assetLoader.skin;
 
         stage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT));
 
+        //stack containing all the lower screen gui actors
         lowerScreenStack = new Stack();
-
         lowerScreenStack.setSize(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT / 4);
 
 
@@ -79,8 +85,11 @@ public class Gui {
         stage.addActor(lowerScreenStack);
     }
 
+    /**
+     * Handles user input. Check every frame if there is any gui actors been clicked.
+     */
+
     public void update(float delta){
-        //input handle
         if (touchedActor != null) {
             touchedActor = null;
 
@@ -102,6 +111,11 @@ public class Gui {
         }
     }
 
+    /**
+     * Show a pop up window that displays an actor and a string below.
+     * @param actor Actor to show.
+     * @param info String to be added below.
+     */
     public void displayInfo(GameActor actor, String info){
         infoWindow.getContentTable().clearChildren();
         infoWindow.getContentTable().add(actor).row();
@@ -109,6 +123,9 @@ public class Gui {
         infoWindow.show(stage);
     }
 
+    /**
+     * Closes interaction box and stop interaction.
+     */
     public void haltInteraction(){
         interactionBox.setVisible(false);
         lowerGuiGroup.setTouchable(Touchable.enabled);
@@ -118,6 +135,10 @@ public class Gui {
         }
     }
 
+    /**
+     * Opens interaction box and start interaction.
+     * @param character Game character to start interaction with.
+     */
     public void startInteraction(GameCharacter character){
         interactionBox.getInteraction().setInteractingCharacter(character);
         interactionBox.setVisible(true);

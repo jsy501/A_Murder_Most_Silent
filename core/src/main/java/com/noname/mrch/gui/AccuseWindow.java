@@ -10,6 +10,10 @@ import com.badlogic.gdx.utils.Array;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.gameobject.Clue;
 
+/**
+ * Gui window for accuse interaction.
+ */
+
 public class AccuseWindow extends GuiWindow {
     private final float WIDTH = 1500;
     private final float HEIGHT = 800;
@@ -25,6 +29,13 @@ public class AccuseWindow extends GuiWindow {
     private Array<Clue> targetClueArray;
 
     private DragAndDrop dragAndDrop;
+
+    /**
+     * Creates a window
+     * @param skin Skin to be used for window.
+     * @param gui Gui to be attached to.
+     * @param gameWorld Game World to be interacting with.
+     */
 
     public AccuseWindow(Skin skin, Gui gui, GameWorld gameWorld) {
         super("ACCUSE", skin, gui, gameWorld);
@@ -43,12 +54,16 @@ public class AccuseWindow extends GuiWindow {
         getContentTable().add(sourceClueTable).width(Value.percentWidth(0.45f, this)).height(Value.percentHeight(0.9f, this));
         getContentTable().add(targetClueTable).width(Value.percentWidth(0.45f, this)).height(Value.percentHeight(0.9f, this));
 
+        //libgdx class for handling drag and drop
         dragAndDrop = new DragAndDrop();
 
         button("cancel", false);
         button("OK", true);
     }
 
+    /**
+     * Called every time an actor is moved in order to reconstruct tables in the window
+     */
     void refresh(){
         sourceClueTable.clear();
         targetClueTable.clear();
@@ -87,7 +102,7 @@ public class AccuseWindow extends GuiWindow {
     }
 
     /**
-     * called every time accuse is called in order to reset
+     * called every time accuse is initiated from gui in order to reset
      */
     void initialize(){
         sourceClueArray.clear();

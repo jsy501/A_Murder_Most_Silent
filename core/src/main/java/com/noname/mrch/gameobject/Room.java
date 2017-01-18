@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -98,6 +100,7 @@ public class Room implements JsonImport, ObjectContainer {
 	public void setInvestigateBackground(TextureRegion textureRegion){
 		GameActor background = new GameActor();
 		background.setImage(textureRegion);
+		background.setTouchable(Touchable.disabled);
 		investigateStage.addActor(background);
 	}
 
@@ -131,22 +134,16 @@ public class Room implements JsonImport, ObjectContainer {
 	}
 
     /**
-     * run at initialisation and distributes the items and clues randomly within the
-     * investigate stage
+     * Positions game actor randomly within the investigate stage.
      */
-	public void randomiseActorPos(){
-		Array<GameActor> actorArray = new Array<>();
-		actorArray.addAll(clueList);
-		actorArray.addAll(itemList);
-
-		int count = 0;
-		while(count < actorArray.size){
+	private void randomiseActorPos(GameActor gameActor){
+		while(true){
 			float horizontalPos = MathUtils.random(200, MurderSilentGame.GAME_WIDTH - 200);
 			float verticalPos = MathUtils.random(200, MurderSilentGame.GAME_HEIGHT - 200);
 
 			if (investigateStage.hit(horizontalPos, verticalPos, true) == null){
-				actorArray.get(count).setPosition(horizontalPos, verticalPos);
-				count++;
+				gameActor.setPosition(horizontalPos, verticalPos);
+				break;
 			}
 		}
 	}
@@ -167,16 +164,21 @@ public class Room implements JsonImport, ObjectContainer {
 		return name;
 	}
 
+
 	@Override
 	public void addItem(Item item) {
 		itemList.add(item);
 		investigateStage.addActor(item);
+		item.setScale(item.getInvestigateScaleFactor());
+		randomiseActorPos(item);
 	}
 
 	@Override
 	public void addClue(Clue clue) {
 		clueList.add(clue);
 		investigateStage.addActor(clue);
+		clue.setScale(clue.getInvestigateScaleFactor());
+		randomiseActorPos(clue);
 	}
 
 	@Override
@@ -193,12 +195,14 @@ public class Room implements JsonImport, ObjectContainer {
 	public void removeClue(Clue clue) {
 		clueList.removeValue(clue, false);
 		clue.remove();
+		clue.setScale(1f);
 	}
 
 	@Override
 	public void removeItem(Item item) {
 		itemList.removeValue(item, false);
 		item.remove();
+		item.setScale(1f);
 	}
 
 	@Override

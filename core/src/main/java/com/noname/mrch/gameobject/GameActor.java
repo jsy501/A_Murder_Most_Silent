@@ -11,7 +11,7 @@ import com.noname.mrch.MurderSilentGame;
 
 /**
  * GameActor is a class that is used by graphical items
- * it handles  rendering for the object and then the data
+ * it handles rendering for the object and then the data
  * classes extend this.
  */
 
@@ -45,9 +45,12 @@ public class GameActor extends Actor {
     public void setImage(TextureRegion texture) {
         image = texture;
         float ratio = 1;
+
+        //characters have to occupy full height of the screen, so scale according to the screen size
         if (this instanceof GameCharacter) {
             ratio = MurderSilentGame.GAME_HEIGHT / image.getRegionHeight();
         }
+
         setWidth(image.getRegionWidth() * ratio);
         setHeight(image.getRegionHeight() * ratio);
         setOrigin(getWidth()/2, getHeight()/2);
@@ -62,15 +65,12 @@ public class GameActor extends Actor {
     }
 
     /**
-     * Checks if the image has been set then draws the given batch
-     * to screen
-     * @param batch Batch of image updates to the actor to be rendered
-     * @param parentAlpha Alpha colour to fill background of image hitbox
+     * Checks if there is image assigned to it and draw if there is
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (image != null) {
-            batch.draw(image, getX(), getY(), getWidth(), getHeight());
+            batch.draw(image, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
         }
     }
 

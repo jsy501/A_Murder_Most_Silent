@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
  *  Represents a clue object.
  */
 
-public class Clue extends GameActor implements JsonImport{
+public class Clue extends GameActor implements JsonImport, Scalable{
     /**
      * The ID_OFFSET variable is used in order to differentiate between
      * types of objects independent of everything else the id offset
@@ -21,6 +21,7 @@ public class Clue extends GameActor implements JsonImport{
      * name contains the name of the object as displayed in game
      * description contains the description of the clue as displayed in game
      * relatedCharId contains the id's of all characters that any particular clue can point to mainly used for accusations
+     * investigateScaleFactor is the scale it is rendered when rendered in investigate screen
      */
     private int id;
     private String name;
@@ -29,7 +30,7 @@ public class Clue extends GameActor implements JsonImport{
     private ClueTag clueTag;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
-    // TODO: 16/01/2017 clue type implementation
+    private float investigateScaleFactor = 1;
 
     /**
      *  Used as the generic clue response for a successful character questioning
@@ -113,5 +114,9 @@ public class Clue extends GameActor implements JsonImport{
             return false;
         }
     }
-    
+
+    @Override
+    public float getInvestigateScaleFactor() {
+        return investigateScaleFactor;
+    }
 }

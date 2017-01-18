@@ -47,12 +47,6 @@ public class GameWorld {
         distributeItem();
         distributeCharacter();
 
-        //clues and items position randomisation
-        for (Room room: roomManager.getRoomArray()) {
-            room.randomiseActorPos();
-        }
-        roomManager.getLockedRoom().randomiseActorPos();
-
 
         System.out.println("Character list: " + characterManager.getCharacterArray());
         System.out.println("Murderer: " + characterManager.getMurderer());

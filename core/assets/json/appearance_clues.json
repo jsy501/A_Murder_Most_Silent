@@ -101,7 +101,8 @@
     "description": "A big button",
     "relatedCharId": [300, 303, 304],
     "clueType": "APPEARANCE",
-    "clueTag" : "PHYSICAL"
+    "clueTag" : "PHYSICAL",
+    "investigateScaleFactor" : 0.2
   },
   {
     "id": 153,
@@ -133,6 +134,7 @@
     "description": "The napkin has a lipstick stain on it",
     "relatedCharId": [303, 305],
     "clueType": "APPEARANCE",
-    "clueTag" : "PHYSICAL"
+    "clueTag" : "PHYSICAL",
+    "investigateScaleFactor" : 0.6
   }
 ]

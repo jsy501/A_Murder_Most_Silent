@@ -4,35 +4,40 @@
     "name": "Wallet",
     "description": "It's a leather wallet.",
     "linkedPersonId": 300,
-    "isKey": false
+    "isKey": false,
+    "investigateScaleFactor" : 0.8
   },
   {
     "id": 201,
     "name": "Watch",
     "description": "It's an old watch.",
     "linkedPersonId": 301,
-    "isKey": false
+    "isKey": false,
+    "investigateScaleFactor" : 0.5
   },
   {
     "id": 202,
     "name": "Pen",
     "description": "It's a fountain pen.",
     "linkedPersonId": 302,
-    "isKey": false
+    "isKey": false,
+    "investigateScaleFactor" : 0.5
   },
   {
     "id": 203,
     "name": "Lipstick",
     "description": "It's a red lipstick",
     "linkedPersonId": 303,
-    "isKey": false
+    "isKey": false,
+    "investigateScaleFactor" : 0.4
   },
   {
     "id": 204,
     "name": "Handkerchief",
     "description": "It's a fancy looking handkerchief",
     "linkedPersonId": 304,
-    "isKey": false
+    "isKey": false,
+    "investigateScaleFactor" : 0.9
   },
   {
     "id": 205,

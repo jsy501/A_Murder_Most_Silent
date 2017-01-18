@@ -32,15 +32,18 @@ public class CharacterManager {
      *  choose murderer and victim randomly
      */
     public CharacterManager(AssetLoader assetLoader) {
-
         characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
+
+        init();
+        setImage(assetLoader);
+    }
+
+    private void init(){
         victim = characterArray.pop();
         victim.setVictim(true);
 
         murderer = characterArray.random();
         murderer.setMurderer(true);
-
-        setImage(assetLoader);
     }
 
     private void setImage(AssetLoader assetLoader){

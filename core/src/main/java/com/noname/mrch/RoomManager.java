@@ -37,20 +37,15 @@ public class RoomManager {
     private void setBackground(AssetLoader assetLoader){
         TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.roomTexturePath);
 
-        //temporary background for investigate background
-        Pixmap pixmap = new Pixmap(2,1, Pixmap.Format.RGBA4444);
-        pixmap.setColor(Color.WHITE);
-        pixmap.fill();
-        TextureRegion blank = new TextureRegion(new Texture(pixmap));
-
         for (Room room : roomArray){
-            TextureRegion image = new TextureRegion(textureAtlas.findRegion(String.valueOf(room.getId())));
-            room.setDefaultBackground(image);
-            room.setInvestigateBackground(blank);
+            TextureRegion defaultImage = new TextureRegion(textureAtlas.findRegion(String.valueOf(room.getId())));
+            TextureRegion investigateImage = new TextureRegion(textureAtlas.findRegion(String.valueOf(room.getId()) + "_invest"));
+            room.setDefaultBackground(defaultImage);
+            room.setInvestigateBackground(investigateImage);
         }
 
         lockedRoom.setDefaultBackground(new TextureRegion(textureAtlas.findRegion(String.valueOf(lockedRoom.getId()))));
-        lockedRoom.setInvestigateBackground(blank);
+        lockedRoom.setInvestigateBackground(new TextureRegion(textureAtlas.findRegion(String.valueOf(lockedRoom.getId()) + "_invest")));
     }
 
     public Room getRoom(int id){

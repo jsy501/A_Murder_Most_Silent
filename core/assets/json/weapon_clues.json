@@ -1,23 +1,38 @@
 [
   {
     "id": 120,
-    "name": "weapon1",
-    "description": "description1",
-    "relatedCharId": [],
+    "name": "Knife",
+    "description": "It's a knife with blood on it",
     "clueType": "WEAPON"
   },
   {
     "id": 121,
-    "name": "weapon2",
-    "description": "description2",
-    "relatedCharId": [],
+    "name": "Candle holder",
+    "description": "It's a candle holder with blood on it",
     "clueType": "WEAPON"
   },
   {
     "id": 122,
-    "name": "weapon3",
-    "description": "description3",
-    "relatedCharId": [],
+    "name": "Skewer",
+    "description": "It's a skewer with blood on it",
+    "clueType": "WEAPON"
+  },
+  {
+    "id": 123,
+    "name": "Scissors",
+    "description": "It's a pair of scissors with blood on it",
+    "clueType": "WEAPON"
+  },
+  {
+    "id": 124,
+    "name": "Broken bottle",
+    "description": "It's a broken bottle with blood on it",
+    "clueType": "WEAPON"
+  },
+  {
+    "id": 125,
+    "name": "Long ribbon",
+    "description": "It's a long ribbon. It looks like it went through a lot of force.",
     "clueType": "WEAPON"
   }
 ]

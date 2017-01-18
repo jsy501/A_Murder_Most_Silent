@@ -4,7 +4,7 @@ package com.noname.mrch.gameobject;
  *  Represents an item object
  */
 
-public class Item extends GameActor implements JsonImport{
+public class Item extends GameActor implements JsonImport, Scalable{
     /**
      * The ID_OFFSET variable is used in order to differentiate between
      * types of objects independent of everything else the id offset
@@ -19,6 +19,7 @@ public class Item extends GameActor implements JsonImport{
      * description contains the description of the object as shown in game
      * linkedPersonId is the id value of the character that when given the item will return a new item or a key
      * returnItem is the item object that will be returned after a successful give interaction
+     * investigateScaleFactor is the scale it is rendered when rendered in investigate screen
      * isKey is a boolean value that defines whether the item is a key or not
      */
     private int id;
@@ -26,6 +27,8 @@ public class Item extends GameActor implements JsonImport{
     private String description;
     private int linkedPersonId;
     private Item returnItem;
+
+    private float investigateScaleFactor = 1;
 
     private boolean isKey = false;
 
@@ -101,7 +104,8 @@ public class Item extends GameActor implements JsonImport{
         return name;
     }
 
-    //    public String getReturnResponse() {
-//        return returnResponse;
-//    }
+    @Override
+    public float getInvestigateScaleFactor() {
+        return investigateScaleFactor;
+    }
 }
