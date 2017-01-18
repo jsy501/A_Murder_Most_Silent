@@ -13,7 +13,23 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.noname.mrch.MurderSilentGame;
 
+/**
+ * Represents a room Object
+ */
 public class Room implements JsonImport, ObjectContainer {
+    /**
+     * Use of each variable:
+     * id contains the unique id of the room as imported via json
+     * name contains the name of the room as displayed in game
+     * description contains the description of the room as displayed in game
+     * isLocked contains a boolean value defining whether the room is locked
+     * characterList contains all the characters that are in the room
+     * itemList contains all the items that can be found in the room
+     * clueList contains all the clues that can be found in the room
+     * isDefault contains a boolean value defining whether the player is in the room or investigating the room
+     * defaultStage contains the stage used when talking to characters
+     * investigateStage contains the stage used when investigating the room
+     */
 	private int id;
 	private String name;
 	private String description;
@@ -27,7 +43,9 @@ public class Room implements JsonImport, ObjectContainer {
 	private Stage defaultStage;
 	private Stage investigateStage;
 
-
+    /**
+     * Constructor used for testing only
+     */
 	public Room(int id, String name, boolean locked, Batch batch){
 		this.id = id;
 		this.name = name;
@@ -37,12 +55,19 @@ public class Room implements JsonImport, ObjectContainer {
 		investigateStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
 	}
 
+    /**
+     * Non-argument constructor for json import
+     */
 	public Room(){
 		SpriteBatch batch = new SpriteBatch();
 		defaultStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
 		investigateStage = new Stage(new FitViewport(MurderSilentGame.GAME_WIDTH, MurderSilentGame.GAME_HEIGHT), batch);
 	}
 
+    /**
+     * Adds a character to the room and stage
+     * @param character character to be added to the room
+     */
 	public void addCharacter(GameCharacter character){
 		characterList.add(character);
 		defaultStage.addActor(character);
@@ -56,12 +81,20 @@ public class Room implements JsonImport, ObjectContainer {
 		return characterList;
 	}
 
+    /**
+     * Sets the background image for the stage used during initialisation of the game
+     * @param textureRegion textureRegion to be set as background
+     */
 	public void setDefaultBackground(TextureRegion textureRegion){
 		GameActor background = new GameActor();
 		background.setImage(textureRegion);
 		defaultStage.addActor(background);
 	}
 
+    /**
+     * Sets the background image for the investigation stage used during initialisation of the game
+     * @param textureRegion textureRegion to be set as background
+     */
 	public void setInvestigateBackground(TextureRegion textureRegion){
 		GameActor background = new GameActor();
 		background.setImage(textureRegion);
@@ -97,6 +130,10 @@ public class Room implements JsonImport, ObjectContainer {
 		}
 	}
 
+    /**
+     * run at initialisation and distributes the items and clues randomly within the
+     * investigate stage
+     */
 	public void randomiseActorPos(){
 		Array<GameActor> actorArray = new Array<>();
 		actorArray.addAll(clueList);
