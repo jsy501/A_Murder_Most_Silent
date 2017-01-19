@@ -7,7 +7,11 @@ import com.noname.mrch.GameWorld;
 import com.noname.mrch.gameobject.GameActor;
 import com.noname.mrch.gameobject.NoteBook;
 
-public class NoteBookWindow extends GuiWindow {
+/**
+ * Window that displays data in notebook
+ */
+
+class NoteBookWindow extends GuiWindow {
     private final int COLUMN_COUNT = 4;
     private final float SLOT_WIDTH = 150;
     private final float SLOT_GAP_HORIZONTAL = 100;
@@ -15,7 +19,7 @@ public class NoteBookWindow extends GuiWindow {
     private final float WINDOW_WIDTH = SLOT_WIDTH * COLUMN_COUNT + SLOT_GAP_HORIZONTAL * (COLUMN_COUNT - 1) * 1.1f;
     private final float WINDOW_HEIGHT = 700;
 
-    public NoteBookWindow(Skin skin, Gui gui, GameWorld gameWorld) {
+    NoteBookWindow(Skin skin, Gui gui, GameWorld gameWorld) {
         super("NOTEBOOK", skin, gui, gameWorld);
 
         button("OK", true);
@@ -24,7 +28,7 @@ public class NoteBookWindow extends GuiWindow {
     /**
      * called every time notebook is opened. Clears all the children and rebuild.
      */
-    public void refresh(){
+    void refresh(){
         NoteBook noteBook = gameWorld.getNotebook();
         getContentTable().clear();
         getContentTable().align(Align.topLeft);

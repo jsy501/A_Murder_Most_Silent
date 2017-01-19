@@ -22,9 +22,6 @@ import com.noname.mrch.helper.AssetLoader;
  */
 
 public class Gui {
-    //gui actor that's been touched current frame.
-    public static GuiButton touchedActor = null;
-
     private GameWorld gameWorld;
 
     private Stage stage;
@@ -55,14 +52,14 @@ public class Gui {
 
         //notebook UI init
         notebookWindow = new NoteBookWindow(skin, this, gameWorld);
-        notebookButton = new NoteBookButton(skin);
+        notebookButton = new NoteBookButton(skin, this);
 
         //investigate UI init
-        investigateButton = new InvestigateButton(skin);
+        investigateButton = new InvestigateButton(skin, this);
 
         //map UI init
         mapWindow = new MapWindow(skin, this, gameWorld);
-        mapButton = new MapButton(skin);
+        mapButton = new MapButton(skin, this);
 
         lowerGuiGroup = new Table();
         lowerGuiGroup.align(Align.bottom);
@@ -85,31 +82,6 @@ public class Gui {
         stage.addActor(lowerScreenStack);
     }
 
-    /**
-     * Handles user input. Check every frame if there is any gui actors been clicked.
-     */
-
-    public void update(float delta){
-        if (touchedActor != null) {
-            touchedActor = null;
-
-            if (notebookButton.isTouched()) {
-                notebookWindow.refresh();
-                notebookWindow.show(stage);
-                notebookButton.setTouched(false);
-            } else if (investigateButton.isTouched()) {
-                gameWorld.getCurrentRoom().switchCurrentStage();
-
-                //set input processor as the switched stage
-                Gdx.input.setInputProcessor(new InputMultiplexer(getStage(), gameWorld.getCurrentRoom().getCurrentStage()));
-
-                investigateButton.setTouched(false);
-            } else if (mapButton.isTouched()) {
-                mapWindow.show(stage);
-                mapButton.setTouched(false);
-            }
-        }
-    }
 
     /**
      * Show a pop up window that displays an actor and a string below.
@@ -151,7 +123,19 @@ public class Gui {
         return stage;
     }
 
-    public InteractionBox getInteractionBox(){
+    public GameWorld getGameWorld() {
+        return gameWorld;
+    }
+
+    InteractionBox getInteractionBox(){
         return interactionBox;
+    }
+
+    public NoteBookWindow getNotebookWindow() {
+        return notebookWindow;
+    }
+
+    public GuiWindow getMapWindow() {
+        return mapWindow;
     }
 }

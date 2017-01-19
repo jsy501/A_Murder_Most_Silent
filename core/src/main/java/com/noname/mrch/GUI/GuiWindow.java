@@ -5,11 +5,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.noname.mrch.GameWorld;
 
-public class GuiWindow extends Dialog {
-    protected Gui gui;
-    protected GameWorld gameWorld;
+/**
+ * Basic window used by gui. Interacts with a gui and gameworld.
+ */
 
-    public GuiWindow(String title, Skin skin, Gui gui, GameWorld gameWorld) {
+class GuiWindow extends Dialog {
+    protected Gui gui;
+    GameWorld gameWorld;
+
+    GuiWindow(String title, Skin skin, Gui gui, GameWorld gameWorld) {
         super(title, skin);
 
         this.gui = gui;

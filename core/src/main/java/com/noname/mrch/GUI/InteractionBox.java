@@ -16,6 +16,10 @@ import com.noname.mrch.gameobject.Interaction;
 import com.noname.mrch.gameobject.Item;
 import com.noname.mrch.gameobject.Player;
 
+/**
+ * Gui collection responsible for every character interaction.
+ */
+
 public class InteractionBox extends Table{
     private Interaction interaction;
     private GameWorld gameWorld;
@@ -34,7 +38,7 @@ public class InteractionBox extends Table{
 
     private TextButton dialogueBox;
 
-    public InteractionBox(Skin skin, Gui gui, GameWorld gameWorld){
+    InteractionBox(Skin skin, Gui gui, GameWorld gameWorld){
         super(skin);
 
         this.gameWorld = gameWorld;
@@ -233,7 +237,7 @@ public class InteractionBox extends Table{
         return gui;
     }
 
-    public Interaction getInteraction() {
+    Interaction getInteraction() {
         return interaction;
     }
 }
