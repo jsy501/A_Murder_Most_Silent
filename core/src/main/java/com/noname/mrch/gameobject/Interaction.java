@@ -100,7 +100,7 @@ public class Interaction{
             int chanceOfSuccess = MathUtils.random(1, 9)+ diff;
 
             if (chanceOfSuccess >= 5){
-                // motive clue is always added first so the last index clue will always be an appearance clue
+                // motive clue is always added first so the popped clue will always be an appearance clue
                 Clue clue = interactingCharacter.getClueList().pop();
 
                 gameWorld.getNotebook().addClue(clue);

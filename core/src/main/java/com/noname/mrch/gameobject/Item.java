@@ -50,7 +50,7 @@ public class Item extends GameActor implements JsonImport, Scalable{
     }
 
     /**
-     * Constructor for testing only
+     * Constructor for key generation
      */
     public Item(int id, String name, String description, boolean isKey){
         this.id = id;

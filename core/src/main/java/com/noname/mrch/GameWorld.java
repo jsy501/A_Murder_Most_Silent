@@ -65,7 +65,14 @@ public class GameWorld {
         Array<Room> roomArray = roomManager.getRoomArray();
 
         roomManager.getLockedRoom().addClue(clueManager.getWeaponClue());
+
+        //remove murderer from character array first so the murderer is not given motive clues
+        characterArray.removeValue(characterManager.getMurderer(),false);
+
         characterArray.random().addClue(clueManager.getMotiveClue());
+
+        //murderer added back again to irrelevant clues can be given
+        characterArray.add(characterManager.getMurderer());
 
         Array<Room> tempRoomArray = new Array<>();
         tempRoomArray.addAll(roomArray);
@@ -102,6 +109,7 @@ public class GameWorld {
         Array<Clue> tempIrrelevantClueArray = new Array<>();
         tempIrrelevantClueArray.addAll(clueManager.getIrrelevantClueArray());
         tempIrrelevantClueArray.shuffle();
+
 
         /*
         add irrelevant clues to every clue holder that doesn't have a clue
