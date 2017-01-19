@@ -14,6 +14,7 @@ import com.noname.mrch.gameobject.NoteBook;
 import com.noname.mrch.gameobject.Player;
 import com.noname.mrch.gameobject.Room;
 import com.noname.mrch.helper.AssetLoader;
+import com.noname.mrch.helper.Randomizer;
 
 /**
  * Initialises and holds all the game objects
@@ -43,10 +44,7 @@ public class GameWorld {
         clueManager = new ClueManager(assetLoader, characterManager);
         roomManager = new RoomManager(assetLoader);
 
-        distributeClue();
-        distributeItem();
-        distributeCharacter();
-
+        Randomizer.randomDistributeGameObject(clueManager, itemManager, characterManager, roomManager);
 
         System.out.println("Character list: " + characterManager.getCharacterArray());
         System.out.println("Murderer: " + characterManager.getMurderer());
@@ -58,113 +56,6 @@ public class GameWorld {
         System.out.println("Room list: " + roomManager.getRoomArray());
 
         currentRoom = roomManager.getRoomArray().first();
-    }
-
-    private void distributeClue(){
-        Array<GameCharacter> characterArray = characterManager.getCharacterArray();
-        Array<Room> roomArray = roomManager.getRoomArray();
-
-        roomManager.getLockedRoom().addClue(clueManager.getWeaponClue());
-
-        //remove murderer from character array first so the murderer is not given motive clues
-        characterArray.removeValue(characterManager.getMurderer(),false);
-
-        characterArray.random().addClue(clueManager.getMotiveClue());
-
-        //murderer added back again to irrelevant clues can be given
-        characterArray.add(characterManager.getMurderer());
-
-        Array<Room> tempRoomArray = new Array<>();
-        tempRoomArray.addAll(roomArray);
-        tempRoomArray.shuffle();
-
-        Array<GameCharacter> tempCharArray = new Array<>();
-        tempCharArray.addAll(characterArray);
-        tempCharArray.shuffle();
-
-        Array<Clue> tempRelevantClueArray = new Array<>();
-        tempRelevantClueArray.addAll(clueManager.getAppearanceClueArray());
-        tempRelevantClueArray.shuffle();
-
-        // add relevant appearance clues to either a room or a character depending on the clue tag
-        // the max number of relevant clue is limited to 3/4 of number of clue holders so the other 1/4
-        // get irrelevant clues
-
-        int maxRelevantClueNum = (int) ((roomArray.size + characterArray.size) * 0.75);
-
-        int relevantClueCount = 0;
-        while (relevantClueCount < maxRelevantClueNum && tempRelevantClueArray.size > 0){
-            Clue clueToAssign = tempRelevantClueArray.pop();
-            if (clueToAssign.getClueTag() == ClueTag.PHYSICAL && tempRoomArray.size > 0){
-                tempRoomArray.pop().addClue(clueToAssign);
-                relevantClueCount++;
-            }
-            else if (clueToAssign.getClueTag() == ClueTag.VERBAL&& tempCharArray.size > 0){
-                tempCharArray.pop().addClue(clueToAssign);
-                relevantClueCount++;
-            }
-        }
-
-
-        Array<Clue> tempIrrelevantClueArray = new Array<>();
-        tempIrrelevantClueArray.addAll(clueManager.getIrrelevantClueArray());
-        tempIrrelevantClueArray.shuffle();
-
-
-        /*
-        add irrelevant clues to every clue holder that doesn't have a clue
-        the max number of irrelevant clues should be less than or equal to half of relevant appearance
-        clues + motive clue + weapon clue
-        */
-        int maxIrrelevantClueNum = (relevantClueCount + 2) / 2;
-        int irrelevantClueCount = 0;
-        while(irrelevantClueCount < maxIrrelevantClueNum && tempIrrelevantClueArray.size > 0){
-            Clue clueToAssign = tempIrrelevantClueArray.pop();
-            if (clueToAssign.getClueTag() == ClueTag.PHYSICAL && tempRoomArray.size > 0){
-                tempRoomArray.pop().addClue(clueToAssign);
-                irrelevantClueCount++;
-            }
-            else if (clueToAssign.getClueTag() == ClueTag.VERBAL && tempCharArray.size > 0){
-                tempCharArray.pop().addClue(clueToAssign);
-                maxRelevantClueNum++;
-            }
-        }
-    }
-
-    private void distributeItem(){
-        Array<Item> itemArray = itemManager.getItemArray();
-        Array<GameCharacter> characterArray = characterManager.getCharacterArray();
-        Array<Room> roomArray = roomManager.getRoomArray();
-
-        itemArray.add(itemManager.getKey());
-        for (int i = 0; i < characterArray.size; i++) {
-            //assign every item but the first one to every character
-            //the first item is to be found in a room
-            characterManager.getCharacterArray().get(i).addItem(itemManager.getItemArray().get(i+1));
-
-            //create links between items
-            itemManager.getItemArray().get(i).setReturnItem(itemManager.getItemArray().get(i+1));
-        }
-        itemArray.removeValue(itemManager.getKey(), false);
-
-        //the first item is assigned to a random room
-        roomArray.random().addItem(itemArray.get(0));
-    }
-
-    private void distributeCharacter(){
-        Array<GameCharacter> characterArray = characterManager.getCharacterArray();
-        Array<Room> roomArray = roomManager.getRoomArray();
-
-        characterArray.shuffle();
-        int cnt = 0;
-        Array.ArrayIterator<GameCharacter> iterator = new Array.ArrayIterator<>(characterArray);
-        while(iterator.hasNext()){
-            int roomIndex = cnt % (roomArray.size+1); //+1 for the locked room
-            if (!roomArray.get(roomIndex).isLocked()){
-                roomArray.get(roomIndex).addCharacter(iterator.next());
-            }
-            cnt++;
-        }
     }
 
     /**

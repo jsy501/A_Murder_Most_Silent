@@ -1,14 +1,13 @@
 package com.noname.mrch;
 
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.GameCharacter;
 import com.noname.mrch.helper.AssetLoader;
-import com.noname.mrch.helper.InitUtil;
+import com.noname.mrch.helper.Randomizer;
 
 /**
  *  Initialises and manages characters
@@ -34,7 +33,7 @@ public class CharacterManager {
      *  choose murderer and victim randomly
      */
     public CharacterManager(AssetLoader assetLoader) {
-        characterArray = InitUtil.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
+        characterArray = Randomizer.generateRandomArray(assetLoader.totalCharacterArray, CHARACTER_COUNT);
 
         init();
         setImage(assetLoader);
@@ -49,7 +48,7 @@ public class CharacterManager {
         Json json = new Json();
 
         Array<GameCharacter> totalCharacterArray = json.fromJson(Array.class, GameCharacter.class, jsonFile);
-        characterArray = InitUtil.generateRandomArray(totalCharacterArray, CHARACTER_COUNT);
+        characterArray = Randomizer.generateRandomArray(totalCharacterArray, CHARACTER_COUNT);
 
         init();
     }
