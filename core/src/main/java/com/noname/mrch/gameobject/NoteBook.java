@@ -7,7 +7,7 @@ import com.noname.mrch.gui.Gui;
  * Holds items and clues found by the player
  */
 
-public class NoteBook {
+public class NoteBook implements ObjectContainer{
     /**
      * Clue list holds all the collected clues
      * Item list holds all the collected items
@@ -41,6 +41,7 @@ public class NoteBook {
      * contains the clue
      * @param clue clue to be added to the notebook
      */
+    @Override
     public void addClue(Clue clue){
         if (clueList.contains(clue, false)){
             throw new RuntimeException("Clue already in notebook");
@@ -53,6 +54,7 @@ public class NoteBook {
      * contains the item
      * @param item item to be added to the notebook
      */
+    @Override
     public void addItem(Item item){
         if (itemList.contains(item, false)){
             throw new RuntimeException("Item already in notebook");
@@ -66,7 +68,7 @@ public class NoteBook {
      * @param id id of clue to be found
      * @return returns the clue once found
      */
-    public Clue getClue(int id) {
+    Clue getClue(int id) {
         for (int i =0; i < clueList.size; i++){
             if (clueList.get(i).getId() == id){
                 return clueList.get(i);
@@ -81,17 +83,13 @@ public class NoteBook {
      * @param id if of item to be found
      * @return returns the item once found
      */
-    public Item getItem(int id){
+    Item getItem(int id){
         for (int i =0; i < itemList.size; i++){
             if (itemList.get(i).getId() == id){
                 return itemList.get(i);
             }
         }
         throw new RuntimeException("Item not in notebook");
-    }
-
-    public void removeItem(Item item){
-        itemList.removeValue(item, false);
     }
 
     public boolean contains(Item item) {
@@ -102,10 +100,22 @@ public class NoteBook {
         return (clueList.contains(clue, false));
     }
 
+    @Override
+    public void removeItem(Item item){
+        itemList.removeValue(item, false);
+    }
+
+    @Override
+    public void removeClue(Clue clue) {
+        clueList.removeValue(clue, false);
+    }
+
+    @Override
     public Array<Clue> getClueList() {
         return clueList;
     }
 
+    @Override
     public Array<Item> getItemList() {
         return itemList;
     }

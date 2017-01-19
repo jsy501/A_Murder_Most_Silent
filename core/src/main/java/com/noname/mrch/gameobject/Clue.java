@@ -99,7 +99,7 @@ public class Clue extends GameActor implements JsonImport, Scalable{
         return name;
     }
 
-    public String getResponse() {
+    String getResponse() {
         return response;
     }
 
@@ -108,7 +108,7 @@ public class Clue extends GameActor implements JsonImport, Scalable{
      * @param target Game character to be checked.
      * @return Returns true if the target is related.
      */
-    public boolean checkId(GameCharacter target){
+    boolean checkId(GameCharacter target){
         if (this.getRelatedCharId().contains(target.getId(), true)){
             return true;
         } else {
