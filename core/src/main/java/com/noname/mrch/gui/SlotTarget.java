@@ -8,10 +8,10 @@ import com.noname.mrch.gameobject.Clue;
  * Target for Drag And Drag in accuse window
  */
 
-public class SlotTarget extends Target {
+class SlotTarget extends Target {
     private AccuseWindow accuseWindow;
 
-    public SlotTarget(Actor actor, AccuseWindow accuseWindow) {
+    SlotTarget(Actor actor, AccuseWindow accuseWindow) {
         super(actor);
 
         this.accuseWindow = accuseWindow;

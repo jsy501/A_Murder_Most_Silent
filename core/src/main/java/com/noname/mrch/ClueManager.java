@@ -1,7 +1,9 @@
 package com.noname.mrch;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
 import com.noname.mrch.gameobject.Clue;
 import com.noname.mrch.gameobject.ClueType;
 import com.noname.mrch.gameobject.GameCharacter;
@@ -14,7 +16,6 @@ import com.noname.mrch.helper.AssetLoader;
 
 public class ClueManager {
     private CharacterManager characterManager;
-    private AssetLoader assetLoader;
 
     // clues linked to the murderer
     private Clue motiveClue;
@@ -24,50 +25,57 @@ public class ClueManager {
     // appearance clues not linked to the murderer
     private Array<Clue> irrelevantClueArray;
 
-    private TextureAtlas textureAtlas;
-
     public ClueManager(AssetLoader assetLoader, CharacterManager characterManager){
         this.characterManager = characterManager;
-        this.assetLoader = assetLoader;
 
-        textureAtlas = assetLoader.manager.get(assetLoader.clueTexturePath);
+        TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.clueTexturePath);
 
-        initMotiveClue();
-        initWeaponClue();
-        initAppearanceClue();
+        Array<Clue> totalMotiveArray = assetLoader.totalMotiveClueArray;
+        Array<Clue> totalWeaponArray = assetLoader.totalWeaponClueArray;
+        Array<Clue> totalAppearanceArray = new Array<>(assetLoader.totalAppearanceClueArray);
+
+        initMotiveClue(totalMotiveArray, textureAtlas);
+        initWeaponClue(totalWeaponArray, textureAtlas);
+        initAppearanceClue(totalAppearanceArray, textureAtlas);
+    }
+
+    /**
+     * Constructor used only for testing
+     * @param characterManager character manager used to initialise
+     */
+
+    public ClueManager(FileHandle motiveJsonFile, FileHandle weaponJsonFile, FileHandle appearanceJsonFile,
+                       TextureAtlas textureAtlas, CharacterManager characterManager){
+        this.characterManager = characterManager;
+        Json json = new Json();
+
+        Array<Clue> totalMotiveArray = json.fromJson(Array.class, Clue.class, motiveJsonFile);
+        Array<Clue> totalWeaponArray = json.fromJson(Array.class, Clue.class, weaponJsonFile);
+        Array<Clue> totalAppearanceArray = json.fromJson(Array.class, Clue.class, appearanceJsonFile);
+
+        initMotiveClue(totalMotiveArray, textureAtlas);
+        initWeaponClue(totalWeaponArray, textureAtlas);
+        initAppearanceClue(totalAppearanceArray, textureAtlas);
     }
 
     /**
      * Assign motive clue and check error
+     * @param totalMotiveArray Total roster of motive clue array
+     * @param textureAtlas texture atlas for image assignment
      */
-    private void initMotiveClue(){
-
-        Array<Clue> totalClueArray = assetLoader.totalMotiveClueArray;
-
+    private void initMotiveClue(Array<Clue> totalMotiveArray, TextureAtlas textureAtlas){
         //motive clues are unique for every character
-        motiveClue = totalClueArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
+        motiveClue = totalMotiveArray.get(characterManager.getMurderer().getId() - GameCharacter.ID_OFFSET);
         motiveClue.setImage(textureAtlas.findRegion(String.valueOf(motiveClue.getId())));
-
-        //json import check
-        if (motiveClue.getClueType() != ClueType.MOTIVE ||
-                !motiveClue.getRelatedCharId().contains(characterManager.getMurderer().getId(), false)){
-            throw new RuntimeException("Invalid json format");
-        }
     }
 
     /**
      * Choose one weapon clue randomly from a total weapon clue array and point to the murderer.
-     * Check json import error
+     * @param totalWeaponArray Total roster of weapon clue array
+     * @param textureAtlas texture atlas for image assignment
      */
-    private void initWeaponClue(){
-        Array<Clue> totalClueArray = assetLoader.totalWeaponClueArray;
-
-        weaponClue = totalClueArray.random();
-
-        //json import check
-        if (weaponClue.getClueType() != ClueType.WEAPON){
-            throw new RuntimeException("Invalid json format");
-        }
+    private void initWeaponClue(Array<Clue> totalWeaponArray, TextureAtlas textureAtlas){
+        weaponClue = totalWeaponArray.random();
 
         weaponClue.getRelatedCharId().add(characterManager.getMurderer().getId());
         weaponClue.setImage(textureAtlas.findRegion(String.valueOf(weaponClue.getId())));
@@ -76,16 +84,16 @@ public class ClueManager {
     /**
      * Choose appearance clues that point to the murderer from a total appearance clue array.
      * Check json import error
+     * @param totalAppearanceArray Total roster of appearance clue array
+     * @param textureAtlas texture atlas for image assignment
      */
-    private void initAppearanceClue(){
-        Array<Clue> totalAppearanceClueArray = new Array<>(assetLoader.totalAppearanceClueArray);
-
+    private void initAppearanceClue(Array<Clue> totalAppearanceArray, TextureAtlas textureAtlas){
         irrelevantClueArray = new Array<>();
         appearanceClueArray = new Array<>();
 
         GameCharacter murderer = characterManager.getMurderer();
-        for (int i = 0; i <totalAppearanceClueArray.size ; i++){
-            Clue clue = totalAppearanceClueArray.get(i);
+        for (int i = 0; i <totalAppearanceArray.size ; i++){
+            Clue clue = totalAppearanceArray.get(i);
             clue.setImage(textureAtlas.findRegion(String.valueOf(clue.getId())));
 
             // if the clue is linked to the murderer move it to relevant clue array

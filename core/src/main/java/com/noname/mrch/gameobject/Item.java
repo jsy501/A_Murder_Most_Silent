@@ -28,6 +28,7 @@ public class Item extends GameActor implements JsonImport, Scalable{
     private int linkedPersonId;
     private Item returnItem;
 
+    // default is 1 unless specified in json
     private float investigateScaleFactor = 1;
 
     private boolean isKey = false;

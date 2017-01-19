@@ -15,10 +15,10 @@ import com.noname.mrch.gameobject.JsonImport;
  * Entry format for notebook and accuse window
  */
 
-public class Slot extends Button {
+class Slot extends Button {
     private GameActor gameActor;
 
-    public Slot(GameActor gameActor, Gui gui, Skin skin) {
+    Slot(GameActor gameActor, Gui gui, Skin skin) {
         super(skin);
 
         this.gameActor = gameActor;

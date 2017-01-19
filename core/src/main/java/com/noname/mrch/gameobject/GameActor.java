@@ -65,7 +65,7 @@ public class GameActor extends Actor {
     }
 
     /**
-     * Checks if there is image assigned to it and draw if there is
+     * Checks if there is an image assigned and draw if there is
      */
     @Override
     public void draw(Batch batch, float parentAlpha) {

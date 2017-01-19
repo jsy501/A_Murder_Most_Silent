@@ -10,13 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
  * Source for Drag And Drag in accuse window.
  */
 
-public class SlotSource extends Source{
+class SlotSource extends Source{
     private AccuseWindow accuseWindow;
 
     private Actor sourceActor;
     private Payload payload;
 
-    public SlotSource(Actor actor, AccuseWindow accuseWindow) {
+    SlotSource(Actor actor, AccuseWindow accuseWindow) {
         super(actor);
 
         this.accuseWindow = accuseWindow;

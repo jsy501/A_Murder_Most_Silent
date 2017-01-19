@@ -30,6 +30,7 @@ public class Clue extends GameActor implements JsonImport, Scalable{
     private ClueTag clueTag;
     private Array<Integer> relatedCharId = new Array<Integer>();
 
+    // default is 1 unless specified in json
     private float investigateScaleFactor = 1;
 
     /**

@@ -4,8 +4,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.noname.mrch.GameWorld;
 import com.noname.mrch.gameobject.Room;
 
-public class MapWindow extends GuiWindow{
-    public MapWindow(Skin skin, Gui gui, GameWorld gameWorld) {
+/**
+ * Window that holds buttons that allow player to switch rooms
+ */
+
+class MapWindow extends GuiWindow{
+    MapWindow(Skin skin, Gui gui, GameWorld gameWorld) {
         super("MAP", skin, gui, gameWorld);
 
         button("HUB", 0);
