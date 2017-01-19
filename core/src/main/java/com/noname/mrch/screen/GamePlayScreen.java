@@ -55,7 +55,6 @@ public class GamePlayScreen implements Screen {
         gameWorld.getCurrentRoom().getCurrentStage().act();
         gameWorld.getCurrentRoom().getCurrentStage().draw();
 
-        gui.update(delta);
         gui.getStage().act();
         gui.getStage().draw();
 

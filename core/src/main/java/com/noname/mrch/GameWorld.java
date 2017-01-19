@@ -147,7 +147,6 @@ public class GameWorld {
         Array<GameCharacter> characterArray = characterManager.getCharacterArray();
         Array<Room> roomArray = roomManager.getRoomArray();
 
-        // character distribution
         characterArray.shuffle();
         int cnt = 0;
         Array.ArrayIterator<GameCharacter> iterator = new Array.ArrayIterator<>(characterArray);
@@ -160,10 +159,17 @@ public class GameWorld {
         }
     }
 
+    /**
+     * Attach gui to game world.
+     * @param gui gui to attach
+     */
     public void setGui(Gui gui){
         this.gui = gui;
     }
 
+    /**
+     * Check for input every frame.
+     */
     public void update(float delta){
         // input check
         if (touchedActor != null) {
@@ -211,8 +217,7 @@ public class GameWorld {
         return currentRoom;
     }
 
-    public void setCurrentRoom(Room targetRoom){
-        currentRoom.setLocked(false);
+    private void setCurrentRoom(Room targetRoom){
         currentRoom.setDefault(true);
         gui.haltInteraction();
 
@@ -234,6 +239,7 @@ public class GameWorld {
         }
         // if the room is locked and the player had found the key
         else if (targetRoom.isLocked() && notebook.contains(itemManager.getKey())){
+            targetRoom.setLocked(false);
             setCurrentRoom(targetRoom);
             return true;
         }

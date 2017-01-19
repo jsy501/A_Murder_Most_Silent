@@ -4,6 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.*;
 import com.noname.mrch.gameobject.Clue;
 
+/**
+ * Target for Drag And Drag in accuse window
+ */
+
 public class SlotTarget extends Target {
     private AccuseWindow accuseWindow;
 

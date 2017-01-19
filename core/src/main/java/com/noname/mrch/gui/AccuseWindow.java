@@ -14,7 +14,7 @@ import com.noname.mrch.gameobject.Clue;
  * Gui window for accuse interaction.
  */
 
-public class AccuseWindow extends GuiWindow {
+class AccuseWindow extends GuiWindow {
     private final float WIDTH = 1500;
     private final float HEIGHT = 800;
     private final float SLOT_WIDTH = 150;
@@ -37,7 +37,7 @@ public class AccuseWindow extends GuiWindow {
      * @param gameWorld Game World to be interacting with.
      */
 
-    public AccuseWindow(Skin skin, Gui gui, GameWorld gameWorld) {
+    AccuseWindow(Skin skin, Gui gui, GameWorld gameWorld) {
         super("ACCUSE", skin, gui, gameWorld);
 
         sourceClueArray = new Array<>();
@@ -122,11 +122,11 @@ public class AccuseWindow extends GuiWindow {
         }
     }
 
-    public Array<Clue> getSourceClueArray() {
+    Array<Clue> getSourceClueArray() {
         return sourceClueArray;
     }
 
-    public Array<Clue> getTargetClueArray() {
+    Array<Clue> getTargetClueArray() {
         return targetClueArray;
     }
 

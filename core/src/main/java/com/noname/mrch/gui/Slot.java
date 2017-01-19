@@ -11,6 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.noname.mrch.gameobject.GameActor;
 import com.noname.mrch.gameobject.JsonImport;
 
+/**
+ * Entry format for notebook and accuse window
+ */
+
 public class Slot extends Button {
     private GameActor gameActor;
 

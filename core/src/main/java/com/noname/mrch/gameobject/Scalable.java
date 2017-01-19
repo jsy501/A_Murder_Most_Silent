@@ -1,5 +1,8 @@
 package com.noname.mrch.gameobject;
 
-public interface Scalable {
+/**
+ * Interface for classes that can be scaled for investigation screen render
+ */
+interface Scalable {
     float getInvestigateScaleFactor();
 }
