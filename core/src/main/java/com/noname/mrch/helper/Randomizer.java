@@ -116,6 +116,12 @@ public final class Randomizer {
         Array<GameCharacter> characterArray = characterManager.getCharacterArray();
         Array<Room> roomArray = roomManager.getRoomArray();
 
+        //if the last character in the array is the murderer swap its place with the second last,
+        //so the key is not given to the murderer
+        if (characterArray.peek().isMurderer()){
+            characterArray.swap(characterArray.size-1, characterArray.size-2);
+        }
+
         itemArray.add(itemManager.getKey());
         for (int i = 0; i < characterArray.size; i++) {
             //assign every item but the first one to every character

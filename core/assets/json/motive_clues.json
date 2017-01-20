@@ -16,14 +16,14 @@
   {
     "id": 102,
     "name": "The Aspiring Assistant!",
-    "description": "Jack Watson has always been an assistant detective for as long as i can remember \n maybe he wanted to challenge his mentor to a game?",
+    "description": "Jack Watson has always been an assistant detective for as long as I can remember \n maybe he wanted to challenge his mentor to a game?",
     "relatedCharId": [302],
     "clueType": "MOTIVE"
   },
   {
     "id": 103,
     "name": "The Fashion Betrayal!",
-    "description": "I overheard a conversation between selina and the victim once \n they accused each other of stealing i dont know what but after that \n neither really spoke much.",
+    "description": "I overheard a conversation between selina and the victim once \n they accused each other of stealing i don't know what but after that \n neither really spoke much.",
     "relatedCharId": [303],
     "clueType": "MOTIVE"
 
@@ -31,7 +31,7 @@
   {
     "id": 104,
     "name": "The Secret Meetings of a Rich Man",
-    "description": "I heard that the victim owed william a lot of money \n apparently during a meeting he convinced william to bet \n half his money on a soon to fail company costing him millions \n could that meeting have something to do with his death?",
+    "description": "I heard that the victim owed William a lot of money \n apparently during a meeting he convinced william to bet \n half his money on a soon to fail company costing him millions \n could that meeting have something to do with his death?",
     "relatedCharId": [304],
     "clueType": "MOTIVE"
   },
