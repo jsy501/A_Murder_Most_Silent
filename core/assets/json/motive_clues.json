@@ -1,44 +1,44 @@
 [
   {
     "id": 100,
-    "name": "motive1",
-    "description": "Motive clue 1",
+    "name": "The Spoilt Meal!",
+    "description": "Earlier this week the victim was presented with a meal cooked by Poirot \n he said it was sub-par at best could the chef have done something?",
     "relatedCharId": [300],
     "clueType": "MOTIVE"
   },
   {
     "id": 101,
-    "name": "motive2",
-    "description": "Motive clue 2",
+    "name": "The Inconsiderate Detective!",
+    "description": "Holmes always liked to deduce thing's about anyone he saw \n many disagreed with his views and deductions \n maybe the victim also disagreed",
     "relatedCharId": [301],
     "clueType": "MOTIVE"
   },
   {
     "id": 102,
-    "name": "motive3",
-    "description": "Motive clue 3",
+    "name": "The Aspiring Assistant!",
+    "description": "Jack Watson has always been an assistant detective for as long as i can remember \n maybe he wanted to challenge his mentor to a game?",
     "relatedCharId": [302],
     "clueType": "MOTIVE"
   },
   {
     "id": 103,
-    "name": "motive4",
-    "description": "Motive clue 4",
+    "name": "The Fashion Betrayal!",
+    "description": "I overheard a conversation between selina and the victim once \n they accused each other of stealing i dont know what but after that \n neither really spoke much.",
     "relatedCharId": [303],
     "clueType": "MOTIVE"
 
   },
   {
     "id": 104,
-    "name": "motive5",
-    "description": "Motive clue 5",
+    "name": "The Secret Meetings of a Rich Man",
+    "description": "I heard that the victim owed william a lot of money \n apparently during a meeting he convinced william to bet \n half his money on a soon to fail company costing him millions \n could that meeting have something to do with his death?",
     "relatedCharId": [304],
     "clueType": "MOTIVE"
   },
   {
     "id": 105,
-    "name": "motive6",
-    "description": "Motive clue 6",
+    "name": "The Paranoid Puppet!",
+    "description": "Roux is a fashion model i went to see her at a fashion show once \n she was beautiful unlike any other but some say shes more like a puppet to the clothes than a person \n i heard she was kidnapped once by a stalker and was never the same afterwards \n perhaps she was reminded of the stalker by the victim?",
     "relatedCharId": [305],
     "clueType": "MOTIVE"
   }
