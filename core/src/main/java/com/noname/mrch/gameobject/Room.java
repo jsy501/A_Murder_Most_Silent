@@ -19,6 +19,13 @@ import com.noname.mrch.MurderSilentGame;
  * Represents a room Object
  */
 public class Room implements JsonImport, ObjectContainer {
+	/**
+	 * The ID_OFFSET variable is used in order to differentiate between
+	 * types of objects independent of everything else the id offset
+	 * is added to the id of the object imported via json.
+	 */
+	public static final int ID_OFFSET = 400;
+
     /**
      * Use of each variable:
      * id contains the unique id of the room as imported via json

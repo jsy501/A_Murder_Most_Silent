@@ -62,7 +62,7 @@ public class AssetLoader {
     }
 
     private void getAssetPath(){
-        FileHandle file = new FileHandle("core/assets.properties");
+        FileHandle file = new FileHandle("assets.properties");
         Properties properties = new Properties();
         try {
             properties.load(file.read());

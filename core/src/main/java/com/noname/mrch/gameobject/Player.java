@@ -5,13 +5,22 @@ import com.badlogic.gdx.utils.Array;
 /**
  * This class holds data about the player
  */
-public class Player {
+public class Player implements JsonImport{
+    /**
+     * The ID_OFFSET variable is used in order to differentiate between
+     * types of objects independent of everything else the id offset
+     * is added to the id of the object imported via json.
+     */
+    public static final int ID_OFFSET = 500;
+
     /**
      * use of each variable:
      * name contains the name of the detective
      * questionSet contains the 3 questioning styles the chosen detective may use
      */
+    private int id;
     private String name;
+    private String desctription;
     private Array<QuestioningStyle> questionSet;
 
     /**
@@ -30,8 +39,18 @@ public class Player {
 
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
     public String getName(){
         return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return desctription;
     }
 
     public Array<QuestioningStyle> getQuestionSet() {
