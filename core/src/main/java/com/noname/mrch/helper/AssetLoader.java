@@ -21,6 +21,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Container for all the assets. Loads the assets according to the paths in property file.
+ * Texture paths are later used to get the loaded texture.
+ */
+
 public class AssetLoader {
     public AssetManager manager;
 

@@ -1,0 +1,19 @@
+
+player_pack.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+501
+  rotate: false
+  xy: 1, 14
+  size: 403, 749
+  orig: 403, 749
+  offset: 0, 0
+  index: -1
+500
+  rotate: false
+  xy: 406, 1
+  size: 375, 762
+  orig: 375, 762
+  offset: 0, 0
+  index: -1
