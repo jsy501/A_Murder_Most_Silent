@@ -3,11 +3,14 @@ package com.noname.mrch.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.noname.mrch.MurderSilentGame;
@@ -52,15 +55,18 @@ public class PlayerSelectionScreen implements Screen {
 
         Table selectionTable = new Table(assetLoader.skin);
         Array<Player> playerRoster = assetLoader.totalPlayerArray;
+        TextureAtlas textureAtlas = assetLoader.manager.get(assetLoader.playerTexturePath);
         for (Player player: playerRoster) {
-            TextButton button = new TextButton(player.getName(), assetLoader.skin);
+            ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
+            style.imageUp = new TextureRegionDrawable(textureAtlas.findRegion(String.valueOf(player.getId())));
+            ImageButton button = new ImageButton(style);
             button.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     game.setScreen(new GamePlayScreen(game, player));
                 }
             });
-            selectionTable.add(button).size(200, 500);
+            selectionTable.add(button);
         }
         table.add(selectionTable);
         stage.addActor(table);

@@ -42,6 +42,7 @@ public class AssetLoader {
     public Array<Clue> totalAppearanceClueArray;
     public Array<Room> totalRoomArray;
 
+    public String playerTexturePath;
     public String characterTexturePath;
     public String roomTexturePath;
     public String itemTexturePath;
@@ -82,6 +83,7 @@ public class AssetLoader {
         appearanceClueJsonPath = properties.getProperty("appearanceClueJsonPath");
         roomJsonPath = properties.getProperty("roomJsonPath");
 
+        playerTexturePath = properties.getProperty("playerTexturePath");
         characterTexturePath = properties.getProperty("characterTexturePath");
         roomTexturePath = properties.getProperty("roomTexturePath");
         itemTexturePath = properties.getProperty("itemTexturePath");
@@ -113,6 +115,9 @@ public class AssetLoader {
     }
 
     private void loadTexture(){
+        //load player texture
+        manager.load(playerTexturePath, TextureAtlas.class);
+
         //load room texture
         manager.load(roomTexturePath, TextureAtlas.class);
 
