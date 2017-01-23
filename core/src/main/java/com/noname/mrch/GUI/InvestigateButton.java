@@ -17,7 +17,7 @@ class InvestigateButton extends GuiButton {
         addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                gameWorld.getCurrentRoom().switchCurrentStage();
+                gameWorld.switchRoomView();
 
                 //set input processor as the switched stage
                 Gdx.input.setInputProcessor(new InputMultiplexer(getStage(), gameWorld.getCurrentRoom().getCurrentStage()));

@@ -22,7 +22,6 @@ public class GamePlayScreen implements Screen {
     private MurderSilentGame game;
 
     private GameWorld gameWorld;
-    private Gui gui;
 
     /**
      * Constructor for initialising the game once the player chooses a detective to play as
@@ -32,9 +31,6 @@ public class GamePlayScreen implements Screen {
     public GamePlayScreen(MurderSilentGame game, Player selectedPlayer){
         this.game = game;
         gameWorld = new GameWorld(selectedPlayer, this.game.assetLoader);
-        gui = new Gui(this.game.assetLoader, gameWorld);
-
-        gameWorld.setGui(gui);
     }
 
     /**
@@ -42,7 +38,7 @@ public class GamePlayScreen implements Screen {
      */
     @Override
     public void show() {
-        InputMultiplexer multiplexer = new InputMultiplexer(gui.getStage(), gameWorld.getCurrentRoom().getCurrentStage());
+        InputMultiplexer multiplexer = new InputMultiplexer(gameWorld.getGui().getStage(), gameWorld.getCurrentRoom().getCurrentStage());
         Gdx.input.setInputProcessor(multiplexer);
     }
 
@@ -52,23 +48,17 @@ public class GamePlayScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         gameWorld.update(delta);
-        gameWorld.getCurrentRoom().getCurrentStage().act();
-        gameWorld.getCurrentRoom().getCurrentStage().draw();
-
-        gui.getStage().act();
-        gui.getStage().draw();
-
+        gameWorld.draw();
     }
 
     /**
-     * allows the player to resize the game screen
+     * called with the screen is resized
      * @param width new width of the screen
      * @param height new height of the screen
      */
     @Override
     public void resize(int width, int height) {
         gameWorld.resize(width, height);
-        gui.getStage().getViewport().update(width, height, true);
     }
 
     @Override

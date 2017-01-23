@@ -19,7 +19,7 @@ public class CharacterManager {
      * The CHARACTER_COUNT value defines the number of
      * game characters that will be added into the game.
      */
-    public static final int CHARACTER_COUNT = 6;
+    static final int CHARACTER_COUNT = 6;
 
 
     private GameCharacter murderer;

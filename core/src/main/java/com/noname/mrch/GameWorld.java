@@ -56,18 +56,13 @@ public class GameWorld {
         System.out.println("Room list: " + roomManager.getRoomArray());
 
         currentRoom = roomManager.getRoomArray().first();
+
+        // gui to be initialised after game world initialisation
+        gui = new Gui(assetLoader, this);
     }
 
     /**
-     * Attach gui to game world.
-     * @param gui gui to attach
-     */
-    public void setGui(Gui gui){
-        this.gui = gui;
-    }
-
-    /**
-     * Check for input every frame.
+     * Check for input every frame and call act for the current room stage
      */
     public void update(float delta){
         // input check
@@ -81,6 +76,14 @@ public class GameWorld {
                 }
             }
         }
+
+        currentRoom.getCurrentStage().act(delta);
+        gui.getStage().act(delta);
+    }
+
+    public void draw(){
+        currentRoom.getCurrentStage().draw();
+        gui.getStage().draw();
     }
 
     private void handleInput(GameActor actor) {
@@ -147,11 +150,25 @@ public class GameWorld {
         }
     }
 
+    /**
+     * Switch current room view between investigation view and default view
+     */
+
+    public void switchRoomView() {
+        currentRoom.switchCurrentStage();
+    }
+
     public void resize(int width, int height){
         for (Room room : roomManager.getRoomArray()) {
             room.resize(width, height);
         }
         roomManager.getLockedRoom().resize(width, height);
+
+        gui.getStage().getViewport().update(width, height, true);
+    }
+
+    public Gui getGui() {
+        return gui;
     }
 
     public Player getPlayer() {
