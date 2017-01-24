@@ -15,26 +15,10 @@ public class NoteBook implements ObjectContainer{
     private Array<Clue> clueList;
     private Array<Item> itemList;
 
-    /**
-     * Non-argument constructor used at initialisation of the notebook
-     */
     public NoteBook(){
         clueList = new Array<>();
         itemList = new Array<>();
-//
-//        Item testItem1 = new Item(1, "item1", "", false);
-//        Item testItem2 = new Item(1, "item2", "", false);
-//        Item testItem3 = new Item(1, "item3", "", false);
-//        Item testItem4 = new Item(1, "item4", "", false);
-//        Item testItem5 = new Item(1, "item5", "", false);
-//        Item testItem6 = new Item(1, "item6", "", false);
-//        Item testItem7 = new Item(1, "item7", "", false);
-//        Item testItem8 = new Item(1, "item8", "", false);
-//        Item testItem9 = new Item(1, "item9", "", false);
-//        Item testItem10 = new Item(1, "item10", "", false);
-//
-//        itemList.addAll(testItem1, testItem2, testItem3, testItem4, testItem5, testItem6, testItem7, testItem8, testItem9, testItem10);
-    }
+   }
 
     /**
      * Adds the clue to the notebook throwing an exception if the clueList already
